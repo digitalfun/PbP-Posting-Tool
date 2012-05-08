@@ -1,0 +1,30 @@
+PROJECT: PbP Posting Tool
+
+DESCRIPTION:
+This tool generates BBCode for forum posts.
+It is designed to help playing Forum-PbP (Play By Post) Roleplaying games.
+When all posts have the same style (color for "talking"/"ooc" etc) it will result in an overall better readability.
+
+INSTRUCTIONS:
+To customize the BBCode, edit the file "res/settings.js":
+*code_char  : code for Charactername
+*code_speak	: code for Speaking
+*code_think	: code for Thinking
+*code_ooc	: code for OOC
+The term in the variable "code_tag" is the one which will be replaced by the entry of the user.
+
+FILES:
+*html*
+main: postingtool.html
+*resource*
+email image: res/contact.gif
+icon: res/roll.gif
+icon: res/talk.gif
+icon: res/think.gif
+css: res/postingtool.css
+*js*
+res/multilanguage.js
+res/postingtool.js
+res/settings.js
+
+EOF
