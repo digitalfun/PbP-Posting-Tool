@@ -27,4 +27,30 @@ res/multilanguage.js
 res/postingtool.js
 res/settings.js
 
+EXTENSIONS:
+There is an extension called "ds" which is the one I used to play on Dungeonslayers.net.
+We use this as an example.
+
+To create an extension:
+STEP 1: create a copy the main-file "postingtool.html" and name it to represent your extension (ex: postingtool_ds.html).
+STEP 2: create an extension code file (js): The extension code belongs to a new file in the "ext" folder. (ex: /ext/ds.js) and has the following structure.
+[code]
+extension.create_extension( function() {
+  YOUR CODE BELONGS HERE
+});
+[/code]
+
+STEP 3: edit your copy of main source ("postingtool_ds.html") and un-comment the line where it includes the extension-script and change the name of the js-file to match your extension code file.
+[code]
+  <!-- extension -->
+	<!--          REMOVE THIS LINE
+	<script		type="text/javascript"
+				src="ds.js">
+	</script>
+	-->           REMOVE THIS LINE
+[/code]
+
+STEP 4: edit your extension code file and overwrite the functions for code creation or use jQuery to change/add the tool.
+(see "ds.js" to get some input)
+
 EOF
