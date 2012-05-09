@@ -1,9 +1,11 @@
 CHANGELOG PbP-Posting-Tool
 ------------------------
-Format:
+FORMAT:
 vX.Y (YYYY-MM-DD) Short Description
+ - single line description
  + change 1 description
    - detailed description
+     multiline
  + change 2 description
    - detailed description
 ------------------------
