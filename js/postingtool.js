@@ -20,6 +20,7 @@ uses jQuery
 ###########################
 LICENSE START
 "MIT License"
+http://www.opensource.org/licenses/mit-license.php
 ###########################
 Copyright (c) 2011 Florian Markus Schmid (aka LordSmith aka DM Spry), Switzerland
 
