@@ -88,7 +88,6 @@ extension.create_extension( function() {
 	$append.append( createOption("Aufwachen:KÖR,HÄ", "Aufwachen (wenn Bewusstloser geweckt wird)"));
 	$append.append( createOption("Bemerken:GEI,VE", "Bemerken (min.8, Diebeskunst,Wahrnehmung)"));
 	$append.append( createOption("Erwachen:GEI,VE", "Erwachen (Schnelle Reflexe,Wahrnehmung)"));
-	$append.append( createOption("Erwachen:GEI,VE", "Erwachen (Schnelle Reflexe,Wahrnehmung)"));
 	$append.append( createOption("Falle entschärfen:GEI,GE", "Fallen entschärfen (Diebeskunst)"));
 	$append.append( createOption("Feilschen:GEI,VE,AU", "Feilschen(Charmant,Schlitzohr)"));
 	$append.append( createOption("Feuer machen:GEI,GE", "Feuer machen (Jäger)"));
