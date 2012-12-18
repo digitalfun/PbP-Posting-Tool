@@ -129,13 +129,4 @@ postingTool.multiLanguage = (function ( ) {
 	return that;
 }());
 
-
-var mlDeutsch = function() {
-
-}
-
-var mlEnglish = function () {
-
-}
-
 -->
