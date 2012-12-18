@@ -60,7 +60,7 @@ var settings = function() {
 		lang : language = de|en
 		dice : the standard dice for rolls = 1d6 | 1d20 | XdY
 	*/
-	getURLParams();
+	postingTool.tools.getURLParams( );
 
 	/*
 		settings for BBCode generation
@@ -75,6 +75,9 @@ var settings = function() {
 }
 
 
+//namespace postingTool.tools
+postingTool.tools = postingTool.tools || { };
+
 /*
 get URL Parameters (gup)
 	...\postingtool.html?lang=de&dice=1d6
@@ -83,7 +86,7 @@ Parameters:
 	lang : language = de|en
 	dice : the standard dice for rolls = 1d6 | 1d20 | XdY
 */
-var getURLParams = function () {
+postingTool.tools.getURLParams = function () {
 
 	//get language from link-param (/default "en" (english))
 	// example: for German: "../postingtool.html?lang=de"
