@@ -47,6 +47,9 @@ LICENSE END
 ###########################
 */
 
+//namespace postingTool
+var postingTool = postingTool || { };
+
 var setup = function () {
 		
 	tables.hideAll();
@@ -68,9 +71,9 @@ var setup = function () {
 	
 	$("#text_roll_dice").val( diceStandard);
 	
-	//multilanguage translation by classes
-	multiLanguage.translate();
-	
+	//multilanguage translation by CSS-classes
+	postingTool.multiLanguage.translate( );
+
 	//placeholder for extensions
 	extension.extend();
 };
