@@ -19,6 +19,7 @@ Note:
 ###########################
 LICENSE START
 "MIT License"
+http://www.opensource.org/licenses/mit-license.php
 ###########################
 Copyright (c) 2011 Florian Markus Schmid (aka LordSmith aka DM Spry), Switzerland
 
@@ -44,6 +45,10 @@ THE SOFTWARE.
 LICENSE END
 ###########################
 */
+
+//namespace postingTool
+var postingTool = postingTool || { };
+
 
 var settings = function() {
 
@@ -87,7 +92,7 @@ var getURLParams = function () {
 		// en : English
 	var lang = gup("lang");
 	if( lang === "") { lang = "en"; };
-	multiLanguage[lang]();
+	postingTool.multiLanguage.activate[lang]( );
 
 	//dice
 	diceStandard = gup("dice"); //GLOBAL
