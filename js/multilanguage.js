@@ -46,28 +46,30 @@ LICENSE END
 ###########################
 */
 
+//namespace postingTool
+var postingTool = postingTool || { };
 
 /* 
-@object: MultiLanguage
+@object: postingTool.multiLanguage
 @Usage:
+	//store language setting in variable
 	var lang = "de"; //or "en" etc
 	
-	//default ENGLISH (en)
+	//(OPTIONAL)
+	//set default language: ENGLISH (en)
 	if( lang === "") { lang = "en"; };
-	
+
 	//translate page with choosen lang
-	MultiLanguage[lang]();
+	postingTool.multiLanguage[lang]();
+	//...
+	
+	
+
 */
-var multiLanguage = {
-	"de" : function() {
-		mlDeutsch();
-	},
-	
-	"en" : function() {
-		mlEnglish();
-	},
-	
-	translate : function() {
+postingTool.multiLanguage = (function ( ) {
+	var that = { };
+
+	that.translate = function() {
 		$(".mlTITLE").text(mlTITLE);
 		$(".mlINSERT").text(mlINSERT);
 		$(".mlRESET").text(mlRESET);
@@ -81,42 +83,59 @@ var multiLanguage = {
 		$(".mlOOC_title").attr("title", mlOOC_title);
 		$(".mlROLL_title").attr("title", mlROLL_title);
 	}
-}
+
+	that.activate = (function ( ) {
+		var that = { };
+		
+		// MULTILANGUAGE: Deutsch	
+		that.de = function() {
+			mlTITLE='Posting Tool fürs Forenspiel (Play by Post)';
+			mlRESET='Zurücksetzen';
+			mlSELECT='Auswählen';
+			mlTALK='Sprechen';
+			mlTALK_title='Sprechen';
+			mlTHINK='Denken';
+			mlTHINK_title='Denken';
+			mlOOC='OOC';
+			mlOOC_title='Out Of Character';
+			mlROLL='Würfeln';
+			mlROLL_title='Würfeln';
+			mlINSERT='Einfügen';
+			mlCHAR='Charakter';
+			mlCHAR_title='Name des Charakters';
+		};
+
+		// MULTILANGUAGE: English	
+		that.en = function() {
+			mlTITLE='Posting Tool for Forum-PbP (Play by Post)';
+			mlRESET='Reset';
+			mlSELECT='Select';
+			mlTALK='Talk';
+			mlTALK_title='Talk';
+			mlTHINK='Think';
+			mlTHINK_title='Think';
+			mlOOC='OOC';
+			mlOOC_title='Out Of Character';
+			mlROLL='Roll';
+			mlROLL_title='Roll';
+			mlINSERT='Insert';
+			mlCHAR='Character';
+			mlCHAR_title='Name of character';
+		}		
+		
+		return that;
+	}());
+	
+	return that;
+}());
+
 
 var mlDeutsch = function() {
-// MULTILANGUAGE: Deutsch
-mlTITLE='Posting Tool fürs Forenspiel (Play by Post)';
-mlRESET='Zurücksetzen';
-mlSELECT='Auswählen';
-mlTALK='Sprechen';
-mlTALK_title='Sprechen';
-mlTHINK='Denken';
-mlTHINK_title='Denken';
-mlOOC='OOC';
-mlOOC_title='Out Of Character';
-mlROLL='Würfeln';
-mlROLL_title='Würfeln';
-mlINSERT='Einfügen';
-mlCHAR='Charakter';
-mlCHAR_title='Name des Charakters';
+
 }
 
 var mlEnglish = function () {
-// MULTILANGUAGE: English
-mlTITLE='Posting Tool for Forum-PbP (Play by Post)';
-mlRESET='Reset';
-mlSELECT='Select';
-mlTALK='Talk';
-mlTALK_title='Talk';
-mlTHINK='Think';
-mlTHINK_title='Think';
-mlOOC='OOC';
-mlOOC_title='Out Of Character';
-mlROLL='Roll';
-mlROLL_title='Roll';
-mlINSERT='Insert';
-mlCHAR='Character';
-mlCHAR_title='Name of character';
+
 }
 
 -->
