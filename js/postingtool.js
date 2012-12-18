@@ -50,7 +50,7 @@ LICENSE END
 //namespace postingTool
 var postingTool = postingTool || { };
 
-var setup = function () {
+postingTool.setup = function () {
 		
 	tables.hideAll();
 	
