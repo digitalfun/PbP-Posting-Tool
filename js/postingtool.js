@@ -52,13 +52,13 @@ var postingTool = postingTool || { };
 
 postingTool.setup = function () {
 		
-	tables.hideAll();
+	postingTool.tables.hideAll();
 	
 	//query all tablecells (=tabs)
 	//and attach a click event
 	var $tabcell = $("td.tabs_tablecell");
 	$tabcell.click( function() {
-		tables.onClick( $(this));
+		postingTool.tables.onClick( $(this));
 	});
 	
 	//make the tab-mousecursor to a "hand" when mouseover
@@ -79,13 +79,11 @@ postingTool.setup = function () {
 };
 	
 		
-//OBJECT LITERAL: tables		
-var tables = {
+//OBJECT postingTool.tables		
+postingTool.tables = {
 
 	onClick : function ( $tab) { 
 		var $content, sID;
-		
-//console.log("tables.onClick( $tab): $tab.text() = " +$tab.text()); 
 		
 		//remove selection from previously selected tab
 		$("td.tabs_tablecell.is_selected").removeClass("is_selected");
@@ -102,7 +100,7 @@ var tables = {
 		//show and focus new tab-content
 		sID = $tab.attr("id");
 		sID = "tabcontent" +sID.slice( sID.lastIndexOf( "_"));
-console.log( 'tables.onClick( $tab): show tab-content of id: ' +sID)		;
+console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)		;
 		$content = $("div#" +sID);
 		$content.addClass("is_visible");
 		$content.show()
