@@ -7,7 +7,7 @@ Type: JavaScript
 Author/Copyright: Florian Schmid (LordSmith)
 Company: private
 Desc:
-Support multilanguage.
+Multilanguage support.
 
 Note:
 -----------------------------
@@ -81,7 +81,6 @@ postingTool.multiLanguage = (function ( ) {
 		character_title: 'strings.character_title'
 	};
 	
-	
 	that.activate = (function ( ) {
 		var that = { };
 		
@@ -123,7 +122,6 @@ postingTool.multiLanguage = (function ( ) {
 		
 		return that;
 	}());
-
 	
 	that.translate = function () {
 		$(".mlTITLE").text(that.strings.title);
