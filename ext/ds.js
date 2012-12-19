@@ -241,7 +241,7 @@ console.log("selectProbe_onChange()")
 	var sText = "";
 	var sValue = "";
 	
-	if( g_dichbChar != 0) {
+	if( postingTool.extension.ds.dichbChar !== 0) {
 	
 		//check if Kampfwert 
 		switch( theProps[ 0]) {
@@ -269,7 +269,7 @@ console.log("selectProbe_onChange()")
 	theProps = theProps[ 1];
 	theProps = theProps.split(",");
 	
-	if( g_dichbChar != 0) {
+	if( postingTool.extension.ds.dichbChar !== 0) {
 		for( x in theProps) {
 			switch( theProps[ x]) {
 				case "KÖR":
