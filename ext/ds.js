@@ -130,7 +130,7 @@ postingTool.extension.create( function() {
 	$rolldiv.append( $('<br /><strong>Probenwert</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));
 });
 
-//overwrite Code.Char
+//overwrite code.Char
 postingTool.code["char"] = function () {
 console.log("ds extension: code.char()");	
 
@@ -146,7 +146,7 @@ console.log("ds extension: code.char()");
 return sCode;
 }
 
-//overwrite Code.Roll
+//overwrite code.Roll
 postingTool.code["roll"] = function() {
 console.log("ds extension: Code.Roll()");
 
