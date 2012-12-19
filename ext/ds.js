@@ -38,7 +38,7 @@ postingTool.extension.create( function() {
 	console.log("ds extension: extension created");
 
 	//add a DS-icon before the charname
-	postingTool.settings.codeChar	= ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
+	postingTool.settings.codeChar = ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
 	document.title += " - DS"; 
 	
@@ -46,23 +46,22 @@ postingTool.extension.create( function() {
 	get cookie information (from diChB export)
 	*/
 	var dichbImport = postingTool.extension.ds.tools.getCookie("dichb_export");
-	g_dichbChar = 0; //GLOBAL
 	
-	if( dichbImport != "") {
+	if( dichbImport !== "") {
 		try {
-			g_dichbChar = jQuery.parseJSON( dichbImport);
+			postingTool.extension.ds.dichbChar = jQuery.parseJSON( dichbImport);
 		}
 		catch( err) {
-			g_dichbChar = 0;
+			postingTool.extension.ds.dichbChar = 0;
 		}	
 		
-		if( g_dichbChar === null) {
-			g_dichbChar = 0;
+		if( postingTool.extension.ds.dichbChar === null) {
+			postingTool.extension.ds.dichbChar = 0;
 		}
 	}
 	
-	if ( g_dichbChar != 0) {
-		console.log( "ds extension: diChB export data found: " +g_dichbChar.name);
+	if ( postingTool.extension.ds.dichbChar !== 0) {
+		console.log( "ds extension: diChB export data found: " +postingTool.extension.ds.dichbChar.name);
 	}
 	else {
 		console.log( "NO diChB export data found!");
@@ -72,7 +71,7 @@ postingTool.extension.create( function() {
 	//add title: DS symbol and extension title
 	var appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
 		//if chardata imported from dichb -> add info
-		((g_dichbChar != 0) ? appendTitle += "  <b>diChB import: " +  g_dichbChar.name +"</b><br>" : "" ); 
+		((postingTool.extension.ds.dichbChar !== 0) ? appendTitle += "  <b>diChB import: " +  postingTool.extension.ds.dichbChar.name +"</b><br>" : "" ); 
 	$("#title").append( appendTitle);
 	
 
@@ -219,6 +218,8 @@ return sCode;
 
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
+
+postingTool.extension.ds.dichbChar = 0;
 
 var selectProbe_onChange = function() {
 console.log("selectProbe_onChange()")
