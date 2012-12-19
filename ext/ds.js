@@ -87,7 +87,7 @@ postingTool.extension.create( function() {
 	
 	//create selection-list
 	var createOption = postingTool.extension.ds.tools.createOption;
-	var $append = $("<select id=selectProbe onchange='selectProbe_onChange();'>");
+	var $append = $("<select id=selectProbe onchange='postingTool.extension.ds.selectProbe_onChange();'>");
 	$append.append( createOption("", ""));
 	$append.append( createOption("Schlagen:", "Kampfwert: Schlagen"));
 	$append.append( createOption("Schiessen:", "Kampfwert: Schiessen"));
@@ -228,7 +228,7 @@ postingTool.extension.ds = { };
 
 postingTool.extension.ds.dichbChar = 0;
 
-var selectProbe_onChange = function() {
+postingTool.extension.ds.selectProbe_onChange = function() {
 console.log("selectProbe_onChange()")
 
 	var theProps = $("#selectProbe").val();
