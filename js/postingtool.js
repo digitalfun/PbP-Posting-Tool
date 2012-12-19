@@ -1,5 +1,3 @@
-<!-- hide from HTML
-
 /*
 ------------------------------
 File: postingtool.js
@@ -47,42 +45,52 @@ LICENSE END
 ###########################
 */
 
-var setup = function () {
-		
-	tables.hideAll();
+//namespace postingTool
+var postingTool = postingTool || { };
+
+postingTool.setup = function () {
+
+	//get URL parameters
+	postingTool.settings.getURLParams( );		
+	
+	//activate language according to URL parameter (or if not given, standard value)
+	postingTool.multiLanguage.activate[postingTool.settings.lang]( );
+	
+	postingTool.tables.hideAll();
 	
 	//query all tablecells (=tabs)
-	//and attach a click event
 	var $tabcell = $("td.tabs_tablecell");
+
+	//all tablecells: attach a click event
 	$tabcell.click( function() {
-		tables.onClick( $(this));
+		postingTool.tables.onClick( $(this));
 	});
 	
-	//make the tab-mousecursor to a "hand" when mouseover
+	//all tablecells: make the tab-mousecursor to a "hand" when mouseover
 	$tabcell.hover( function() { 
 		$(this).attr("style.cursor", "pointer");
 	});
 	
-	//add CSS to all buttons
+	//all BUTTONS: add CSS classes
 	$(":button").addClass("css_button");
 	
-	$("#text_roll_dice").val( diceStandard);
+	//set setting of dice
+	$("#text_roll_dice").val( postingTool.settings.dice);
 	
-	//multilanguage translation by classes
-	multiLanguage.translate();
+	//multilanguage translation by CSS-classes
+	postingTool.multiLanguage.translate( );
+
+	//install extension 
+	postingTool.extension.extend();
 	
-	//placeholder for extensions
-	extension.extend();
-};
+}; //postingTool.setup()
 	
 		
-//OBJECT LITERAL: tables		
-var tables = {
+//OBJECT postingTool.tables		
+postingTool.tables = {
 
 	onClick : function ( $tab) { 
 		var $content, sID;
-		
-//console.log("tables.onClick( $tab): $tab.text() = " +$tab.text()); 
 		
 		//remove selection from previously selected tab
 		$("td.tabs_tablecell.is_selected").removeClass("is_selected");
@@ -99,7 +107,7 @@ var tables = {
 		//show and focus new tab-content
 		sID = $tab.attr("id");
 		sID = "tabcontent" +sID.slice( sID.lastIndexOf( "_"));
-console.log( 'tables.onClick( $tab): show tab-content of id: ' +sID)		;
+console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID);
 		$content = $("div#" +sID);
 		$content.addClass("is_visible");
 		$content.show()
@@ -121,52 +129,52 @@ console.log( 'tables.onClick( $tab): show tab-content of id: ' +sID)		;
 	
 	clearActiveContent : function() {
 		var $content = $("div.tabdiv.is_visible, textarea.textarea_entry");
-		$content.val( "");
+		$content.val("");
 		//$content.focus();
 	},
 };
 
 
 
-var Code = {
+postingTool.code = {
 	
-	Char : function () {
+	"char" : function () {
 		var sInsert = $("textarea#text_charactername").val();
-		var sCode = code_char;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeChar;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
 	
 	
-	Speak : function () {
+	"speak" : function () {
 		var sInsert = $("textarea#text_speak").val();
-		var sCode = code_speak;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeSpeak;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
 	
 	
-	Think : function () {
+	"think" : function () {
 		var sInsert = $("textarea#text_think").val();
-		var sCode = code_think;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeThink;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
 
 	
-	OOC : function () {
+	"ooc" : function () {
 		var sInsert = $("textarea#text_ooc").val();
-		var sCode = code_ooc;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeOOC;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
 	
 	
-	Roll : function () {
+	"roll" : function () {
 		var sCode = "[roll]";
 		
 		//add description (if given by user)
@@ -181,13 +189,27 @@ var Code = {
 	return sCode;
 	},
 	
-	append : function( sText) {
+	"append" : function( sText) {
 		var $maincode = $("textarea#text_forumcode");
 		var sNewCode = $maincode.val() +sText;
 		$maincode.val( sNewCode);
 	},
 	
 };
+
+postingTool.extension = {
+	create : function ( in_fn) {
+		postingTool.extension.extend = in_fn;
+	},
+	
+	extend : function() {
+	},
+};
+
+///////////////////////////////////////////////
+// NAMESPACE postingTools.tools
+///////////////////////////////////////////////
+postingTool.tools = postingTool.tools || { };
 
 
 // Grab URL Parameter (gup)
@@ -197,29 +219,18 @@ var Code = {
 // http://www.foo.com/index.html?bob=123&frank=321&tom=213
 // javascript: var param = gup("frank");
 // param will contain "321"
-var gup = function ( name ){
+postingTool.tools.gup = function ( name ){
 
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp( regexS );
   var results = regex.exec( window.location.href );
   if( results == null ) {
-  
 	return "";
   }
-    
   else {
 	return results[1];
   }
+  
 };
 	
-var extension = {
-	create_extension : function ( in_fn) {
-		extension.extend = in_fn;
-	},
-	
-	extend : function() {
-	},
-};
-
--->

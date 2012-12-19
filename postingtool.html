@@ -97,13 +97,11 @@ LICENSE END
 	<script 	type="text/javascript">
 		$(document).ready( function() {
 
-			settings();
-			
 			//do the setup
-			setup();
+			postingTool.setup();
 
 			//select "Charactername" first
-			tables.onClick( $("td#tabs_tablecell_char"));
+			postingTool.tables.onClick( $("td#tabs_tablecell_char"));
 		});
 	</script>
 	
@@ -111,7 +109,7 @@ LICENSE END
 <body>
 
 	<div id="header" class="header">
-	| Copyright (c) 2011/2012 Florian Markus Schmid (aka LordSmith aka DM Spry), Switzerland <img src="res/contact.gif" alt="contact_email"/> | licensed under MIT License <a href=http://en.wikipedia.org/wiki/MIT_License>(wiki)</a> |
+	| Copyright (c) 2011/2012 Florian Markus Schmid (aka LordSmith aka DM Spry), Switzerland <img src="res/contact.gif" alt="contact_email"/> | licensed under <a href=http://www.opensource.org/licenses/mit-license.php>MIT License</a> |
 	</div>
 
 	<div id="title">
@@ -150,35 +148,35 @@ LICENSE END
 	-->
 	<div id="tabcontent_char" class="tabdiv standardtext">
 		<button class="mlINSERT" onclick="Code.Char(); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="tables.clearActiveContent(); return true;">mlRESET</button>
+		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_charactername" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>
 
 	<div id="tabcontent_talk" class="tabdiv standardtext">
 		<button class="mlINSERT" onclick="Code.Speak(); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="tables.clearActiveContent(); return true;">mlRESET</button>
+		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_speak" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>	
 	
 	<div id="tabcontent_think" class="tabdiv standardtext">
 		<button class="mlINSERT" onclick="Code.Think(); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="tables.clearActiveContent(); return true;">mlRESET</button>
+		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_think" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>
 	
 	<div id="tabcontent_ooc" class="tabdiv standardtext">
 		<button class="mlINSERT" onclick="Code.OOC(); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="tables.clearActiveContent(); return true;">mlRESET</button>
+		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_ooc" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>
 
 	<div id="tabcontent_roll" class="tabdiv standardtext">
 		<button class="mlINSERT" onclick="Code.Roll(); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(diceStandard); return true;">mlRESET</button>
+		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(diceStandard); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_roll_desc" class="textarea_entry" rows=1 cols=30></textarea>	
 		<br>

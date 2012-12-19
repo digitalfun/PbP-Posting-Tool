@@ -1,4 +1,3 @@
-<!-- hide from HTML
 /*
 ###########################
 LICENSE START
@@ -30,36 +29,39 @@ LICENSE END
 ###########################
 */
 
+/*md# Namespace postingTool #################*/
+var postingTool = postingTool || { };
+
+
 //extend 
-extension.create_extension( function() {
+postingTool.extension.create( function() {
 	console.log("ds extension: extension created");
 
 	//add a DS-icon before the charname
-	code_char	= ":ds: [color=blue][size=12pt][b]" +code_tag+ ":[/b][/size][/color]\n";
+	postingTool.settings.codeChar = ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
 	document.title += " - DS"; 
 	
 	/*
 	get cookie information (from diChB export)
 	*/
-	var dichbImport = getCookie("dichb_export");
-	g_dichbChar = 0; //GLOBAL
+	var dichbImport = postingTool.extension.ds.tools.getCookie("dichb_export");
 	
-	if( dichbImport != "") {
+	if( dichbImport !== "") {
 		try {
-			g_dichbChar = jQuery.parseJSON( dichbImport);
+			postingTool.extension.ds.dichbChar = jQuery.parseJSON( dichbImport);
 		}
 		catch( err) {
-			g_dichbChar = 0;
+			postingTool.extension.ds.dichbChar = 0;
 		}	
 		
-		if( g_dichbChar === null) {
-			g_dichbChar = 0;
+		if( postingTool.extension.ds.dichbChar === null) {
+			postingTool.extension.ds.dichbChar = 0;
 		}
 	}
 	
-	if ( g_dichbChar != 0) {
-		console.log( "ds extension: diChB export data found: " +g_dichbChar.name);
+	if ( postingTool.extension.ds.dichbChar !== 0) {
+		console.log( "ds extension: diChB export data found: " +postingTool.extension.ds.dichbChar.name);
 	}
 	else {
 		console.log( "NO diChB export data found!");
@@ -68,17 +70,24 @@ extension.create_extension( function() {
 
 	//add title: DS symbol and extension title
 	var appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
-		//if chardata imported from dichb -> add info
-		((g_dichbChar != 0) ? appendTitle += "  <b>diChB import: " +  g_dichbChar.name +"</b><br>" : "" ); 
+	//if chardata imported from dichb -> add info
+	if( postingTool.extension.ds.dichbChar !== 0) {
+		appendTitle += "  <b>diChB import: " +  postingTool.extension.ds.dichbChar.name +"</b><br>"; 
+	}
+	else {
+		appendTitle += "  DungeonSlayer <br>";
+	}
+	
 	$("#title").append( appendTitle);
 	
 
 	//add a new div in the TAB Roll
-	$rolldiv = $("#tabcontent_roll");	
+	var $rolldiv = $("#tabcontent_roll");	
 	$rolldiv.append('<br /><br /><strong>Probe</strong><br />');
 	
 	//create selection-list
-	$append = $("<select id=selectProbe onchange='selectProbe_onChange();'>");
+	var createOption = postingTool.extension.ds.tools.createOption;
+	var $append = $("<select id=selectProbe onchange='postingTool.extension.ds.selectProbe_onChange();'>");
 	$append.append( createOption("", ""));
 	$append.append( createOption("Schlagen:", "Kampfwert: Schlagen"));
 	$append.append( createOption("Schiessen:", "Kampfwert: Schiessen"));
@@ -121,9 +130,9 @@ extension.create_extension( function() {
 	$rolldiv.append( $('<br /><strong>Probenwert</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));
 });
 
-//overwrite Code.Char
-Code.Char = function () {
-console.log("ds extension: Code.Char()");	
+//overwrite code.Char
+postingTool.code["char"] = function () {
+console.log("ds extension: code.char()");	
 
 	var sChar = $("textarea#text_charactername").val();
 	if ( sChar === "") {
@@ -131,14 +140,14 @@ console.log("ds extension: Code.Char()");
 			sChar = g_dichbChar.name;
 		}
 	}
-	var sCode = code_char;
-	sCode = sCode.replace( code_tag, sChar);
+	var sCode = postingTool.settings.codeChar;
+	sCode = sCode.replace( postingTool.settings.userTextTag, sChar);
 	this.append( sCode);
 return sCode;
 }
 
-//overwrite Code.Roll
-Code.Roll = function() {
+//overwrite code.Roll
+postingTool.code["roll"] = function() {
 console.log("ds extension: Code.Roll()");
 
 	var sCode = "[roll]";
@@ -214,14 +223,12 @@ console.log("ds extension: Code.Roll()");
 return sCode;
 }
 
+/*md# NAMESPACE postingTool.extension.ds #####################*/
+postingTool.extension.ds = { };
 
-var createOption = function( inValue, inText) {
-	var $option = $("<option value='" +inValue +"'>" +inText +"</option>");
-	return $option;
-}
+postingTool.extension.ds.dichbChar = 0;
 
-
-var selectProbe_onChange = function() {
+postingTool.extension.ds.selectProbe_onChange = function() {
 console.log("selectProbe_onChange()")
 
 	var theProps = $("#selectProbe").val();
@@ -234,7 +241,7 @@ console.log("selectProbe_onChange()")
 	var sText = "";
 	var sValue = "";
 	
-	if( g_dichbChar != 0) {
+	if( postingTool.extension.ds.dichbChar !== 0) {
 	
 		//check if Kampfwert 
 		switch( theProps[ 0]) {
@@ -262,7 +269,7 @@ console.log("selectProbe_onChange()")
 	theProps = theProps[ 1];
 	theProps = theProps.split(",");
 	
-	if( g_dichbChar != 0) {
+	if( postingTool.extension.ds.dichbChar !== 0) {
 		for( x in theProps) {
 			switch( theProps[ x]) {
 				case "KÖR":
@@ -313,15 +320,38 @@ return (true);
 }
 
 
+/*md# NAMESPACE postingTool.extension.ds.tools #####################*/
+postingTool.extension.ds.tools = { };
 
-//FUNCTION: getCookie
-//
-//from 
-// http://www.w3schools.com/js/js_cookies.asp
-//
-function getCookie( c_name) {
-	if ( document.cookie.length >0)
-	{
+/*md## createOption(inValue, inText) : jQuery-obj
+Create an option for a HTML selection-list (SELECT-tag) with the value of **inValue** and displaying the text **inText**.
+
+__inValue__ : string
+The Value of the option.
+
+__inText__ : string
+The text that is displayed in the list.
+
+__Returns__ jQuery-object
+Representing a HTML **OPTION**-tag.
+*/
+postingTool.extension.ds.tools.createOption = function( inValue, inText) {
+	var $option = $("<option value='" +inValue +"'>" +inText +"</option>");
+	return $option;
+}
+
+
+/*md## getCookie( inName ) : jQuery-obj
+from http://www.w3schools.com/js/js_cookies.asp
+
+Get a cookie-value and returns its value.
+Returns an empty string if no cookie with that name was found.
+
+**example**
+"postingtool_ds.html?lang=en"
+*/
+postingTool.extension.ds.tools.getCookie = function( c_name) {
+	if ( document.cookie.length >0) {
 		c_start=document.cookie.indexOf(c_name + "=");
 		if (c_start!=-1) {
 			c_start = c_start +c_name.length +1;
@@ -336,5 +366,3 @@ function getCookie( c_name) {
   
 return "";
 }
-
--->
