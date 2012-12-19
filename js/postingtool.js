@@ -1,5 +1,3 @@
-<!-- hide from HTML
-
 /*
 ------------------------------
 File: postingtool.js
@@ -190,6 +188,21 @@ var Code = {
 	
 };
 
+var extension = {
+	create_extension : function ( in_fn) {
+		extension.extend = in_fn;
+	},
+	
+	extend : function() {
+	},
+};
+
+
+///////////////////////////////////////////////
+// NAMESPACE postingTools.tools
+///////////////////////////////////////////////
+postingTool.tools = postingTool.tools || { };
+
 
 // Grab URL Parameter (gup)
 // SOURCE: http://www.netlobo.com/url_query_string_javascript.html
@@ -198,8 +211,8 @@ var Code = {
 // http://www.foo.com/index.html?bob=123&frank=321&tom=213
 // javascript: var param = gup("frank");
 // param will contain "321"
-postingTool.tools = postingTool.tools || { };
 postingTool.tools.gup = function ( name ){
+
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp( regexS );
@@ -210,15 +223,6 @@ postingTool.tools.gup = function ( name ){
   else {
 	return results[1];
   }
+  
 };
 	
-var extension = {
-	create_extension : function ( in_fn) {
-		extension.extend = in_fn;
-	},
-	
-	extend : function() {
-	},
-};
-
--->
