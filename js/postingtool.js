@@ -81,7 +81,7 @@ postingTool.setup = function () {
 	postingTool.multiLanguage.translate( );
 
 	//install extension 
-	extension.extend();
+	postingTool.extension.extend();
 	
 }; //postingTool.setup()
 	
@@ -197,15 +197,14 @@ postingTool.code = {
 	
 };
 
-var extension = {
-	create_extension : function ( in_fn) {
-		extension.extend = in_fn;
+postingTool.extension = {
+	create : function ( in_fn) {
+		postingTool.extension.extend = in_fn;
 	},
 	
 	extend : function() {
 	},
 };
-
 
 ///////////////////////////////////////////////
 // NAMESPACE postingTools.tools

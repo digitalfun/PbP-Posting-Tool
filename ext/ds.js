@@ -29,12 +29,12 @@ LICENSE END
 ###########################
 */
 
-/*md# Namespace extension #################*/
-var extension = extension || { };
+/*md# Namespace postingTool #################*/
+var postingTool = postingTool || { };
 
 
 //extend 
-extension.create_extension( function() {
+postingTool.extension.create( function() {
 	console.log("ds extension: extension created");
 
 	//add a DS-icon before the charname
@@ -45,7 +45,7 @@ extension.create_extension( function() {
 	/*
 	get cookie information (from diChB export)
 	*/
-	var dichbImport = extension.ds.tools.getCookie("dichb_export");
+	var dichbImport = postingTool.extension.ds.tools.getCookie("dichb_export");
 	g_dichbChar = 0; //GLOBAL
 	
 	if( dichbImport != "") {
@@ -82,41 +82,41 @@ extension.create_extension( function() {
 	
 	//create selection-list
 	$append = $("<select id=selectProbe onchange='selectProbe_onChange();'>");
-	$append.append( extension.ds.tools.createOption("", ""));
-	$append.append( extension.ds.tools.createOption("Schlagen:", "Kampfwert: Schlagen"));
-	$append.append( extension.ds.tools.createOption("Schiessen:", "Kampfwert: Schiessen"));
-	$append.append( extension.ds.tools.createOption("Abwehr:", "Kampfwert: Abwehren"));
-	$append.append( extension.ds.tools.createOption("Zaubern:", "Kampfwert: Zaubern"));
-	$append.append( extension.ds.tools.createOption("Zielzaubern:", "Kampfwert: Zielzauber"));
-	$append.append( extension.ds.tools.createOption("Aufwachen:KÖR,HÄ", "Aufwachen (wenn Bewusstloser geweckt wird)"));
-	$append.append( extension.ds.tools.createOption("Bemerken:GEI,VE", "Bemerken (min.8, Diebeskunst,Wahrnehmung)"));
-	$append.append( extension.ds.tools.createOption("Erwachen:GEI,VE", "Erwachen (Schnelle Reflexe,Wahrnehmung)"));
-	$append.append( extension.ds.tools.createOption("Falle entschärfen:GEI,GE", "Fallen entschärfen (Diebeskunst)"));
-	$append.append( extension.ds.tools.createOption("Feilschen:GEI,VE,AU", "Feilschen(Charmant,Schlitzohr)"));
-	$append.append( extension.ds.tools.createOption("Feuer machen:GEI,GE", "Feuer machen (Jäger)"));
-	$append.append( extension.ds.tools.createOption("Flirten:GEI,AU", "Flirten (Charmant)"));
-	$append.append( extension.ds.tools.createOption("Gift trotzen:KÖR,HÄ", "Gift trotzen (Einstecker)"));
-	$append.append( extension.ds.tools.createOption("Inschrift entziffern:GEI,VE", "Inschrift entziffern (Wahrnehmung,Bildung)"));
-	$append.append( extension.ds.tools.createOption("Klettern:AGI,ST", "Klettern (Akrobat,Kletterass)"));
-	$append.append( extension.ds.tools.createOption("Kraftakt:KÖR,ST", "Kraftakt (Brutaler Hieb,Vernichtender Schlag)"));
-	$append.append( extension.ds.tools.createOption("Krankheit trotzen:KÖR,HÄ", "Krankheit trotzen (Einstecker)"));
-	$append.append( extension.ds.tools.createOption("Magie spüren:GEI,AU", "Magie spüren (nur Zauberwirker)"));
-	$append.append( extension.ds.tools.createOption("Magie begreifen:GEI,VE", "Magie begreifen (nur Zauberwirker)"));
-	$append.append( extension.ds.tools.createOption("Mechanismus öffnen:GEI,GE,VE", "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)"));
-	$append.append( extension.ds.tools.createOption("Orientieren:GEI,VE,AU", "Orientieren (Jäger)"));
-	$append.append( extension.ds.tools.createOption("Reiten:AGI,BE,AU", "Reiten (Reiten, Sattelschütze,Tiermeister)"));
-	$append.append( extension.ds.tools.createOption("Schätzen:GEI,VE", "Schätzen (Beute schätzen)"));
-	$append.append( extension.ds.tools.createOption("Schleichen:AGI,BE", "Schleichen (Heimlichkeit)"));
-	$append.append( extension.ds.tools.createOption("Schloss öffnen:GEI,GE", "Schlösser öffnen (Diebeskunst,Schlossknacker)"));
-	$append.append( extension.ds.tools.createOption("Schwimmen:AGI,BE", "Schwimmen (Schwimmen)"));
-	$append.append( extension.ds.tools.createOption("Springen:AGI,BE", "Springen (Akrobat)"));
-	$append.append( extension.ds.tools.createOption("Spuren lesen:GEI,VE", "Spuren lesen (Jäger,Wahrnehmung)"));
-	$append.append( extension.ds.tools.createOption("Suchen:GEI,VE", "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)"));
-	$append.append( extension.ds.tools.createOption("Taschendiebstahl:AGI,GE", "Taschendiebstahl (Diebeskunst,Heimlichkeit)"));
-	$append.append( extension.ds.tools.createOption("Verbergen:AGI,BE", "Verbergen (Heimlichkeit)"));
-	$append.append( extension.ds.tools.createOption("Verständigen:GEI,GE", "Verständigen (Bildung)"));
-	$append.append( extension.ds.tools.createOption("Wissen:GEI,VE", "Wissen (Bildung,Wissensgebiet)"));
-	$append.append( extension.ds.tools.createOption("Zauber wechseln:GEI,VE", "Zauber wechseln"));
+	$append.append( postingTool.extension.ds.tools.createOption("", ""));
+	$append.append( postingTool.extension.ds.tools.createOption("Schlagen:", "Kampfwert: Schlagen"));
+	$append.append( postingTool.extension.ds.tools.createOption("Schiessen:", "Kampfwert: Schiessen"));
+	$append.append( postingTool.extension.ds.tools.createOption("Abwehr:", "Kampfwert: Abwehren"));
+	$append.append( postingTool.extension.ds.tools.createOption("Zaubern:", "Kampfwert: Zaubern"));
+	$append.append( postingTool.extension.ds.tools.createOption("Zielzaubern:", "Kampfwert: Zielzauber"));
+	$append.append( postingTool.extension.ds.tools.createOption("Aufwachen:KÖR,HÄ", "Aufwachen (wenn Bewusstloser geweckt wird)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Bemerken:GEI,VE", "Bemerken (min.8, Diebeskunst,Wahrnehmung)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Erwachen:GEI,VE", "Erwachen (Schnelle Reflexe,Wahrnehmung)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Falle entschärfen:GEI,GE", "Fallen entschärfen (Diebeskunst)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Feilschen:GEI,VE,AU", "Feilschen(Charmant,Schlitzohr)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Feuer machen:GEI,GE", "Feuer machen (Jäger)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Flirten:GEI,AU", "Flirten (Charmant)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Gift trotzen:KÖR,HÄ", "Gift trotzen (Einstecker)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Inschrift entziffern:GEI,VE", "Inschrift entziffern (Wahrnehmung,Bildung)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Klettern:AGI,ST", "Klettern (Akrobat,Kletterass)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Kraftakt:KÖR,ST", "Kraftakt (Brutaler Hieb,Vernichtender Schlag)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Krankheit trotzen:KÖR,HÄ", "Krankheit trotzen (Einstecker)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Magie spüren:GEI,AU", "Magie spüren (nur Zauberwirker)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Magie begreifen:GEI,VE", "Magie begreifen (nur Zauberwirker)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Mechanismus öffnen:GEI,GE,VE", "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Orientieren:GEI,VE,AU", "Orientieren (Jäger)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Reiten:AGI,BE,AU", "Reiten (Reiten, Sattelschütze,Tiermeister)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Schätzen:GEI,VE", "Schätzen (Beute schätzen)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Schleichen:AGI,BE", "Schleichen (Heimlichkeit)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Schloss öffnen:GEI,GE", "Schlösser öffnen (Diebeskunst,Schlossknacker)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Schwimmen:AGI,BE", "Schwimmen (Schwimmen)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Springen:AGI,BE", "Springen (Akrobat)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Spuren lesen:GEI,VE", "Spuren lesen (Jäger,Wahrnehmung)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Suchen:GEI,VE", "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Taschendiebstahl:AGI,GE", "Taschendiebstahl (Diebeskunst,Heimlichkeit)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Verbergen:AGI,BE", "Verbergen (Heimlichkeit)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Verständigen:GEI,GE", "Verständigen (Bildung)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Wissen:GEI,VE", "Wissen (Bildung,Wissensgebiet)"));
+	$append.append( postingTool.extension.ds.tools.createOption("Zauber wechseln:GEI,VE", "Zauber wechseln"));
 	$append.append("</select>");
 	//append content to the "Roll dice"-div
 	$rolldiv.append( $append);
@@ -217,10 +217,9 @@ console.log("ds extension: Code.Roll()");
 return sCode;
 }
 
+/*md# NAMESPACE postingTool.extension.ds #####################*/
+postingTool.extension.ds = { };
 
-extension.ds = { };
-
-/*md# NAMESPACE extension.ds #####################*/
 var selectProbe_onChange = function() {
 console.log("selectProbe_onChange()")
 
@@ -313,8 +312,8 @@ return (true);
 }
 
 
-/*md# NAMESPACE extension.ds.tools #####################*/
-extension.ds.tools = { };
+/*md# NAMESPACE postingTool.extension.ds.tools #####################*/
+postingTool.extension.ds.tools = { };
 
 /*md## createOption(inValue, inText) : jQuery-obj
 Create an option for a HTML selection-list (SELECT-tag) with the value of **inValue** and displaying the text **inText**.
@@ -328,7 +327,7 @@ The text that is displayed in the list.
 __Returns__ jQuery-object
 Representing a HTML **OPTION**-tag.
 */
-extension.ds.tools.createOption = function( inValue, inText) {
+postingTool.extension.ds.tools.createOption = function( inValue, inText) {
 	var $option = $("<option value='" +inValue +"'>" +inText +"</option>");
 	return $option;
 }
@@ -343,7 +342,7 @@ Returns an empty string if no cookie with that name was found.
 **example**
 "postingtool_ds.html?lang=en"
 */
-extension.ds.tools.getCookie = function( c_name) {
+postingTool.extension.ds.tools.getCookie = function( c_name) {
 	if ( document.cookie.length >0) {
 		c_start=document.cookie.indexOf(c_name + "=");
 		if (c_start!=-1) {
