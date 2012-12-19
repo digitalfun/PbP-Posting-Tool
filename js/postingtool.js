@@ -50,7 +50,10 @@ var postingTool = postingTool || { };
 
 postingTool.setup = function () {
 
+	//get URL parameters
 	postingTool.settings.getURLParams( );		
+	
+	//activate language according to URL parameter (or if not given, standard value)
 	postingTool.multiLanguage.activate[postingTool.settings.lang]( );
 	
 	postingTool.tables.hideAll();
@@ -75,9 +78,9 @@ postingTool.setup = function () {
 	//multilanguage translation by CSS-classes
 	postingTool.multiLanguage.translate( );
 
-	//placeholder for extensions
+	//install extension 
 	extension.extend();
-};
+}; //postingTool.setup()
 	
 		
 //OBJECT postingTool.tables		
@@ -101,7 +104,7 @@ postingTool.tables = {
 		//show and focus new tab-content
 		sID = $tab.attr("id");
 		sID = "tabcontent" +sID.slice( sID.lastIndexOf( "_"));
-console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)		;
+console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID);
 		$content = $("div#" +sID);
 		$content.addClass("is_visible");
 		$content.show()
@@ -123,7 +126,7 @@ console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)
 	
 	clearActiveContent : function() {
 		var $content = $("div.tabdiv.is_visible, textarea.textarea_entry");
-		$content.val( "");
+		$content.val("");
 		//$content.focus();
 	},
 };

@@ -52,23 +52,18 @@ var postingTool = postingTool || { };
 /* 
 @object: postingTool.multiLanguage
 @Usage:
-	//store language setting in variable
-	var lang = "de"; //or "en" etc
-	
-	//(OPTIONAL)
-	//set default language: ENGLISH (en)
-	if( lang === "") { lang = "en"; };
 
+	//activate language
+	postingTool.multiLanguage.activate[lang]();
+	
 	//translate page with choosen lang
-	postingTool.multiLanguage[lang]();
-	//...
+	postingTool.multiLanguage.translate();
 	
-	
-
 */
 postingTool.multiLanguage = (function ( ) {
 	var that = { };
 	
+	//language-strings
 	that.strings = { 
 		title: 'strings.title',
 		reset: 'strings.reset',
@@ -86,26 +81,12 @@ postingTool.multiLanguage = (function ( ) {
 		character_title: 'strings.character_title'
 	};
 	
-	that.translate = function() {
-		$(".mlTITLE").text(that.strings.title);
-		$(".mlINSERT").text(that.strings.insert);
-		$(".mlRESET").text(that.strings.reset);
-		$(".mlSELECT").text(that.strings.select);
-		$(".mlCHAR").text(that.strings.character);
-		$(".mlOOC").text(that.strings.ooc);
-		
-		$(".mlCHAR_title").attr("title", that.strings.character_title);
-		$(".mlTALK_title").attr("title", that.strings.talk_title);
-		$(".mlTHINK_title").attr("title", that.strings.think_title);
-		$(".mlOOC_title").attr("title", that.strings.ooc_title);
-		$(".mlROLL_title").attr("title", that.strings.roll_title);
-	}
-
+	
 	that.activate = (function ( ) {
 		var that = { };
 		
 		// MULTILANGUAGE: Deutsch	
-		that.de = function() {
+		that.de = function () {
 			postingTool.multiLanguage.strings.title='Posting Tool fürs Forenspiel (Play by Post)';
 			postingTool.multiLanguage.strings.reset='Zurücksetzen';
 			postingTool.multiLanguage.strings.select='Auswählen';
@@ -123,7 +104,7 @@ postingTool.multiLanguage = (function ( ) {
 		};
 
 		// MULTILANGUAGE: English	
-		that.en = function() {
+		that.en = function () {
 			postingTool.multiLanguage.strings.title='Posting Tool for Forum-PbP (Play by Post)';
 			postingTool.multiLanguage.strings.reset='Reset';
 			postingTool.multiLanguage.strings.select='Select';
@@ -138,10 +119,26 @@ postingTool.multiLanguage = (function ( ) {
 			postingTool.multiLanguage.strings.insert='Insert';
 			postingTool.multiLanguage.strings.character='Character';
 			postingTool.multiLanguage.strings.character_title='Name of character';
-		}		
+		};	
 		
 		return that;
 	}());
+
+	
+	that.translate = function () {
+		$(".mlTITLE").text(that.strings.title);
+		$(".mlINSERT").text(that.strings.insert);
+		$(".mlRESET").text(that.strings.reset);
+		$(".mlSELECT").text(that.strings.select);
+		$(".mlCHAR").text(that.strings.character);
+		$(".mlOOC").text(that.strings.ooc);
+		
+		$(".mlCHAR_title").attr("title", that.strings.character_title);
+		$(".mlTALK_title").attr("title", that.strings.talk_title);
+		$(".mlTHINK_title").attr("title", that.strings.think_title);
+		$(".mlOOC_title").attr("title", that.strings.ooc_title);
+		$(".mlROLL_title").attr("title", that.strings.roll_title);
+	};
 	
 	return that;
 }());
