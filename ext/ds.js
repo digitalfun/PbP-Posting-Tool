@@ -82,11 +82,11 @@ postingTool.extension.create( function() {
 	
 
 	//add a new div in the TAB Roll
-	$rolldiv = $("#tabcontent_roll");	
+	var $rolldiv = $("#tabcontent_roll");	
 	$rolldiv.append('<br /><br /><strong>Probe</strong><br />');
 	
 	//create selection-list
-	$append = $("<select id=selectProbe onchange='selectProbe_onChange();'>");
+	var $append = $("<select id=selectProbe onchange='selectProbe_onChange();'>");
 	$append.append( postingTool.extension.ds.tools.createOption("", ""));
 	$append.append( postingTool.extension.ds.tools.createOption("Schlagen:", "Kampfwert: Schlagen"));
 	$append.append( postingTool.extension.ds.tools.createOption("Schiessen:", "Kampfwert: Schiessen"));
