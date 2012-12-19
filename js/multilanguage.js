@@ -68,20 +68,37 @@ var postingTool = postingTool || { };
 */
 postingTool.multiLanguage = (function ( ) {
 	var that = { };
-
+	
+	that.strings = { 
+		title: 'strings.title',
+		reset: 'strings.reset',
+		select: 'strings.select',
+		talk: 'strings.talk',
+		talk_title: 'strings.talk_title',
+		think: 'strings.think',
+		think_title: 'strings.think_title',
+		ooc: 'strings.ooc',
+		ooc_title: 'strings.ooc_title',
+		roll: 'strings.roll',
+		roll_title: 'strings.roll_title',
+		insert: 'strings.insert',
+		character: 'strings.character',
+		character_title: 'strings.character_title'
+	};
+	
 	that.translate = function() {
-		$(".mlTITLE").text(mlTITLE);
-		$(".mlINSERT").text(mlINSERT);
-		$(".mlRESET").text(mlRESET);
-		$(".mlSELECT").text(mlSELECT);
-		$(".mlCHAR").text(mlCHAR);
-		$(".mlOOC").text(mlOOC);
+		$(".mlTITLE").text(that.strings.title);
+		$(".mlINSERT").text(that.strings.insert);
+		$(".mlRESET").text(that.strings.reset);
+		$(".mlSELECT").text(that.strings.select);
+		$(".mlCHAR").text(that.strings.character);
+		$(".mlOOC").text(that.strings.ooc);
 		
-		$(".mlCHAR_title").attr("title", mlCHAR_title);
-		$(".mlTALK_title").attr("title", mlTALK_title);
-		$(".mlTHINK_title").attr("title", mlTHINK_title);
-		$(".mlOOC_title").attr("title", mlOOC_title);
-		$(".mlROLL_title").attr("title", mlROLL_title);
+		$(".mlCHAR_title").attr("title", that.strings.character_title);
+		$(".mlTALK_title").attr("title", that.strings.talk_title);
+		$(".mlTHINK_title").attr("title", that.strings.think_title);
+		$(".mlOOC_title").attr("title", that.strings.ooc_title);
+		$(".mlROLL_title").attr("title", that.strings.roll_title);
 	}
 
 	that.activate = (function ( ) {
@@ -89,38 +106,38 @@ postingTool.multiLanguage = (function ( ) {
 		
 		// MULTILANGUAGE: Deutsch	
 		that.de = function() {
-			mlTITLE='Posting Tool fürs Forenspiel (Play by Post)';
-			mlRESET='Zurücksetzen';
-			mlSELECT='Auswählen';
-			mlTALK='Sprechen';
-			mlTALK_title='Sprechen';
-			mlTHINK='Denken';
-			mlTHINK_title='Denken';
-			mlOOC='OOC';
-			mlOOC_title='Out Of Character';
-			mlROLL='Würfeln';
-			mlROLL_title='Würfeln';
-			mlINSERT='Einfügen';
-			mlCHAR='Charakter';
-			mlCHAR_title='Name des Charakters';
+			postingTool.multiLanguage.strings.title='Posting Tool fürs Forenspiel (Play by Post)';
+			postingTool.multiLanguage.strings.reset='Zurücksetzen';
+			postingTool.multiLanguage.strings.select='Auswählen';
+			postingTool.multiLanguage.strings.talk='Sprechen';
+			postingTool.multiLanguage.strings.talk_title='Sprechen';
+			postingTool.multiLanguage.strings.think='Denken';
+			postingTool.multiLanguage.strings.think_title='Denken';
+			postingTool.multiLanguage.strings.ooc='OOC';
+			postingTool.multiLanguage.strings.ooc_title='Out Of Character';
+			postingTool.multiLanguage.strings.roll='Würfeln';
+			postingTool.multiLanguage.strings.roll_title='Würfeln';
+			postingTool.multiLanguage.strings.insert='Einfügen';
+			postingTool.multiLanguage.strings.character='Charakter';
+			postingTool.multiLanguage.strings.character_title='Name des Charakters';
 		};
 
 		// MULTILANGUAGE: English	
 		that.en = function() {
-			mlTITLE='Posting Tool for Forum-PbP (Play by Post)';
-			mlRESET='Reset';
-			mlSELECT='Select';
-			mlTALK='Talk';
-			mlTALK_title='Talk';
-			mlTHINK='Think';
-			mlTHINK_title='Think';
-			mlOOC='OOC';
-			mlOOC_title='Out Of Character';
-			mlROLL='Roll';
-			mlROLL_title='Roll';
-			mlINSERT='Insert';
-			mlCHAR='Character';
-			mlCHAR_title='Name of character';
+			postingTool.multiLanguage.strings.title='Posting Tool for Forum-PbP (Play by Post)';
+			postingTool.multiLanguage.strings.reset='Reset';
+			postingTool.multiLanguage.strings.select='Select';
+			postingTool.multiLanguage.strings.talk='Talk';
+			postingTool.multiLanguage.strings.talk_title='Talk';
+			postingTool.multiLanguage.strings.think='Think';
+			postingTool.multiLanguage.strings.think_title='Think';
+			postingTool.multiLanguage.strings.ooc='OOC';
+			postingTool.multiLanguage.strings.ooc_title='Out Of Character';
+			postingTool.multiLanguage.strings.roll='Roll';
+			postingTool.multiLanguage.strings.roll_title='Roll';
+			postingTool.multiLanguage.strings.insert='Insert';
+			postingTool.multiLanguage.strings.character='Character';
+			postingTool.multiLanguage.strings.character_title='Name of character';
 		}		
 		
 		return that;
