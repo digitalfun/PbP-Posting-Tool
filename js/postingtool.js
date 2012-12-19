@@ -59,20 +59,22 @@ postingTool.setup = function () {
 	postingTool.tables.hideAll();
 	
 	//query all tablecells (=tabs)
-	//and attach a click event
 	var $tabcell = $("td.tabs_tablecell");
+
+	//all tablecells: attach a click event
 	$tabcell.click( function() {
 		postingTool.tables.onClick( $(this));
 	});
 	
-	//make the tab-mousecursor to a "hand" when mouseover
+	//all tablecells: make the tab-mousecursor to a "hand" when mouseover
 	$tabcell.hover( function() { 
 		$(this).attr("style.cursor", "pointer");
 	});
 	
-	//add CSS to all buttons
+	//all BUTTONS: add CSS classes
 	$(":button").addClass("css_button");
 	
+	//set setting of dice
 	$("#text_roll_dice").val( postingTool.settings.dice);
 	
 	//multilanguage translation by CSS-classes
@@ -80,6 +82,7 @@ postingTool.setup = function () {
 
 	//install extension 
 	extension.extend();
+	
 }; //postingTool.setup()
 	
 		
