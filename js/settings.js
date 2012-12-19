@@ -1,5 +1,3 @@
-<!-- hide from HTML
-
 /*
 ------------------------------
 File: settings.js
@@ -49,18 +47,43 @@ LICENSE END
 //namespace postingTool
 var postingTool = postingTool || { };
 
-
-var settings = function() {
-
-	/*
-	get URL Parameters (gup)
-		...\postingtool.html?lang=de&dice=1d6
+//object postingTools.settings
+postingTool.settings = (function ( ) {
+	var that = { };
 	
-	Parameters:
-		lang : language = de|en
-		dice : the standard dice for rolls = 1d6 | 1d20 | XdY
-	*/
-	postingTool.tools.getURLParams( );
+	//lang : string
+	//The language setting.
+	//
+	//list of available languages
+	//- de : German
+	//- en : English
+	that.lang = "en";
+	
+	//dice : string
+	//the standard dice for rolls
+	//
+	//values (XdY): 1d6 | 1d20 | ...
+	that.dice = "1d20";
+	
+	//Method getURLParams( )
+	//
+	//get params from URL Paramters
+	//
+	//example for a URL with params:
+	//- language: german (lang=de)
+	//- dice: 1d6
+	//resulting url: "...\postingtool.html?lang=de&dice=1d6"
+	that.getURLParams = function ( ) {
+	
+		//get language from URL-parameter (/default "en" (english))
+		that.lang = postingTool.tools.gup("lang");
+		if( that.lang === "") { that.lang = "en"; };
+		
+		//get dice-setting from URL-parameter
+		that.diceStandard = postingTool.tools.gup("dice"); 
+		if( that.diceStandard === "") { that.diceStandard = "1d20"; };
+		
+	}
 
 	/*
 		settings for BBCode generation
@@ -72,33 +95,6 @@ var settings = function() {
 	code_think	= "[i]>>" +code_tag+ "<<[/i]\n";
 	code_ooc	= "[color=red][size=8pt][i]" +code_tag+ "[/i][/size][/color]\n";
 	
-}
-
-
-//namespace postingTool.tools
-postingTool.tools = postingTool.tools || { };
-
-/*
-get URL Parameters (gup)
-	...\postingtool.html?lang=de&dice=1d6
-
-Parameters:
-	lang : language = de|en
-	dice : the standard dice for rolls = 1d6 | 1d20 | XdY
-*/
-postingTool.tools.getURLParams = function () {
-
-	//get language from link-param (/default "en" (english))
-	// example: for German: "../postingtool.html?lang=de"
-		// list of available language:
-		// de : German
-		// en : English
-	var lang = gup("lang");
-	if( lang === "") { lang = "en"; };
-	postingTool.multiLanguage.activate[lang]( );
-
-	//dice
-	diceStandard = gup("dice"); //GLOBAL
-	if( diceStandard === "") { diceStandard = "1d20"; };
-}
--->
+	return that;
+	
+}());

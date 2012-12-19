@@ -49,7 +49,10 @@ LICENSE END
 var postingTool = postingTool || { };
 
 postingTool.setup = function () {
-		
+
+	postingTool.settings.getURLParams( );		
+	postingTool.multiLanguage.activate[postingTool.settings.lang]( );
+	
 	postingTool.tables.hideAll();
 	
 	//query all tablecells (=tabs)
@@ -67,7 +70,7 @@ postingTool.setup = function () {
 	//add CSS to all buttons
 	$(":button").addClass("css_button");
 	
-	$("#text_roll_dice").val( diceStandard);
+	$("#text_roll_dice").val( postingTool.settings.dice);
 	
 	//multilanguage translation by CSS-classes
 	postingTool.multiLanguage.translate( );
