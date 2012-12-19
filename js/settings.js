@@ -88,12 +88,14 @@ postingTool.settings = (function ( ) {
 	/*
 		settings for BBCode generation
 	*/
-	code_tag	= "CODECOMESHERE";
 	
-	code_char	= "[color=blue][size=12pt][b]" +code_tag+ ":[/b][/size][/color]\n";
-	code_speak	= "[color=blue]>>" +code_tag+ "<<[/color]\n";
-	code_think	= "[i]>>" +code_tag+ "<<[/i]\n";
-	code_ooc	= "[color=red][size=8pt][i]" +code_tag+ "[/i][/size][/color]\n";
+	//userTextTag : this tag will be replaced by the text of the user
+	that.userTextTag	= "CODECOMESHERE";
+	
+	that.codeChar	= "[color=blue][size=12pt][b]" +that.userTextTag+ ":[/b][/size][/color]\n";
+	that.codeSpeak	= "[color=blue]>>" +that.userTextTag+ "<<[/color]\n";
+	that.codeThink	= "[i]>>" +that.userTextTag+ "<<[/i]\n";
+	that.codeOOC	= "[color=red][size=8pt][i]" +that.userTextTag+ "[/i][/size][/color]\n";
 	
 	return that;
 	

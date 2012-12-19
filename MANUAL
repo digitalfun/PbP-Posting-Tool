@@ -7,11 +7,11 @@ When all posts have the same style (color for "talking"/"ooc" etc) it will resul
 
 INSTRUCTIONS:
 To customize the BBCode, edit the file "res/settings.js":
-*code_char  : code for Charactername
-*code_speak	: code for Speaking
-*code_think	: code for Thinking
-*code_ooc	: code for OOC
-The term in the variable "code_tag" is the one which will be replaced by the entry of the user.
+Edit the following attributes of the object "postingTool.settings":
+*postingTool.settings.codeChar  : BBcode for Charactername
+*postingTool.settings.codeSpeak	: BBcode for Speaking
+*postingTool.settings.codeThink	: BBcode for Thinking
+*postingTool.settings.codeOOC	: BBcode for OOC
 
 FILES:
 *html*

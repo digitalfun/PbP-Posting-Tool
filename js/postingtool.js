@@ -134,8 +134,8 @@ var Code = {
 	
 	Char : function () {
 		var sInsert = $("textarea#text_charactername").val();
-		var sCode = code_char;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeChar;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
@@ -143,8 +143,8 @@ var Code = {
 	
 	Speak : function () {
 		var sInsert = $("textarea#text_speak").val();
-		var sCode = code_speak;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeSpeak;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
@@ -152,8 +152,8 @@ var Code = {
 	
 	Think : function () {
 		var sInsert = $("textarea#text_think").val();
-		var sCode = code_think;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeThink;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},
@@ -161,8 +161,8 @@ var Code = {
 	
 	OOC : function () {
 		var sInsert = $("textarea#text_ooc").val();
-		var sCode = code_ooc;
-		sCode = sCode.replace( code_tag, sInsert);
+		var sCode = postingTool.settings.codeOOC;
+		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 		this.append( sCode);
 	return sCode;
 	},

@@ -38,7 +38,7 @@ extension.create_extension( function() {
 	console.log("ds extension: extension created");
 
 	//add a DS-icon before the charname
-	code_char	= ":ds: [color=blue][size=12pt][b]" +code_tag+ ":[/b][/size][/color]\n";
+	postingTool.settings.codeChar	= ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
 	document.title += " - DS"; 
 	
@@ -134,8 +134,8 @@ console.log("ds extension: Code.Char()");
 			sChar = g_dichbChar.name;
 		}
 	}
-	var sCode = code_char;
-	sCode = sCode.replace( code_tag, sChar);
+	var sCode = postingTool.settings.codeChar;
+	sCode = sCode.replace( postingTool.settings.userTextTag, sChar);
 	this.append( sCode);
 return sCode;
 }
