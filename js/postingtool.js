@@ -198,17 +198,15 @@ var Code = {
 // http://www.foo.com/index.html?bob=123&frank=321&tom=213
 // javascript: var param = gup("frank");
 // param will contain "321"
-var gup = function ( name ){
-
+postingTool.tools = postingTool.tools || { };
+postingTool.tools.gup = function ( name ){
   name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
   var regexS = "[\\?&]"+name+"=([^&#]*)";
   var regex = new RegExp( regexS );
   var results = regex.exec( window.location.href );
   if( results == null ) {
-  
 	return "";
   }
-    
   else {
 	return results[1];
   }
