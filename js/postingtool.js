@@ -136,9 +136,9 @@ console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)
 
 
 
-var Code = {
+postingTool.code = {
 	
-	Char : function () {
+	"char" : function () {
 		var sInsert = $("textarea#text_charactername").val();
 		var sCode = postingTool.settings.codeChar;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
@@ -147,7 +147,7 @@ var Code = {
 	},
 	
 	
-	Speak : function () {
+	"speak" : function () {
 		var sInsert = $("textarea#text_speak").val();
 		var sCode = postingTool.settings.codeSpeak;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
@@ -156,7 +156,7 @@ var Code = {
 	},
 	
 	
-	Think : function () {
+	"think" : function () {
 		var sInsert = $("textarea#text_think").val();
 		var sCode = postingTool.settings.codeThink;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
@@ -165,7 +165,7 @@ var Code = {
 	},
 
 	
-	OOC : function () {
+	"ooc" : function () {
 		var sInsert = $("textarea#text_ooc").val();
 		var sCode = postingTool.settings.codeOOC;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
@@ -174,7 +174,7 @@ var Code = {
 	},
 	
 	
-	Roll : function () {
+	"roll" : function () {
 		var sCode = "[roll]";
 		
 		//add description (if given by user)
@@ -189,7 +189,7 @@ var Code = {
 	return sCode;
 	},
 	
-	append : function( sText) {
+	"append" : function( sText) {
 		var $maincode = $("textarea#text_forumcode");
 		var sNewCode = $maincode.val() +sText;
 		$maincode.val( sNewCode);

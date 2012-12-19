@@ -125,8 +125,8 @@ extension.create_extension( function() {
 });
 
 //overwrite Code.Char
-Code.Char = function () {
-console.log("ds extension: Code.Char()");	
+postingTool.code["char"] = function () {
+console.log("ds extension: code.char()");	
 
 	var sChar = $("textarea#text_charactername").val();
 	if ( sChar === "") {
@@ -141,7 +141,7 @@ return sCode;
 }
 
 //overwrite Code.Roll
-Code.Roll = function() {
+postingTool.code["roll"] = function() {
 console.log("ds extension: Code.Roll()");
 
 	var sCode = "[roll]";
