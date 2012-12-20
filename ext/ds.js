@@ -234,14 +234,22 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//create new namespace for extentsion-multilanguage
 	postingTool.multiLanguage.strings.ds = { };
 	
+	//
 	//add multilanguage-strings
-	postingTool.multiLanguage.strings.ds.kampfwert = "strings.ds.kampfwert";
-	postingTool.multiLanguage.strings.ds.schlagen = "strings.ds.schlagen";
-	postingTool.multiLanguage.strings.ds.schiessen = "strings.ds.schiessen";
-	postingTool.multiLanguage.strings.ds.abwehren = "strings.ds.abwehren";
-	postingTool.multiLanguage.strings.ds.zaubern = "strings.ds.zaubern";
-	postingTool.multiLanguage.strings.ds.zielzauber = "strings.ds.zielzauber";
+	//
 	
+		//Kampfwerte
+	postingTool.multiLanguage.strings.ds.cv = "strings.ds.cv"; //combat value
+	postingTool.multiLanguage.strings.ds.melee = "strings.ds.melee";
+	postingTool.multiLanguage.strings.ds.ranged = "strings.ds.ranged";
+	postingTool.multiLanguage.strings.ds.defense = "strings.ds.defense";
+	postingTool.multiLanguage.strings.ds.spellcast = "strings.ds.spellcast";
+	postingTool.multiLanguage.strings.ds.targetspell = "strings.ds.targetspell";
+	
+		//Proben
+	postingTool.multiLanguage.strings.ds.checks = "strings.ds.checks";
+	postingTool.multiLanguage.strings.ds.wakeup_check = "strings.ds.wakeup_check";
+	postingTool.multiLanguage.strings.ds.wakeup_desc = "strings.ds.wakeup_desc";
 	
 	
 	
