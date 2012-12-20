@@ -238,7 +238,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//add multilanguage-strings
 	//
 	
-		//Kampfwerte
+		//Combat Values
 	postingTool.multiLanguage.strings.ds.cv = "strings.ds.cv"; //combat value
 	postingTool.multiLanguage.strings.ds.melee = "strings.ds.melee";
 	postingTool.multiLanguage.strings.ds.ranged = "strings.ds.ranged";
@@ -246,12 +246,71 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	postingTool.multiLanguage.strings.ds.spellcast = "strings.ds.spellcast";
 	postingTool.multiLanguage.strings.ds.targetspell = "strings.ds.targetspell";
 	
-		//Proben
+		//Checks
 	postingTool.multiLanguage.strings.ds.checks = "strings.ds.checks";
-	postingTool.multiLanguage.strings.ds.wakeup_check = "strings.ds.wakeup_check";
+	postingTool.multiLanguage.strings.ds.regainConsciousness_check = "strings.ds.regainConsciousness_check"; //aufwachen (aus Ohmacht)
+	postingTool.multiLanguage.strings.ds.regainConsciousness_desc = "strings.ds.regainConsciousness_desc"; 
+	postingTool.multiLanguage.strings.ds.perception_check = "strings.ds.perception_check"; //Bemerken
+	postingTool.multiLanguage.strings.ds.perception_desc = "strings.ds.perception_desc"; 
+	postingTool.multiLanguage.strings.ds.wakeup_check = "strings.ds.wakeup_check"; //Erwachen
 	postingTool.multiLanguage.strings.ds.wakeup_desc = "strings.ds.wakeup_desc";
+	postingTool.multiLanguage.strings.ds.disableTraps_check = "strings.ds.disableTraps_check"; //Falle entschärfen
+	postingTool.multiLanguage.strings.ds.disableTraps_desc = "strings.ds.disableTraps_desc";
+	postingTool.multiLanguage.strings.ds.haggle_check = "strings.ds.haggle_check"; //Feilschen
+	postingTool.multiLanguage.strings.ds.haggle_desc = "strings.ds.haggle_desc"; 
+	postingTool.multiLanguage.strings.ds.startFire_check = "strings.ds.startFire_check"; //Feuer machen
+	postingTool.multiLanguage.strings.ds.startFire_desc = "strings.ds.startFire_desc";
+	postingTool.multiLanguage.strings.ds.flirt_check = "strings.ds.flirt_check"; //Flirten
+	postingTool.multiLanguage.strings.ds.flirt_desc = "strings.ds.flirt_desc";
+	postingTool.multiLanguage.strings.ds.defyPoison_check = "strings.ds.defyPoison_check"; //Gift trotzen
+	postingTool.multiLanguage.strings.ds.defyPoison_desc = "strings.ds.defyPoison_desc";
+	postingTool.multiLanguage.strings.ds.decipherScript_check = "strings.ds."; //Inschrift entziffern
+	postingTool.multiLanguage.strings.ds.decipherScript_desc = "strings.ds.";
+	postingTool.multiLanguage.strings.ds.climb_check = "strings.ds.climb_check"; //Klettern
+	postingTool.multiLanguage.strings.ds.climb_desc = "strings.ds.climb_desc";
+	postingTool.multiLanguage.strings.ds.strength_check = "strings.ds.strength_check"; //Feat of Strength / Kraftakt
+	postingTool.multiLanguage.strings.ds.strength_desc = "strings.ds.strength_desc";
+	postingTool.multiLanguage.strings.ds.resistDisease_check = "strings.ds.resistDisease_check"; //Krankheit trotzen
+	postingTool.multiLanguage.strings.ds.resistDisease_desc = "strings.ds.resistDisease_desc";
+	postingTool.multiLanguage.strings.ds.senseMagic_check = "strings.ds.senseMagic_check"; //Magie spüren
+	postingTool.multiLanguage.strings.ds.senseMagic_desc = "strings.ds.senseMagic_desc";
+	postingTool.multiLanguage.strings.ds.identifyMagic_check = "strings.ds.identifyMagic_check"; //Magie begreifen
+	postingTool.multiLanguage.strings.ds.identifyMagic_desc = "strings.ds.identifyMagic_desc";
+	postingTool.multiLanguage.strings.ds.mechanism_check = "strings.ds.mechanism_check"; //WORK MECHANISM / Mechanismus öffnen
+	postingTool.multiLanguage.strings.ds.mechanism_desc = "strings.ds.mechanism_desc";
+	postingTool.multiLanguage.strings.ds.navigate_check = "strings.ds.navigate_check"; //Orientieren
+	postingTool.multiLanguage.strings.ds.navigate_desc = "strings.ds.navigate_desc";
+	postingTool.multiLanguage.strings.ds.ride_check = "strings.ds.ride_check";//Reiten
+	postingTool.multiLanguage.strings.ds.ride_desc = "strings.ds.ride_desc";
+	postingTool.multiLanguage.strings.ds.appraise_check = "strings.ds.appraise_check"; //APPRAISE TREASURE / Schätzen
+	postingTool.multiLanguage.strings.ds.appraise_desc = "strings.ds.appraise_desc";
+	postingTool.multiLanguage.strings.ds.sneak_check = "strings.ds.sneak_check"; //Schleichen
+	postingTool.multiLanguage.strings.ds.sneak_desc = "strings.ds.sneak_desc";
+	postingTool.multiLanguage.strings.ds.openLock_check = "strings.ds.openLock_check"; //Schloss öffnen
+	postingTool.multiLanguage.strings.ds.openLock_desc = "strings.ds.openLock_desc";
+	postingTool.multiLanguage.strings.ds.swim_check = "strings.ds.swim_check"; //Schwimmen
+	postingTool.multiLanguage.strings.ds.swim_desc = "strings.ds.swim_desc";
+	postingTool.multiLanguage.strings.ds.jump_check = "strings.ds.jump_check"; //Springen
+	postingTool.multiLanguage.strings.ds.jump_desc = "strings.ds.jump_desc";
+	postingTool.multiLanguage.strings.ds.readTracks_check = "strings.ds.readTracks_check"; //Spuren lesen
+	postingTool.multiLanguage.strings.ds.readTracks_desc = "strings.ds.readTracks_desc";
+	postingTool.multiLanguage.strings.ds.search_check = "strings.ds.search_check"; //Suchen
+	postingTool.multiLanguage.strings.ds.search_desc = "strings.ds.search_desc";
+	postingTool.multiLanguage.strings.ds.pickPocket_check = "strings.ds.pickPocket_check"; //Taschendiebstahl
+	postingTool.multiLanguage.strings.ds.pickPocket_desc = "strings.ds.pickPocket_desc";
+	postingTool.multiLanguage.strings.ds.hide_check = "strings.ds."; //Verbergen
+	postingTool.multiLanguage.strings.ds.hide_desc = "strings.ds.";
+	postingTool.multiLanguage.strings.ds.communicate_check = "strings.ds.communicate_check"; //Verständigen
+	postingTool.multiLanguage.strings.ds.communicate_desc = "strings.ds.communicate_desc";
+	postingTool.multiLanguage.strings.ds.knowledge_check = "strings.ds.knowledge_check"; //Wissen
+	postingTool.multiLanguage.strings.ds.knowledge_desc = "strings.ds.knowledge_desc";
+	postingTool.multiLanguage.strings.ds.changeSpell_check = "strings.ds.changeSpell_check"; //Zauber wechseln
+	postingTool.multiLanguage.strings.ds.changeSpell_desc = "strings.ds.changeSpell_desc";
 	
-	
+	//
+	//Deutsch
+	//
+		//Orientieren:GEI,VE,AU", "Orientieren (Jäger)"));
 	
 };
 
