@@ -147,35 +147,35 @@ LICENSE END
 		<div id="tabcontent_EXAMPLE" class="tabdiv">
 	-->
 	<div id="tabcontent_char" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="Code.Char(); return true;">mlINSERT</button>
+		<button class="mlINSERT" onclick="postingTool.code['char'](); return true;">mlINSERT</button>
 		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_charactername" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>
 
 	<div id="tabcontent_talk" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="Code.Speak(); return true;">mlINSERT</button>
+		<button class="mlINSERT" onclick="postingTool.code['speak']();; return true;">mlINSERT</button>
 		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_speak" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>	
 	
 	<div id="tabcontent_think" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="Code.Think(); return true;">mlINSERT</button>
+		<button class="mlINSERT" onclick="postingTool.code['think'](); return true;">mlINSERT</button>
 		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_think" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>
 	
 	<div id="tabcontent_ooc" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="Code.OOC(); return true;">mlINSERT</button>
+		<button class="mlINSERT" onclick="postingTool.code['ooc'](); return true;">mlINSERT</button>
 		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_ooc" class="textarea_entry" rows=1 cols=80></textarea>	
 	</div>
 
 	<div id="tabcontent_roll" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="Code.Roll(); return true;">mlINSERT</button>
+		<button class="mlINSERT" onclick="postingTool.code['roll'](); return true;">mlINSERT</button>
 		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(diceStandard); return true;">mlRESET</button>
 		<br>
 		<textarea id="text_roll_desc" class="textarea_entry" rows=1 cols=30></textarea>	

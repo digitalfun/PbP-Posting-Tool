@@ -38,11 +38,12 @@ postingTool.extension.create( function() {
 	console.log("ds extension: extension created");
 
 	postingTool.extension.ds.setupMultiLanguage( );
+	var lang = postingTool.multiLanguage.strings.ds;
 	
 	//add a DS-icon before the charname
 	postingTool.settings.codeChar = ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
-	document.title += " - DS"; 
+	document.title += " - DS v" +postingTool.extension.ds.version; 
 	
 	/*
 	get cookie information (from diChB export)
@@ -85,47 +86,51 @@ postingTool.extension.create( function() {
 
 	//add a new div in the TAB Roll
 	var $rolldiv = $("#tabcontent_roll");	
-	$rolldiv.append('<br /><br /><strong>Probe</strong><br />');
+	$("#text_roll_desc").before('<br /><strong>' +lang.action +'</strong><br />');	
+	
+	$rolldiv.append('<br /><br /><strong>' +lang.check +'</strong><br />');
 	
 	//create selection-list
 	var createOption = postingTool.extension.ds.tools.createOption;
 	var $append = $("<select id=selectProbe onchange='postingTool.extension.ds.selectProbe_onChange();'>");
 	$append.append( createOption("", ""));
-	$append.append( createOption("Schlagen:", "Kampfwert: Schlagen"));
-	$append.append( createOption("Schiessen:", "Kampfwert: Schiessen"));
-	$append.append( createOption("Abwehr:", "Kampfwert: Abwehren"));
-	$append.append( createOption("Zaubern:", "Kampfwert: Zaubern"));
-	$append.append( createOption("Zielzaubern:", "Kampfwert: Zielzauber"));
-	$append.append( createOption("Aufwachen:KÖR,HÄ", "Aufwachen (wenn Bewusstloser geweckt wird)"));
-	$append.append( createOption("Bemerken:GEI,VE", "Bemerken (min.8, Diebeskunst,Wahrnehmung)"));
-	$append.append( createOption("Erwachen:GEI,VE", "Erwachen (Schnelle Reflexe,Wahrnehmung)"));
-	$append.append( createOption("Falle entschärfen:GEI,GE", "Fallen entschärfen (Diebeskunst)"));
-	$append.append( createOption("Feilschen:GEI,VE,AU", "Feilschen(Charmant,Schlitzohr)"));
-	$append.append( createOption("Feuer machen:GEI,GE", "Feuer machen (Jäger)"));
-	$append.append( createOption("Flirten:GEI,AU", "Flirten (Charmant)"));
-	$append.append( createOption("Gift trotzen:KÖR,HÄ", "Gift trotzen (Einstecker)"));
-	$append.append( createOption("Inschrift entziffern:GEI,VE", "Inschrift entziffern (Wahrnehmung,Bildung)"));
-	$append.append( createOption("Klettern:AGI,ST", "Klettern (Akrobat,Kletterass)"));
-	$append.append( createOption("Kraftakt:KÖR,ST", "Kraftakt (Brutaler Hieb,Vernichtender Schlag)"));
-	$append.append( createOption("Krankheit trotzen:KÖR,HÄ", "Krankheit trotzen (Einstecker)"));
-	$append.append( createOption("Magie spüren:GEI,AU", "Magie spüren (nur Zauberwirker)"));
-	$append.append( createOption("Magie begreifen:GEI,VE", "Magie begreifen (nur Zauberwirker)"));
-	$append.append( createOption("Mechanismus öffnen:GEI,GE,VE", "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)"));
-	$append.append( createOption("Orientieren:GEI,VE,AU", "Orientieren (Jäger)"));
-	$append.append( createOption("Reiten:AGI,BE,AU", "Reiten (Reiten, Sattelschütze,Tiermeister)"));
-	$append.append( createOption("Schätzen:GEI,VE", "Schätzen (Beute schätzen)"));
-	$append.append( createOption("Schleichen:AGI,BE", "Schleichen (Heimlichkeit)"));
-	$append.append( createOption("Schloss öffnen:GEI,GE", "Schlösser öffnen (Diebeskunst,Schlossknacker)"));
-	$append.append( createOption("Schwimmen:AGI,BE", "Schwimmen (Schwimmen)"));
-	$append.append( createOption("Springen:AGI,BE", "Springen (Akrobat)"));
-	$append.append( createOption("Spuren lesen:GEI,VE", "Spuren lesen (Jäger,Wahrnehmung)"));
-	$append.append( createOption("Suchen:GEI,VE", "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)"));
-	$append.append( createOption("Taschendiebstahl:AGI,GE", "Taschendiebstahl (Diebeskunst,Heimlichkeit)"));
-	$append.append( createOption("Verbergen:AGI,BE", "Verbergen (Heimlichkeit)"));
-	$append.append( createOption("Verständigen:GEI,GE", "Verständigen (Bildung)"));
-	$append.append( createOption("Wissen:GEI,VE", "Wissen (Bildung,Wissensgebiet)"));
-	$append.append( createOption("Zauber wechseln:GEI,VE", "Zauber wechseln"));
+	$append.append( createOption(lang.melee +":", lang.cv + ": " + lang.melee));
+	$append.append( createOption(lang.ranged +":", lang.cv + ": " + lang.ranged));
+	$append.append( createOption(lang.defense +":", lang.cv + ": " + lang.defense));
+	$append.append( createOption(lang.spellcast +":", lang.cv + ": " + lang.spellcast));
+	$append.append( createOption(lang.targetspell +":", lang.cv + ": " + lang.targetspell));
+	
+	$append.append( createOption(lang.regainConsciousness_check, lang.regainConsciousness_desc));
+	$append.append( createOption(lang.perception_check, lang.perception_desc));
+	$append.append( createOption(lang.wakeup_check, lang.wakeup_desc));
+	$append.append( createOption(lang.disableTraps_check, lang.disableTraps_desc));
+	$append.append( createOption(lang.haggle_check, lang.haggle_desc));
+	$append.append( createOption(lang.startFire_check, lang.startFire_desc));
+	$append.append( createOption(lang.flirt_check, lang.flirt_desc));
+	$append.append( createOption(lang.defyPoison_check, lang.defyPoison_desc));
+	$append.append( createOption(lang.decipherScript_check, lang.decipherScript_desc));
+	$append.append( createOption(lang.climb_check, lang.climb_desc));
+	$append.append( createOption(lang.strength_check, lang.strength_desc));
+	$append.append( createOption(lang.resistDisease_check, lang.resistDisease_desc));
+	$append.append( createOption(lang.senseMagic_check, lang.senseMagic_desc));
+	$append.append( createOption(lang.identifyMagic_check, lang.identifyMagic_desc));	
+	$append.append( createOption(lang.mechanism_check, lang.mechanism_desc));
+	$append.append( createOption(lang.navigate_check, lang.navigate_desc));
+	$append.append( createOption(lang.ride_check, lang.ride_desc));
+	$append.append( createOption(lang.appraise_check, lang.appraise_desc));
+	$append.append( createOption(lang.sneak_check, lang.sneak_desc));
+	$append.append( createOption(lang.openLock_check, lang.openLock_desc));
+	$append.append( createOption(lang.swim_check, lang.swim_desc));
+	$append.append( createOption(lang.jump_check, lang.jump_desc));
+	$append.append( createOption(lang.readTracks_check, lang.readTracks_desc));
+	$append.append( createOption(lang.search_check, lang.search_desc));
+	$append.append( createOption(lang.pickPocket_check, lang.pickPocket_desc));
+	$append.append( createOption(lang.hide_check, lang.hide_desc));
+	$append.append( createOption(lang.communicate_check, lang.communicate_desc));
+	$append.append( createOption(lang.knowledge_check, lang.knowledge_desc));
+	$append.append( createOption(lang.changeSpell_check, lang.changeSpell_desc));
 	$append.append("</select>");
+	
 	//append content to the "Roll dice"-div
 	$rolldiv.append( $append);
 
@@ -150,7 +155,7 @@ return sCode;
 
 //overwrite code.roll
 postingTool.code["roll"] = function() {
-console.log("ds extension: Code.Roll()");
+console.log("ds extension: code.roll()");
 
 	var sCode = "[roll]";
 	sCode += "{";
@@ -221,12 +226,14 @@ console.log("ds extension: Code.Roll()");
 	sCode += "x" + $("textarea#text_roll_times").val();
 	sCode +="[/roll]\n";
 	
-	Code.append( sCode);
+	postingTool.code['append']( sCode);
 return sCode;
 }
 
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
+
+postingTool.extension.ds.version = "1.1";
 
 postingTool.extension.ds.dichbChar = 0;
 
@@ -237,6 +244,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//
 	//add multilanguage-strings
 	//
+	postingTool.multiLanguage.strings.ds.action = "strings.ds.action";
 	
 		//Combat Values
 	postingTool.multiLanguage.strings.ds.cv = "strings.ds.cv"; //combat value
@@ -307,75 +315,14 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	postingTool.multiLanguage.strings.ds.changeSpell_check = "strings.ds.changeSpell_check"; //Zauber wechseln
 	postingTool.multiLanguage.strings.ds.changeSpell_desc = "strings.ds.changeSpell_desc";
 	
-	//
-	//Deutsch
-	//
-	postingTool.multiLanguage.strings.ds.cv = "Kampfwert";
-	postingTool.multiLanguage.strings.ds.melee = "Schlagen";
-	postingTool.multiLanguage.strings.ds.ranged = "Schiessen";
-	postingTool.multiLanguage.strings.ds.defense = "Abwehren";
-	postingTool.multiLanguage.strings.ds.spellcast = "Zaubern";
-	postingTool.multiLanguage.strings.ds.targetspell = "Zielzaubern";
-
-	postingTool.multiLanguage.strings.ds.check = "Probe";
-	postingTool.multiLanguage.strings.ds.regainConsciousness_check = "Aufwachen:KÖR,HÄ";
-	postingTool.multiLanguage.strings.ds.regainConsciousness_desc = "Aufwachen (wenn Bewusstloser geweckt wird)";
-	postingTool.multiLanguage.strings.ds.perception_check = "Bemerken:GEI,VE";
-	postingTool.multiLanguage.strings.ds.perception_desc = "Bemerken (min.8, Diebeskunst,Wahrnehmung)";
-	postingTool.multiLanguage.strings.ds.wakeup_check = "Erwachen:GEI,VE";
-	postingTool.multiLanguage.strings.ds.wakeup_desc = "Erwachen (Schnelle Reflexe,Wahrnehmung)";
-	postingTool.multiLanguage.strings.ds.disableTraps_check = "Falle entschärfen:GEI,GE";
-	postingTool.multiLanguage.strings.ds.disableTraps_desc = "Fallen entschärfen (Diebeskunst)";
-	postingTool.multiLanguage.strings.ds.haggle_check = "Feilschen:GEI,VE,AU";
-	postingTool.multiLanguage.strings.ds.haggle_desc = "Feilschen(Charmant,Schlitzohr)";
-	postingTool.multiLanguage.strings.ds.startFire_check = "Feuer machen:GEI,GE";
-	postingTool.multiLanguage.strings.ds.startFire_desc = "Feuer machen (Jäger)";
-	postingTool.multiLanguage.strings.ds.flirt_check = "Flirten:GEI,AU";
-	postingTool.multiLanguage.strings.ds.flirt_desc = "Flirten (Charmant)";
-	postingTool.multiLanguage.strings.ds.defyPoison_check = "Gift trotzen:KÖR,HÄ";
-	postingTool.multiLanguage.strings.ds.defyPoison_desc = "Gift trotzen (Einstecker)";
-	postingTool.multiLanguage.strings.ds.decipherScript_check = "Inschrift entziffern:GEI,VE";
-	postingTool.multiLanguage.strings.ds.decipherScript_desc = "Inschrift entziffern (Wahrnehmung,Bildung)";
-	postingTool.multiLanguage.strings.ds.climb_check = "Klettern:AGI,ST";
-	postingTool.multiLanguage.strings.ds.climb_desc = "Klettern (Akrobat,Kletterass)";
-	postingTool.multiLanguage.strings.ds.strength_check = "Kraftakt:KÖR,ST";
-	postingTool.multiLanguage.strings.ds.strength_desc = "Kraftakt (Brutaler Hieb,Vernichtender Schlag)";
-	postingTool.multiLanguage.strings.ds.resistDisease_check = "Krankheit trotzen:KÖR,HÄ";
-	postingTool.multiLanguage.strings.ds.resistDisease_desc = "Krankheit trotzen (Einstecker)";
-	postingTool.multiLanguage.strings.ds.senseMagic_check = "Magie spüren:GEI,AU";
-	postingTool.multiLanguage.strings.ds.senseMagic_desc = "Magie spüren (nur Zauberwirker)";
-	postingTool.multiLanguage.strings.ds.identifyMagic_check = "Magie begreifen:GEI,VE";
-	postingTool.multiLanguage.strings.ds.identifyMagic_desc = "Magie begreifen (nur Zauberwirker)";
-	postingTool.multiLanguage.strings.ds.mechanism_check = "Mechanismus öffnen:GEI,GE,VE";
-	postingTool.multiLanguage.strings.ds.mechanism_desc = "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)";
-	postingTool.multiLanguage.strings.ds.navigate_check = "Orientieren:GEI,VE,AU";
-	postingTool.multiLanguage.strings.ds.navigate_desc = "Orientieren (Jäger)";
-	postingTool.multiLanguage.strings.ds.ride_check = "Reiten:AGI,BE,AU";
-	postingTool.multiLanguage.strings.ds.ride_desc = "Reiten (Reiten, Sattelschütze,Tiermeister)";
-	postingTool.multiLanguage.strings.ds.appraise_check = "Schätzen:GEI,VE";
-	postingTool.multiLanguage.strings.ds.appraise_desc = "Schätzen (Beute schätzen)";
-	postingTool.multiLanguage.strings.ds.sneak_check = "Schleichen:AGI,BE";
-	postingTool.multiLanguage.strings.ds.sneak_desc = "Schleichen (Heimlichkeit)";
-	postingTool.multiLanguage.strings.ds.openLock_check = "Schloss öffnen:GEI,GE";
-	postingTool.multiLanguage.strings.ds.openLock_desc = "Schlösser öffnen (Diebeskunst,Schlossknacker)";
-	postingTool.multiLanguage.strings.ds.swim_check = "Schwimmen:AGI,BE";
-	postingTool.multiLanguage.strings.ds.swim_desc = "Schwimmen (Schwimmen)";
-	postingTool.multiLanguage.strings.ds.jump_check = "Springen:AGI,BE";
-	postingTool.multiLanguage.strings.ds.jump_desc = "Springen (Akrobat)";
-	postingTool.multiLanguage.strings.ds.readTracks_check = "Spuren lesen:GEI,VE";
-	postingTool.multiLanguage.strings.ds.readTracks_desc = "Spuren lesen (Jäger,Wahrnehmung)";
-	postingTool.multiLanguage.strings.ds.search_check = "Suchen:GEI,VE";
-	postingTool.multiLanguage.strings.ds.search_desc = "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)";
-	postingTool.multiLanguage.strings.ds.pickPocket_check = "Taschendiebstahl:AGI,GE";
-	postingTool.multiLanguage.strings.ds.pickPocket_desc = "Taschendiebstahl (Diebeskunst,Heimlichkeit)";
-	postingTool.multiLanguage.strings.ds.hide_check = "Verbergen:AGI,BE";
-	postingTool.multiLanguage.strings.ds.hide_desc = "Verbergen (Heimlichkeit)";
-	postingTool.multiLanguage.strings.ds.communicate_check = "Verständigen:GEI,GE";
-	postingTool.multiLanguage.strings.ds.communicate_desc = "Verständigen (Bildung)";
-	postingTool.multiLanguage.strings.ds.knowledge_check = "Wissen:GEI,VE";
-	postingTool.multiLanguage.strings.ds.knowledge_desc = "Wissen (Bildung,Wissensgebiet)";
-	postingTool.multiLanguage.strings.ds.changeSpell_check = "Zauber wechseln:GEI,VE";
-	postingTool.multiLanguage.strings.ds.changeSpell_desc = "Zauber wechseln (nur Zauberwirker)";
+	//activate translation-language according to settings
+	if( postingTool.extension.ds.multiLanguage[postingTool.settings.lang] !== undefined) {
+		postingTool.extension.ds.multiLanguage[postingTool.settings.lang]();
+	}
+	else {
+		alert("Failure! Language -" +postingTool.settings.lang +"- is not supported by this extension!");
+	}
+	
 };
 
 postingTool.extension.ds.selectProbe_onChange = function() {
@@ -469,6 +416,90 @@ console.log("selectProbe_onChange()")
 return (true);
 }
 
+/*md# NAMESPACE postingTool.extension.ds.multiLanguage #####################*/
+postingTool.extension.ds.multiLanguage = { };
+
+/*md## de( ) : void
+Set strings for German translation.
+*/
+postingTool.extension.ds.multiLanguage.de = function ( ) {
+
+	postingTool.multiLanguage.strings.ds.action = "Aktion";
+	
+	postingTool.multiLanguage.strings.ds.cv = "Kampfwert";
+	postingTool.multiLanguage.strings.ds.melee = "Schlagen";
+	postingTool.multiLanguage.strings.ds.ranged = "Schiessen";
+	postingTool.multiLanguage.strings.ds.defense = "Abwehren";
+	postingTool.multiLanguage.strings.ds.spellcast = "Zaubern";
+	postingTool.multiLanguage.strings.ds.targetspell = "Zielzaubern";
+
+	postingTool.multiLanguage.strings.ds.check = "Probe";
+	postingTool.multiLanguage.strings.ds.regainConsciousness_check = "Aufwachen:KÖR,HÄ";
+	postingTool.multiLanguage.strings.ds.regainConsciousness_desc = "Aufwachen (wenn Bewusstloser geweckt wird)";
+	postingTool.multiLanguage.strings.ds.perception_check = "Bemerken:GEI,VE";
+	postingTool.multiLanguage.strings.ds.perception_desc = "Bemerken (min.8, Diebeskunst,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.wakeup_check = "Erwachen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.wakeup_desc = "Erwachen (Schnelle Reflexe,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.disableTraps_check = "Falle entschärfen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.disableTraps_desc = "Fallen entschärfen (Diebeskunst)";
+	postingTool.multiLanguage.strings.ds.haggle_check = "Feilschen:GEI,VE,AU";
+	postingTool.multiLanguage.strings.ds.haggle_desc = "Feilschen(Charmant,Schlitzohr)";
+	postingTool.multiLanguage.strings.ds.startFire_check = "Feuer machen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.startFire_desc = "Feuer machen (Jäger)";
+	postingTool.multiLanguage.strings.ds.flirt_check = "Flirten:GEI,AU";
+	postingTool.multiLanguage.strings.ds.flirt_desc = "Flirten (Charmant)";
+	postingTool.multiLanguage.strings.ds.defyPoison_check = "Gift trotzen:KÖR,HÄ";
+	postingTool.multiLanguage.strings.ds.defyPoison_desc = "Gift trotzen (Einstecker)";
+	postingTool.multiLanguage.strings.ds.decipherScript_check = "Inschrift entziffern:GEI,VE";
+	postingTool.multiLanguage.strings.ds.decipherScript_desc = "Inschrift entziffern (Wahrnehmung,Bildung)";
+	postingTool.multiLanguage.strings.ds.climb_check = "Klettern:AGI,ST";
+	postingTool.multiLanguage.strings.ds.climb_desc = "Klettern (Akrobat,Kletterass)";
+	postingTool.multiLanguage.strings.ds.strength_check = "Kraftakt:KÖR,ST";
+	postingTool.multiLanguage.strings.ds.strength_desc = "Kraftakt (Brutaler Hieb,Vernichtender Schlag)";
+	postingTool.multiLanguage.strings.ds.resistDisease_check = "Krankheit trotzen:KÖR,HÄ";
+	postingTool.multiLanguage.strings.ds.resistDisease_desc = "Krankheit trotzen (Einstecker)";
+	postingTool.multiLanguage.strings.ds.senseMagic_check = "Magie spüren:GEI,AU";
+	postingTool.multiLanguage.strings.ds.senseMagic_desc = "Magie spüren (nur Zauberwirker)";
+	postingTool.multiLanguage.strings.ds.identifyMagic_check = "Magie begreifen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.identifyMagic_desc = "Magie begreifen (nur Zauberwirker)";
+	postingTool.multiLanguage.strings.ds.mechanism_check = "Mechanismus öffnen:GEI,GE,VE";
+	postingTool.multiLanguage.strings.ds.mechanism_desc = "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)";
+	postingTool.multiLanguage.strings.ds.navigate_check = "Orientieren:GEI,VE,AU";
+	postingTool.multiLanguage.strings.ds.navigate_desc = "Orientieren (Jäger)";
+	postingTool.multiLanguage.strings.ds.ride_check = "Reiten:AGI,BE,AU";
+	postingTool.multiLanguage.strings.ds.ride_desc = "Reiten (Reiten, Sattelschütze,Tiermeister)";
+	postingTool.multiLanguage.strings.ds.appraise_check = "Schätzen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.appraise_desc = "Schätzen (Beute schätzen)";
+	postingTool.multiLanguage.strings.ds.sneak_check = "Schleichen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.sneak_desc = "Schleichen (Heimlichkeit)";
+	postingTool.multiLanguage.strings.ds.openLock_check = "Schloss öffnen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.openLock_desc = "Schlösser öffnen (Diebeskunst,Schlossknacker)";
+	postingTool.multiLanguage.strings.ds.swim_check = "Schwimmen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.swim_desc = "Schwimmen (Schwimmen)";
+	postingTool.multiLanguage.strings.ds.jump_check = "Springen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.jump_desc = "Springen (Akrobat)";
+	postingTool.multiLanguage.strings.ds.readTracks_check = "Spuren lesen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.readTracks_desc = "Spuren lesen (Jäger,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.search_check = "Suchen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.search_desc = "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.pickPocket_check = "Taschendiebstahl:AGI,GE";
+	postingTool.multiLanguage.strings.ds.pickPocket_desc = "Taschendiebstahl (Diebeskunst,Heimlichkeit)";
+	postingTool.multiLanguage.strings.ds.hide_check = "Verbergen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.hide_desc = "Verbergen (Heimlichkeit)";
+	postingTool.multiLanguage.strings.ds.communicate_check = "Verständigen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.communicate_desc = "Verständigen (Bildung)";
+	postingTool.multiLanguage.strings.ds.knowledge_check = "Wissen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.knowledge_desc = "Wissen (Bildung,Wissensgebiet)";
+	postingTool.multiLanguage.strings.ds.changeSpell_check = "Zauber wechseln:GEI,VE";
+	postingTool.multiLanguage.strings.ds.changeSpell_desc = "Zauber wechseln (nur Zauberwirker)";
+};
+
+/*md## en( ) : void
+Set strings for English translation.
+*/
+postingTool.extension.ds.multiLanguage.en = function ( ) {
+
+};
 
 /*md# NAMESPACE postingTool.extension.ds.tools #####################*/
 postingTool.extension.ds.tools = { };
