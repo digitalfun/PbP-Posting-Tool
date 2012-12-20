@@ -320,7 +320,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 		postingTool.extension.ds.multiLanguage[postingTool.settings.lang]();
 	}
 	else {
-		alert("Failure! Language -" +postingTool.settings.lang +"- is not supported by this extension!");
+		alert("Failure! Language -" +postingTool.settings.lang +"- is not supported by DS extension!");
 	}
 	
 };
@@ -497,9 +497,8 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 /*md## en( ) : void
 Set strings for English translation.
 */
-postingTool.extension.ds.multiLanguage.en = function ( ) {
-
-};
+//postingTool.extension.ds.multiLanguage.en = function ( ) {
+//};
 
 /*md# NAMESPACE postingTool.extension.ds.tools #####################*/
 postingTool.extension.ds.tools = { };
