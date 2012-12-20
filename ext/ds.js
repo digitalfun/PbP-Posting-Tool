@@ -37,6 +37,8 @@ var postingTool = postingTool || { };
 postingTool.extension.create( function() {
 	console.log("ds extension: extension created");
 
+	postingTool.extension.ds.setupMultiLanguage( );
+	
 	//add a DS-icon before the charname
 	postingTool.settings.codeChar = ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
@@ -227,6 +229,16 @@ return sCode;
 postingTool.extension.ds = { };
 
 postingTool.extension.ds.dichbChar = 0;
+
+postingTool.extension.ds.setupMultiLanguage = function ( ) {
+	//create new namespace for extentsion-multilanguage
+	postingTool.multiLanguage.strings.ds = { };
+	
+	//add multilanguage-strings
+	postingTool.multiLanguage.strings.ds.kampfwert = "strings.ds.kampfwert";
+	postingTool.multiLanguage.strings.ds.schlagen = "strings.ds.schlagen";
+	
+};
 
 postingTool.extension.ds.selectProbe_onChange = function() {
 console.log("selectProbe_onChange()")
