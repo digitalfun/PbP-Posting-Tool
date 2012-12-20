@@ -237,6 +237,13 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//add multilanguage-strings
 	postingTool.multiLanguage.strings.ds.kampfwert = "strings.ds.kampfwert";
 	postingTool.multiLanguage.strings.ds.schlagen = "strings.ds.schlagen";
+	postingTool.multiLanguage.strings.ds.schiessen = "strings.ds.schiessen";
+	postingTool.multiLanguage.strings.ds.abwehren = "strings.ds.abwehren";
+	postingTool.multiLanguage.strings.ds.zaubern = "strings.ds.zaubern";
+	postingTool.multiLanguage.strings.ds.zielzauber = "strings.ds.zielzauber";
+	
+	
+	
 	
 };
 
