@@ -132,7 +132,7 @@ postingTool.extension.create( function() {
 	$rolldiv.append( $('<br /><strong>Probenwert</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));
 });
 
-//overwrite code.Char
+//overwrite code.char
 postingTool.code["char"] = function () {
 console.log("ds extension: code.char()");	
 
@@ -148,7 +148,7 @@ console.log("ds extension: code.char()");
 return sCode;
 }
 
-//overwrite code.Roll
+//overwrite code.roll
 postingTool.code["roll"] = function() {
 console.log("ds extension: Code.Roll()");
 
@@ -247,7 +247,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	postingTool.multiLanguage.strings.ds.targetspell = "strings.ds.targetspell";
 	
 		//Checks
-	postingTool.multiLanguage.strings.ds.checks = "strings.ds.checks";
+	postingTool.multiLanguage.strings.ds.check = "strings.ds.check";
 	postingTool.multiLanguage.strings.ds.regainConsciousness_check = "strings.ds.regainConsciousness_check"; //aufwachen (aus Ohmacht)
 	postingTool.multiLanguage.strings.ds.regainConsciousness_desc = "strings.ds.regainConsciousness_desc"; 
 	postingTool.multiLanguage.strings.ds.perception_check = "strings.ds.perception_check"; //Bemerken
@@ -310,8 +310,72 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//
 	//Deutsch
 	//
-		//Orientieren:GEI,VE,AU", "Orientieren (Jäger)"));
-	
+	postingTool.multiLanguage.strings.ds.cv = "Kampfwert";
+	postingTool.multiLanguage.strings.ds.melee = "Schlagen";
+	postingTool.multiLanguage.strings.ds.ranged = "Schiessen";
+	postingTool.multiLanguage.strings.ds.defense = "Abwehren";
+	postingTool.multiLanguage.strings.ds.spellcast = "Zaubern";
+	postingTool.multiLanguage.strings.ds.targetspell = "Zielzaubern";
+
+	postingTool.multiLanguage.strings.ds.check = "Probe";
+	postingTool.multiLanguage.strings.ds.regainConsciousness_check = "Aufwachen:KÖR,HÄ";
+	postingTool.multiLanguage.strings.ds.regainConsciousness_desc = "Aufwachen (wenn Bewusstloser geweckt wird)";
+	postingTool.multiLanguage.strings.ds.perception_check = "Bemerken:GEI,VE";
+	postingTool.multiLanguage.strings.ds.perception_desc = "Bemerken (min.8, Diebeskunst,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.wakeup_check = "Erwachen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.wakeup_desc = "Erwachen (Schnelle Reflexe,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.disableTraps_check = "Falle entschärfen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.disableTraps_desc = "Fallen entschärfen (Diebeskunst)";
+	postingTool.multiLanguage.strings.ds.haggle_check = "Feilschen:GEI,VE,AU";
+	postingTool.multiLanguage.strings.ds.haggle_desc = "Feilschen(Charmant,Schlitzohr)";
+	postingTool.multiLanguage.strings.ds.startFire_check = "Feuer machen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.startFire_desc = "Feuer machen (Jäger)";
+	postingTool.multiLanguage.strings.ds.flirt_check = "Flirten:GEI,AU";
+	postingTool.multiLanguage.strings.ds.flirt_desc = "Flirten (Charmant)";
+	postingTool.multiLanguage.strings.ds.defyPoison_check = "Gift trotzen:KÖR,HÄ";
+	postingTool.multiLanguage.strings.ds.defyPoison_desc = "Gift trotzen (Einstecker)";
+	postingTool.multiLanguage.strings.ds.decipherScript_check = "Inschrift entziffern:GEI,VE";
+	postingTool.multiLanguage.strings.ds.decipherScript_desc = "Inschrift entziffern (Wahrnehmung,Bildung)";
+	postingTool.multiLanguage.strings.ds.climb_check = "Klettern:AGI,ST";
+	postingTool.multiLanguage.strings.ds.climb_desc = "Klettern (Akrobat,Kletterass)";
+	postingTool.multiLanguage.strings.ds.strength_check = "Kraftakt:KÖR,ST";
+	postingTool.multiLanguage.strings.ds.strength_desc = "Kraftakt (Brutaler Hieb,Vernichtender Schlag)";
+	postingTool.multiLanguage.strings.ds.resistDisease_check = "Krankheit trotzen:KÖR,HÄ";
+	postingTool.multiLanguage.strings.ds.resistDisease_desc = "Krankheit trotzen (Einstecker)";
+	postingTool.multiLanguage.strings.ds.senseMagic_check = "Magie spüren:GEI,AU";
+	postingTool.multiLanguage.strings.ds.senseMagic_desc = "Magie spüren (nur Zauberwirker)";
+	postingTool.multiLanguage.strings.ds.identifyMagic_check = "Magie begreifen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.identifyMagic_desc = "Magie begreifen (nur Zauberwirker)";
+	postingTool.multiLanguage.strings.ds.mechanism_check = "Mechanismus öffnen:GEI,GE,VE";
+	postingTool.multiLanguage.strings.ds.mechanism_desc = "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)";
+	postingTool.multiLanguage.strings.ds.navigate_check = "Orientieren:GEI,VE,AU";
+	postingTool.multiLanguage.strings.ds.navigate_desc = "Orientieren (Jäger)";
+	postingTool.multiLanguage.strings.ds.ride_check = "Reiten:AGI,BE,AU";
+	postingTool.multiLanguage.strings.ds.ride_desc = "Reiten (Reiten, Sattelschütze,Tiermeister)";
+	postingTool.multiLanguage.strings.ds.appraise_check = "Schätzen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.appraise_desc = "Schätzen (Beute schätzen)";
+	postingTool.multiLanguage.strings.ds.sneak_check = "Schleichen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.sneak_desc = "Schleichen (Heimlichkeit)";
+	postingTool.multiLanguage.strings.ds.openLock_check = "Schloss öffnen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.openLock_desc = "Schlösser öffnen (Diebeskunst,Schlossknacker)";
+	postingTool.multiLanguage.strings.ds.swim_check = "Schwimmen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.swim_desc = "Schwimmen (Schwimmen)";
+	postingTool.multiLanguage.strings.ds.jump_check = "Springen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.jump_desc = "Springen (Akrobat)";
+	postingTool.multiLanguage.strings.ds.readTracks_check = "Spuren lesen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.readTracks_desc = "Spuren lesen (Jäger,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.search_check = "Suchen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.search_desc = "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)";
+	postingTool.multiLanguage.strings.ds.pickPocket_check = "Taschendiebstahl:AGI,GE";
+	postingTool.multiLanguage.strings.ds.pickPocket_desc = "Taschendiebstahl (Diebeskunst,Heimlichkeit)";
+	postingTool.multiLanguage.strings.ds.hide_check = "Verbergen:AGI,BE";
+	postingTool.multiLanguage.strings.ds.hide_desc = "Verbergen (Heimlichkeit)";
+	postingTool.multiLanguage.strings.ds.communicate_check = "Verständigen:GEI,GE";
+	postingTool.multiLanguage.strings.ds.communicate_desc = "Verständigen (Bildung)";
+	postingTool.multiLanguage.strings.ds.knowledge_check = "Wissen:GEI,VE";
+	postingTool.multiLanguage.strings.ds.knowledge_desc = "Wissen (Bildung,Wissensgebiet)";
+	postingTool.multiLanguage.strings.ds.changeSpell_check = "Zauber wechseln:GEI,VE";
+	postingTool.multiLanguage.strings.ds.changeSpell_desc = "Zauber wechseln (nur Zauberwirker)";
 };
 
 postingTool.extension.ds.selectProbe_onChange = function() {
