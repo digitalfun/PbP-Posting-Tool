@@ -134,7 +134,7 @@ postingTool.extension.create( function() {
 	//append content to the "Roll dice"-div
 	$rolldiv.append( $append);
 
-	$rolldiv.append( $('<br /><strong>Probenwert</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));
+	$rolldiv.append( $('<br /><strong>' +lang.ctn_desc +'</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));
 });
 
 //overwrite code.char
@@ -249,7 +249,8 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//add multilanguage-strings
 	//
 	lang.action = "strings.ds.action";
-	lang.ctn = "strings.ds.ctn"; //Check Target Number / Porbenwert (PW)
+	lang.ctn = "strings.ds.ctn"; //short: Check Target Number / Probenwert (PW)
+	lang.ctn_desc = "strings.ds.ctn_desc"; //Check Target Number / Probenwert (PW)
 	
 		//Attributes
 	lang.BOD = "strings.ds.BOD"; //Body
@@ -453,6 +454,7 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	//	
 	lang.action = "Aktion";
 	lang.ctn = "PW";
+	lang.ctn_desc = "Probenwert";
 
 		//Attributes
 	lang.BOD = "KÖR"; //Body
@@ -477,71 +479,163 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 
 		//Checks
 	lang.check = "Probe";
-	lang.regainConsciousness_check = "Aufwachen:KÖR,HÄ";
+	lang.regainConsciousness_check = "Aufwachen:" +lang.BOD +"," +lang.CO;
 	lang.regainConsciousness_desc = "Aufwachen (wenn Bewusstloser geweckt wird)";
-	lang.perception_check = "Bemerken:GEI,VE";
+	lang.perception_check = "Bemerken:" +lang.MND +"," +lang.IN;
 	lang.perception_desc = "Bemerken (min.8, Diebeskunst,Wahrnehmung)";
-	lang.wakeup_check = "Erwachen:GEI,VE";
+	lang.wakeup_check = "Erwachen:" +lang.MND +"," +lang.IN;
 	lang.wakeup_desc = "Erwachen (Schnelle Reflexe,Wahrnehmung)";
-	lang.disableTraps_check = "Falle entschärfen:GEI,GE";
+	lang.disableTraps_check = "Falle entschärfen:" +lang.MND +"," +lang.DX;
 	lang.disableTraps_desc = "Fallen entschärfen (Diebeskunst)";
-	lang.haggle_check = "Feilschen:GEI,VE,AU";
+	lang.haggle_check = "Feilschen:" +lang.MND +"," +lang.IN +"," +lang.AU;
 	lang.haggle_desc = "Feilschen(Charmant,Schlitzohr)";
-	lang.startFire_check = "Feuer machen:GEI,GE";
+	lang.startFire_check = "Feuer machen:" +lang.MND +"," +lang.AG;
 	lang.startFire_desc = "Feuer machen (Jäger)";
-	lang.flirt_check = "Flirten:GEI,AU";
+	lang.flirt_check = "Flirten:" +lang.MND +"," +lang.AU;
 	lang.flirt_desc = "Flirten (Charmant)";
-	lang.defyPoison_check = "Gift trotzen:KÖR,HÄ";
+	lang.defyPoison_check = "Gift trotzen:" +lang.BOD +"," +lang.CO;
 	lang.defyPoison_desc = "Gift trotzen (Einstecker)";
-	lang.decipherScript_check = "Inschrift entziffern:GEI,VE";
+	lang.decipherScript_check = "Inschrift entziffern:" +lang.MND +"," +lang.IN;
 	lang.decipherScript_desc = "Inschrift entziffern (Wahrnehmung,Bildung)";
-	lang.climb_check = "Klettern:AGI,ST";
+	lang.climb_check = "Klettern:" +lang.MOB +"," +lang.ST;
 	lang.climb_desc = "Klettern (Akrobat,Kletterass)";
-	lang.strength_check = "Kraftakt:KÖR,ST";
+	lang.strength_check = "Kraftakt:" +lang.BOD +"," + lang.ST;
 	lang.strength_desc = "Kraftakt (Brutaler Hieb,Vernichtender Schlag)";
-	lang.resistDisease_check = "Krankheit trotzen:KÖR,HÄ";
+	lang.resistDisease_check = "Krankheit trotzen:" +lang.BOD +"," +lang.CO;
 	lang.resistDisease_desc = "Krankheit trotzen (Einstecker)";
-	lang.senseMagic_check = "Magie spüren:GEI,AU";
+	lang.senseMagic_check = "Magie spüren:" +lang.MND +"," +lang.AU;
 	lang.senseMagic_desc = "Magie spüren (nur Zauberwirker)";
-	lang.identifyMagic_check = "Magie begreifen:GEI,VE";
+	lang.identifyMagic_check = "Magie begreifen:" +lang.MND +"," +lang.IN;
 	lang.identifyMagic_desc = "Magie begreifen (nur Zauberwirker)";
-	lang.mechanism_check = "Mechanismus öffnen:GEI,GE,VE";
+	lang.mechanism_check = "Mechanismus öffnen:" +lang.MND +"," +lang.AG +"," +lang.IN;
 	lang.mechanism_desc = "Mechanismus öffnen (Diebeskunst,Handwerk,Schlossknacker)";
-	lang.navigate_check = "Orientieren:GEI,VE,AU";
+	lang.navigate_check = "Orientieren:" +lang.MND +"," +lang.IN +"," +lang.AU;
 	lang.navigate_desc = "Orientieren (Jäger)";
-	lang.ride_check = "Reiten:AGI,BE,AU";
+	lang.ride_check = "Reiten:" +lang.MOB +"," +lang.DX +"," +lang.AU;
 	lang.ride_desc = "Reiten (Reiten, Sattelschütze,Tiermeister)";
-	lang.appraise_check = "Schätzen:GEI,VE";
+	lang.appraise_check = "Schätzen:" +lang.MND +"," +lang.IN;
 	lang.appraise_desc = "Schätzen (Beute schätzen)";
-	lang.sneak_check = "Schleichen:AGI,BE";
+	lang.sneak_check = "Schleichen:" +lang.MOB +"," +lang.DX;
 	lang.sneak_desc = "Schleichen (Heimlichkeit)";
-	lang.openLock_check = "Schloss öffnen:GEI,GE";
+	lang.openLock_check = "Schloss öffnen:" +lang.MND +"," +lang.AG;
 	lang.openLock_desc = "Schlösser öffnen (Diebeskunst,Schlossknacker)";
-	lang.swim_check = "Schwimmen:AGI,BE";
+	lang.swim_check = "Schwimmen:" +lang.MOB +"," +lang.DX;
 	lang.swim_desc = "Schwimmen (Schwimmen)";
-	lang.jump_check = "Springen:AGI,BE";
+	lang.jump_check = "Springen:" +lang.MOB +"," +lang.DX;
 	lang.jump_desc = "Springen (Akrobat)";
-	lang.readTracks_check = "Spuren lesen:GEI,VE";
+	lang.readTracks_check = "Spuren lesen:" +lang.MND +"," +lang.IN;
 	lang.readTracks_desc = "Spuren lesen (Jäger,Wahrnehmung)";
-	lang.search_check = "Suchen:GEI,VE";
+	lang.search_check = "Suchen:" +lang.MND +"," +lang.IN;
 	lang.search_desc = "Suchen (min.8, Diebeskunst,Heimlichkeit,Wahrnehmung)";
-	lang.pickPocket_check = "Taschendiebstahl:AGI,GE";
+	lang.pickPocket_check = "Taschendiebstahl:" +lang.MOB +"," +lang.AG;
 	lang.pickPocket_desc = "Taschendiebstahl (Diebeskunst,Heimlichkeit)";
-	lang.hide_check = "Verbergen:AGI,BE";
+	lang.hide_check = "Verbergen:" +lang.MOB +"," +lang.DX;
 	lang.hide_desc = "Verbergen (Heimlichkeit)";
-	lang.communicate_check = "Verständigen:GEI,GE";
+	lang.communicate_check = "Verständigen:"  +lang.MND +"," +lang.AG;
 	lang.communicate_desc = "Verständigen (Bildung)";
-	lang.knowledge_check = "Wissen:GEI,VE";
+	lang.knowledge_check = "Wissen:" +lang.MND +"," +lang.IN;;
 	lang.knowledge_desc = "Wissen (Bildung,Wissensgebiet)";
-	lang.changeSpell_check = "Zauber wechseln:GEI,VE";
+	lang.changeSpell_check = "Zauber wechseln:" +lang.MND +"," +lang.IN;
 	lang.changeSpell_desc = "Zauber wechseln (nur Zauberwirker)";
 };
 
 /*md## en( ) : void
 Set strings for English translation.
 */
-//postingTool.extension.ds.multiLanguage.en = function ( ) {
-//};
+postingTool.extension.ds.multiLanguage.en = function ( ) {
+	//use namespace 
+	var lang = postingTool.multiLanguage.strings.ds;
+	
+	//
+	//translate multilanguage-strings
+	//	
+	lang.action = "Action";
+	lang.ctn = "CTN";
+	lang.ctn_desc = "Check Target Number";
+
+		//Attributes
+	lang.BOD = "BOD"; //Body
+	lang.MOB = "MOB"; //Mobility
+	lang.MND = "MND"; //Mind
+	
+		//Traits
+	lang.ST = "ST"; //STRENGTH
+	lang.CO = "CO"; //CONSTITUTION
+	lang.AG = "AG"; //AGILITY
+	lang.DX = "DX"; //DEXTERITY
+	lang.IN = "IN"; //INTELLECT
+	lang.AU = "AU"; //AURA
+	
+		//Combat Values	
+	lang.cv = "Combat Value";
+	lang.melee = "Melee";
+	lang.ranged = "Ranged Attack";
+	lang.defense = "Defense";
+	lang.spellcast = "Spellcasting";
+	lang.targetspell = "Targeted Spellcasting";
+
+		//Checks
+	lang.check = "Check";
+	lang.regainConsciousness_check = "Regain Consciousness:" + lang.BOD +"," +lang.CO;
+	lang.regainConsciousness_desc = "Regain Consciousness (if another person attempts to wake up the character)";
+	lang.perception_check = "Perception:" +lang.MND +"," +lang.IN;
+	lang.perception_desc = "Perception (min.8, Thievery,Alertness)";
+	lang.wakeup_check = "Wake up:" +lang.MND +"," +lang.IN;
+	lang.wakeup_desc = "Wake up (Lightning Reflexes,Alertness)";
+	lang.disableTraps_check = "Disable Traps:" +lang.MND +"," +lang.DX;
+	lang.disableTraps_desc = "Disable Traps (Thievery)";
+
+	lang.haggle_check = "Feilschen:" +lang.MND +"," +lang.IN +"," +lang.AU;
+	lang.haggle_desc = "Feilschen(Charmant,Schlitzohr)";
+	lang.startFire_check = "Feuer machen:" +lang.MND +"," +lang.AG;
+	lang.startFire_desc = "Feuer machen (Jäger)";
+	lang.flirt_check = "Flirten:" +lang.MND +"," +lang.AU;
+	lang.flirt_desc = "Flirten (Charmant)";
+	lang.defyPoison_check = "Gift trotzen:" +lang.BOD +"," +lang.CO;
+	lang.defyPoison_desc = "Gift trotzen (Einstecker)";
+	lang.decipherScript_check = "Inschrift entziffern:" +lang.MND +"," +lang.IN;
+	lang.decipherScript_desc = "Inschrift entziffern (Alertness,Bildung)";
+	lang.climb_check = "Klettern:" +lang.MOB +"," +lang.ST;
+	lang.climb_desc = "Klettern (Akrobat,Kletterass)";
+	lang.strength_check = "Kraftakt:" +lang.BOD +"," + lang.ST;
+	lang.strength_desc = "Kraftakt (Brutaler Hieb,Vernichtender Schlag)";
+	lang.resistDisease_check = "Krankheit trotzen:" +lang.BOD +"," +lang.CO;
+	lang.resistDisease_desc = "Krankheit trotzen (Einstecker)";
+	lang.senseMagic_check = "Magie spüren:" +lang.MND +"," +lang.AU;
+	lang.senseMagic_desc = "Magie spüren (nur Zauberwirker)";
+	lang.identifyMagic_check = "Magie begreifen:" +lang.MND +"," +lang.IN;
+	lang.identifyMagic_desc = "Magie begreifen (nur Zauberwirker)";
+	lang.mechanism_check = "Mechanismus öffnen:" +lang.MND +"," +lang.AG +"," +lang.IN;
+	lang.mechanism_desc = "Mechanismus öffnen (Thievery,Handwerk,Schlossknacker)";
+	lang.navigate_check = "Orientieren:" +lang.MND +"," +lang.IN +"," +lang.AU;
+	lang.navigate_desc = "Orientieren (Jäger)";
+	lang.ride_check = "Reiten:" +lang.MOB +"," +lang.DX +"," +lang.AU;
+	lang.ride_desc = "Reiten (Reiten, Sattelschütze,Tiermeister)";
+	lang.appraise_check = "Schätzen:" +lang.MND +"," +lang.IN;
+	lang.appraise_desc = "Schätzen (Beute schätzen)";
+	lang.sneak_check = "Schleichen:" +lang.MOB +"," +lang.DX;
+	lang.sneak_desc = "Schleichen (Heimlichkeit)";
+	lang.openLock_check = "Schloss öffnen:" +lang.MND +"," +lang.AG;
+	lang.openLock_desc = "Schlösser öffnen (Thievery,Schlossknacker)";
+	lang.swim_check = "Schwimmen:" +lang.MOB +"," +lang.DX;
+	lang.swim_desc = "Schwimmen (Schwimmen)";
+	lang.jump_check = "Springen:" +lang.MOB +"," +lang.DX;
+	lang.jump_desc = "Springen (Akrobat)";
+	lang.readTracks_check = "Spuren lesen:" +lang.MND +"," +lang.IN;
+	lang.readTracks_desc = "Spuren lesen (Jäger,Alertness)";
+	lang.search_check = "Suchen:" +lang.MND +"," +lang.IN;
+	lang.search_desc = "Suchen (min.8, Thievery,Heimlichkeit,Alertness)";
+	lang.pickPocket_check = "Taschendiebstahl:" +lang.MOB +"," +lang.AG;
+	lang.pickPocket_desc = "Taschendiebstahl (Thievery,Heimlichkeit)";
+	lang.hide_check = "Verbergen:" +lang.MOB +"," +lang.DX;
+	lang.hide_desc = "Verbergen (Heimlichkeit)";
+	lang.communicate_check = "Verständigen:"  +lang.MND +"," +lang.AG;
+	lang.communicate_desc = "Verständigen (Bildung)";
+	lang.knowledge_check = "Wissen:" +lang.MND +"," +lang.IN;;
+	lang.knowledge_desc = "Wissen (Bildung,Wissensgebiet)";
+	lang.changeSpell_check = "Zauber wechseln:" +lang.MND +"," +lang.IN;
+	lang.changeSpell_desc = "Zauber wechseln (nur Zauberwirker)";
+};
 
 /*md# NAMESPACE postingTool.extension.ds.tools #####################*/
 postingTool.extension.ds.tools = { };
