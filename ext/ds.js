@@ -157,6 +157,9 @@ return sCode;
 postingTool.code["roll"] = function() {
 console.log("ds extension: code.roll()");
 
+	//use namespace 
+	var lang = postingTool.multiLanguage.strings.ds;
+	
 	var sCode = "[roll]";
 	sCode += "{";
 	
@@ -170,24 +173,24 @@ console.log("ds extension: code.roll()");
 		theProps = theProps.split(":");
 		
 		switch ( theProps[ 0]) {
-			case 'Schlagen': sCode += ":kw5: "; break;
-			case 'Schiessen': sCode += ":kw6: "; break;
-			case 'Abwehr': sCode += ":kw2: "; break;
-			case 'Zaubern': sCode += ":kw7: "; break;
-			case 'Zielzauber': sCode += ":kw8: "; break;
+			case lang.melee: sCode += ":kw5: "; break;
+			case lang.ranged: sCode += ":kw6: "; break;
+			case lang.defense: sCode += ":kw2: "; break;
+			case lang.spellcast: sCode += ":kw7: "; break;
+			case lang.targetspell: sCode += ":kw8: "; break;
 			
 			default: sCode += theProps[ 0]; 
 		}
 	}
 	else {
-		sCode += "PW ";
+		//sCode += lang.ctn + " ";
 	}
 	
 	
 	//calc the values of the Probenwert	
 	var theProbenwerte = $( "#text_RollProperties").val( );
 
-	if( theProbenwerte != "") { 
+	if( theProbenwerte !== "") { 
 
 		var nTotal = 0;
 		var nCount = 0;
@@ -215,7 +218,7 @@ console.log("ds extension: code.roll()");
 		} //while
 		
 		if( nCount == 1) sCode += " - " +theProbenwerte +" | ";
-		else sCode += " - " +theProbenwerte +"= " +nTotal +" | ";
+		else sCode += " - " +theProbenwerte +"= " +lang.ctn +" " +nTotal +" | ";
 	} //if	
 	
 	
@@ -246,6 +249,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//add multilanguage-strings
 	//
 	lang.action = "strings.ds.action";
+	lang.ctn = "strings.ds.ctn"; //Check Target Number / Porbenwert (PW)
 	
 		//Combat Values
 	lang.cv = "strings.ds.cv"; //combat value
@@ -428,6 +432,7 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	var lang = postingTool.multiLanguage.strings.ds;
 	
 	lang.action = "Aktion";
+	lang.ctn = "PW";
 	
 	lang.cv = "Kampfwert";
 	lang.melee = "Schlagen";
