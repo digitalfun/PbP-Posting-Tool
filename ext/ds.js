@@ -75,10 +75,10 @@ postingTool.extension.create( function() {
 	var appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
 	//if chardata imported from dichb -> add info
 	if( postingTool.extension.ds.dichbChar !== 0) {
-		appendTitle += "  <b>diChB import: " +  postingTool.extension.ds.dichbChar.name +"</b><br>"; 
+		appendTitle += " - <b>" +  postingTool.extension.ds.dichbChar.name +"</b><br>"; 
 	}
 	else {
-		appendTitle += "  DungeonSlayer <br>";
+		appendTitle += " - DungeonSlayer<br>";
 	}
 	
 	$("#title").append( appendTitle);
