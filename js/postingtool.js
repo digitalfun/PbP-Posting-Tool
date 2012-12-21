@@ -54,7 +54,12 @@ postingTool.setup = function () {
 	postingTool.settings.getURLParams( );		
 	
 	//activate language according to URL parameter (or if not given, standard value)
-	postingTool.multiLanguage.activate[postingTool.settings.lang]( );
+	if( postingTool.multiLanguage.activate[postingTool.settings.lang] !== undefined ) {
+		postingTool.multiLanguage.activate[postingTool.settings.lang]( );
+	}
+	else {
+		alert( "FAILURE! URL Paramter [lang=" + postingTool.settings.lang + "] is not supported!");
+	}
 	
 	postingTool.tables.hideAll();
 	
