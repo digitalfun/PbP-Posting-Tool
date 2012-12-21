@@ -251,6 +251,19 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	lang.action = "strings.ds.action";
 	lang.ctn = "strings.ds.ctn"; //Check Target Number / Porbenwert (PW)
 	
+		//Attributes
+	lang.BOD = "strings.ds.BOD"; //Body
+	lang.MOB = "strings.ds.MOB"; //Mobility
+	lang.MND = "strings.ds.MND"; //Mind
+	
+		//Traits
+	lang.ST = "strings.ds.ST"; //STRENGTH
+	lang.CO = "strings.ds.CO"; //CONSTITUTION
+	lang.AG = "strings.ds.AG"; //AGILITY
+	lang.DX = "strings.ds.DX"; //DEXTERITY
+	lang.IN = "strings.ds.IN"; //INTELLECT
+	lang.AU = "strings.ds.AU"; //AURA
+	
 		//Combat Values
 	lang.cv = "strings.ds.cv"; //combat value
 	lang.melee = "strings.ds.melee";
@@ -431,9 +444,26 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	
 	var lang = postingTool.multiLanguage.strings.ds;
 	
+	//
+	//translate multilanguage-strings
+	//	
 	lang.action = "Aktion";
 	lang.ctn = "PW";
+
+		//Attributes
+	lang.BOD = "KÖR"; //Body
+	lang.MOB = "AGI"; //Mobility
+	lang.MND = "GEI"; //Mind
 	
+		//Traits
+	lang.ST = "ST"; //STRENGTH
+	lang.CO = "HÄ"; //CONSTITUTION
+	lang.AG = "GE"; //AGILITY
+	lang.DX = "BE"; //DEXTERITY
+	lang.IN = "VE"; //INTELLECT
+	lang.AU = "AU"; //AURA
+	
+		//Combat Values	
 	lang.cv = "Kampfwert";
 	lang.melee = "Schlagen";
 	lang.ranged = "Schiessen";
@@ -441,6 +471,7 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	lang.spellcast = "Zaubern";
 	lang.targetspell = "Zielzaubern";
 
+		//Checks
 	lang.check = "Probe";
 	lang.regainConsciousness_check = "Aufwachen:KÖR,HÄ";
 	lang.regainConsciousness_desc = "Aufwachen (wenn Bewusstloser geweckt wird)";
