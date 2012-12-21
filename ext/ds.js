@@ -1,3 +1,15 @@
+/*md# DS Extension
+**Version 1.1**
+	
+##v1.1
+- support multilanguage
+- english translation
+- german translation
+
+##v1.0: initial release
+	
+*/
+
 /*
 ###########################
 LICENSE START
