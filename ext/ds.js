@@ -346,6 +346,9 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 postingTool.extension.ds.selectProbe_onChange = function() {
 console.log("selectProbe_onChange()")
 
+	//use namespace 
+	var lang = postingTool.multiLanguage.strings.ds;
+	
 	var theProps = $("#selectProbe").val();
 	var theProps = theProps.split(":");
 	//if no properties, leave
@@ -360,19 +363,19 @@ console.log("selectProbe_onChange()")
 	
 		//check if Kampfwert 
 		switch( theProps[ 0]) {
-			case "Schlagen":
+			case lang.melee:
 				sValue = postingTool.extension.ds.dichbChar.schlagen;	
 			break;
-			case "Schiessen":
+			case lang.ranged:
 				sValue = postingTool.extension.ds.dichbChar.schiessen;	
 			break;
-			case "Abwehr":
+			case lang.defense:
 				sValue = postingTool.extension.ds.dichbChar.abwehr;	
 			break;
-			case "Zauber":
+			case lang.spellcast:
 				sValue = postingTool.extension.ds.dichbChar.zaubern;	
 			break;
-			case "Zielzaubern":
+			case lang.targetspell:
 				sValue = postingTool.extension.ds.dichbChar.zielzaubern;	
 			break;
 			
@@ -387,33 +390,33 @@ console.log("selectProbe_onChange()")
 	if( postingTool.extension.ds.dichbChar !== 0) {
 		for( x in theProps) {
 			switch( theProps[ x]) {
-				case "KÖR":
+				case lang.BOD:
 					sValue = postingTool.extension.ds.dichbChar.kor;
 				  break;
-				case "ST":
+				case lang.ST:
 					sValue = postingTool.extension.ds.dichbChar.st;
 				  break;
-				case "HÄ":
+				case lang.CO:
 					sValue = postingTool.extension.ds.dichbChar.ha;
 				  break;
 
-				case "AGI":
+				case lang.MOB:
 					sValue = postingTool.extension.ds.dichbChar.agi;
 				  break;
-				case "GE":
+				case lang.AG:
 					sValue = postingTool.extension.ds.dichbChar.ge;
 				  break;
-				case "BE":
+				case lang.DX:
 					sValue = postingTool.extension.ds.dichbChar.be;
 				  break;
 
-				case "GEI":
+				case lang.MND:
 					sValue = postingTool.extension.ds.dichbChar.gei;
 				  break;
-				case "VE":
+				case lang.IN:
 					sValue = postingTool.extension.ds.dichbChar.ve;
 				  break;
-				case "AU":
+				case lang.AU:
 					sValue = postingTool.extension.ds.dichbChar.au;
 				  break;
 
@@ -442,6 +445,7 @@ Set strings for German translation.
 */
 postingTool.extension.ds.multiLanguage.de = function ( ) {
 	
+	//use namespace 
 	var lang = postingTool.multiLanguage.strings.ds;
 	
 	//
