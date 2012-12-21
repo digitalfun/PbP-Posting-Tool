@@ -143,8 +143,8 @@ console.log("ds extension: code.char()");
 
 	var sChar = $("textarea#text_charactername").val();
 	if ( sChar === "") {
-		if ( g_dichbChar != 0) {
-			sChar = g_dichbChar.name;
+		if ( postingTool.extension.ds.dichbChar != 0) {
+			sChar = postingTool.extension.ds.dichbChar.name;
 		}
 	}
 	var sCode = postingTool.settings.codeChar;
@@ -348,19 +348,19 @@ console.log("selectProbe_onChange()")
 		//check if Kampfwert 
 		switch( theProps[ 0]) {
 			case "Schlagen":
-				sValue = g_dichbChar.schlagen;	
+				sValue = postingTool.extension.ds.dichbChar.schlagen;	
 			break;
 			case "Schiessen":
-				sValue = g_dichbChar.schiessen;	
+				sValue = postingTool.extension.ds.dichbChar.schiessen;	
 			break;
 			case "Abwehr":
-				sValue = g_dichbChar.abwehr;	
+				sValue = postingTool.extension.ds.dichbChar.abwehr;	
 			break;
 			case "Zauber":
-				sValue = g_dichbChar.zaubern;	
+				sValue = postingTool.extension.ds.dichbChar.zaubern;	
 			break;
 			case "Zielzaubern":
-				sValue = g_dichbChar.zielzaubern;	
+				sValue = postingTool.extension.ds.dichbChar.zielzaubern;	
 			break;
 			
 			default:
@@ -375,33 +375,33 @@ console.log("selectProbe_onChange()")
 		for( x in theProps) {
 			switch( theProps[ x]) {
 				case "KÖR":
-					sValue = g_dichbChar.kor;
+					sValue = postingTool.extension.ds.dichbChar.kor;
 				  break;
 				case "ST":
-					sValue = g_dichbChar.st;
+					sValue = postingTool.extension.ds.dichbChar.st;
 				  break;
 				case "HÄ":
-					sValue = g_dichbChar.ha;
+					sValue = postingTool.extension.ds.dichbChar.ha;
 				  break;
 
 				case "AGI":
-					sValue = g_dichbChar.agi;
+					sValue = postingTool.extension.ds.dichbChar.agi;
 				  break;
 				case "GE":
-					sValue = g_dichbChar.ge;
+					sValue = postingTool.extension.ds.dichbChar.ge;
 				  break;
 				case "BE":
-					sValue = g_dichbChar.be;
+					sValue = postingTool.extension.ds.dichbChar.be;
 				  break;
 
 				case "GEI":
-					sValue = g_dichbChar.gei;
+					sValue = postingTool.extension.ds.dichbChar.gei;
 				  break;
 				case "VE":
-					sValue = g_dichbChar.ve;
+					sValue = postingTool.extension.ds.dichbChar.ve;
 				  break;
 				case "AU":
-					sValue = g_dichbChar.au;
+					sValue = postingTool.extension.ds.dichbChar.au;
 				  break;
 
 				default:
