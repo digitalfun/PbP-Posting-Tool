@@ -96,6 +96,7 @@ postingTool.extension.create( function() {
 	$("#title").append( appendTitle);
 	
 	postingTool.extension.ds.extendRoll();
+	postingTool.extension.ds.extendTalk();
 
 });
 
@@ -103,7 +104,7 @@ postingTool.extension.create( function() {
 postingTool.code["char"] = function () {
 console.log("ds extension: code.char()");	
 
-	var sChar = $("textarea#text_charactername").val();
+	var sChar = $("#text_charactername").val();
 	if ( sChar === "") {
 		if ( postingTool.extension.ds.dichbChar != 0) {
 			sChar = postingTool.extension.ds.dichbChar.name;
@@ -111,12 +112,12 @@ console.log("ds extension: code.char()");
 	}
 	var sCode = postingTool.settings.codeChar;
 	sCode = sCode.replace( postingTool.settings.userTextTag, sChar);
-	this.append( sCode);
+	postingTool.code['append']( sCode);
 return sCode;
 }
 
 //overwrite code.roll
-postingTool.code["roll"] = function() {
+postingTool.code["roll"] = function ( ) {
 console.log("ds extension: code.roll()");
 
 	//use namespace 
@@ -184,15 +185,32 @@ console.log("ds extension: code.roll()");
 	} //if	
 	
 	
-	
-	
 	sCode += "}";
-	sCode += $("textarea#text_roll_dice").val();
-	sCode += "x" + $("textarea#text_roll_times").val();
+	sCode += $("#text_roll_dice").val();
+	sCode += "x" + $("#text_roll_times").val();
 	sCode +="[/roll]\n";
 	
 	postingTool.code['append']( sCode);
 return sCode;
+}
+
+
+postingTool.code["speak"] = function ( ) {
+	var sLang = $("#text_dsLanguage").val();
+	var sInsert = $("#text_speak").val();
+	var sCode;
+
+	if( sLang !== "" ) {
+		alert( sLang +", " +sInsert );
+		sCode = postingTool.settings.codeSpeak	= "[color=blue]>>(" +sLang +") " +postingTool.settings.userTextTag+ "<<[/color]\n";
+	}
+	else {
+		sCode = postingTool.settings.codeSpeak;
+	}
+	
+	sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
+	postingTool.code['append']( sCode);
+	return sCode;
 }
 
 /*md# NAMESPACE postingTool.extension.ds #####################*/
@@ -213,6 +231,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	lang.action = "strings.ds.action";
 	lang.ctn = "strings.ds.ctn"; //short: Check Target Number / Probenwert (PW)
 	lang.ctn_desc = "strings.ds.ctn_desc"; //Check Target Number / Probenwert (PW)
+	lang.language = "string.ds.language"; 
 	
 		//Attributes
 	lang.BOD = "strings.ds.BOD"; //Body
@@ -457,6 +476,19 @@ postingTool.extension.ds.extendRoll = function ( ) {
 	$rolldiv.append( $('<br /><strong>' +lang.ctn_desc +'</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));	
 }
 
+//extend talk-div
+postingTool.extension.ds.extendTalk = function ( ) {
+	var lang = postingTool.multiLanguage.strings.ds;
+	
+	var $div = $("#tabcontent_talk");
+	
+	var $append;
+	$append = $('<br /><strong>' +lang.language +'</strong>');
+	$append.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea><br />'));
+	
+	$("#text_speak").before($append);
+}
+
 /*md# NAMESPACE postingTool.extension.ds.multiLanguage #####################*/
 postingTool.extension.ds.multiLanguage = { };
 
@@ -474,7 +506,8 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	lang.action = "Aktion";
 	lang.ctn = "PW";
 	lang.ctn_desc = "Probenwert";
-
+	lang.language = "Sprache"; 
+	
 		//Attributes
 	lang.BOD = "KÖR"; //Body
 	lang.MOB = "AGI"; //Mobility
@@ -571,6 +604,7 @@ postingTool.extension.ds.multiLanguage.en = function ( ) {
 	lang.action = "Action";
 	lang.ctn = "CTN";
 	lang.ctn_desc = "Check Target Number";
+	lang.language = "Language"; 
 
 		//Attributes
 	lang.BOD = "BOD"; //Body

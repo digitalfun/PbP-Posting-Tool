@@ -144,37 +144,37 @@ console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)
 postingTool.code = {
 	
 	"char" : function () {
-		var sInsert = $("textarea#text_charactername").val();
+		var sInsert = $("#text_charactername").val();
 		var sCode = postingTool.settings.codeChar;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
-		this.append( sCode);
+		postingTool.code['append']( sCode);
 	return sCode;
 	},
 	
 	
 	"speak" : function () {
-		var sInsert = $("textarea#text_speak").val();
+		var sInsert = $("#text_speak").val();
 		var sCode = postingTool.settings.codeSpeak;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
-		this.append( sCode);
+		postingTool.code['append']( sCode);
 	return sCode;
 	},
 	
 	
 	"think" : function () {
-		var sInsert = $("textarea#text_think").val();
+		var sInsert = $("#text_think").val();
 		var sCode = postingTool.settings.codeThink;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
-		this.append( sCode);
+		postingTool.code['append']( sCode);
 	return sCode;
 	},
 
 	
 	"ooc" : function () {
-		var sInsert = $("textarea#text_ooc").val();
+		var sInsert = $("#text_ooc").val();
 		var sCode = postingTool.settings.codeOOC;
 		sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
-		this.append( sCode);
+		postingTool.code['append']( sCode);
 	return sCode;
 	},
 	
@@ -183,19 +183,19 @@ postingTool.code = {
 		var sCode = "[roll]";
 		
 		//add description (if given by user)
-		var sDesc = $("textarea#text_roll_desc").val();
+		var sDesc = $("#text_roll_desc").val();
 		( sDesc != "") ? sCode += "{" + sDesc +" | } " : sCode += "";
 			
-		sCode += $("textarea#text_roll_dice").val();
-		sCode += "x" + $("textarea#text_roll_times").val();
+		sCode += $("#text_roll_dice").val();
+		sCode += "x" + $("#text_roll_times").val();
 		sCode +="[/roll]\n";
 		
-		this.append( sCode);
+		postingTool.code['append']( sCode);
 	return sCode;
 	},
 	
 	"append" : function( sText) {
-		var $maincode = $("textarea#text_forumcode");
+		var $maincode = $("#text_forumcode");
 		var sNewCode = $maincode.val() +sText;
 		$maincode.val( sNewCode);
 	},
