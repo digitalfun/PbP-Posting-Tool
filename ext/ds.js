@@ -127,7 +127,7 @@ console.log("ds extension: code.roll()");
 	sCode += "{";
 	
 	//add description (if given by user)
-	var sDesc = $("textarea#text_roll_desc").val();
+	var sDesc = $("#text_roll_desc").val();
 	( sDesc != "") ? sCode += sDesc +"; " : sCode += "";
 
 	//add the Proben-Text
@@ -196,16 +196,24 @@ return sCode;
 
 
 postingTool.code["speak"] = function ( ) {
-	var sLang = $("#text_dsLanguage").val();
-	var sInsert = $("#text_speak").val();
+	var sInsert = $('#text_speak').val();
+	var sLang = $('#text_dsLanguage').val();
+	var sLangText = $('text_dsLanguageTalk').val();
 	var sCode;
 
 	if( sLang !== "" ) {
 		alert( sLang +", " +sInsert );
+		//todo: put this into postingTool.extension.ds.settings 
 		sCode = postingTool.settings.codeSpeak	= "[color=blue]>>(" +sLang +") " +postingTool.settings.userTextTag+ "<<[/color]\n";
 	}
 	else {
 		sCode = postingTool.settings.codeSpeak;
+	}
+	if( sLangText !== "") {
+		sCode += "\n";
+		sCode += "[spoiler]";
+		sCode += "[color=blue]>>" +sLangText +"<<[/color]\n";
+		sCode += "[/spoiler]";
 	}
 	
 	sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
@@ -479,14 +487,15 @@ postingTool.extension.ds.extendRoll = function ( ) {
 //extend talk-div
 postingTool.extension.ds.extendTalk = function ( ) {
 	var lang = postingTool.multiLanguage.strings.ds;
-	
+//$("#text_speak")	
 	var $div = $("#tabcontent_talk");
 	
 	var $append;
-	$append = $('<br /><strong>' +lang.language +'</strong>');
-	$append.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea><br />'));
-	
-	$("#text_speak").before($append);
+	$div.append( $('<br /><br /><strong>' +lang.language +'</strong>'));
+	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea><br />'));
+	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
+	//$div.append($append);
+
 }
 
 /*md# NAMESPACE postingTool.extension.ds.multiLanguage #####################*/
