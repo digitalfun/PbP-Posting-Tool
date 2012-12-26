@@ -95,58 +95,8 @@ postingTool.extension.create( function() {
 	
 	$("#title").append( appendTitle);
 	
+	postingTool.extension.ds.extendRoll();
 
-	//add a new div in the TAB Roll
-	var $rolldiv = $("#tabcontent_roll");	
-	$("#text_roll_desc").before('<br /><strong>' +lang.action +'</strong><br />');	
-	
-	$rolldiv.append('<br /><br /><strong>' +lang.check +'</strong><br />');
-	
-	//create selection-list
-	var createOption = postingTool.extension.ds.tools.createOption;
-	var $append = $("<select id=selectProbe onchange='postingTool.extension.ds.selectProbe_onChange();'>");
-	$append.append( createOption("", ""));
-	$append.append( createOption(lang.melee +":", lang.cv + ": " + lang.melee));
-	$append.append( createOption(lang.ranged +":", lang.cv + ": " + lang.ranged));
-	$append.append( createOption(lang.defense +":", lang.cv + ": " + lang.defense));
-	$append.append( createOption(lang.spellcast +":", lang.cv + ": " + lang.spellcast));
-	$append.append( createOption(lang.targetspell +":", lang.cv + ": " + lang.targetspell));
-	
-	$append.append( createOption(lang.regainConsciousness_check, lang.regainConsciousness_desc));
-	$append.append( createOption(lang.perception_check, lang.perception_desc));
-	$append.append( createOption(lang.wakeup_check, lang.wakeup_desc));
-	$append.append( createOption(lang.disableTraps_check, lang.disableTraps_desc));
-	$append.append( createOption(lang.haggle_check, lang.haggle_desc));
-	$append.append( createOption(lang.startFire_check, lang.startFire_desc));
-	$append.append( createOption(lang.flirt_check, lang.flirt_desc));
-	$append.append( createOption(lang.defyPoison_check, lang.defyPoison_desc));
-	$append.append( createOption(lang.decipherScript_check, lang.decipherScript_desc));
-	$append.append( createOption(lang.climb_check, lang.climb_desc));
-	$append.append( createOption(lang.strength_check, lang.strength_desc));
-	$append.append( createOption(lang.resistDisease_check, lang.resistDisease_desc));
-	$append.append( createOption(lang.senseMagic_check, lang.senseMagic_desc));
-	$append.append( createOption(lang.identifyMagic_check, lang.identifyMagic_desc));	
-	$append.append( createOption(lang.mechanism_check, lang.mechanism_desc));
-	$append.append( createOption(lang.navigate_check, lang.navigate_desc));
-	$append.append( createOption(lang.ride_check, lang.ride_desc));
-	$append.append( createOption(lang.appraise_check, lang.appraise_desc));
-	$append.append( createOption(lang.sneak_check, lang.sneak_desc));
-	$append.append( createOption(lang.openLock_check, lang.openLock_desc));
-	$append.append( createOption(lang.swim_check, lang.swim_desc));
-	$append.append( createOption(lang.jump_check, lang.jump_desc));
-	$append.append( createOption(lang.readTracks_check, lang.readTracks_desc));
-	$append.append( createOption(lang.search_check, lang.search_desc));
-	$append.append( createOption(lang.pickPocket_check, lang.pickPocket_desc));
-	$append.append( createOption(lang.hide_check, lang.hide_desc));
-	$append.append( createOption(lang.communicate_check, lang.communicate_desc));
-	$append.append( createOption(lang.knowledge_check, lang.knowledge_desc));
-	$append.append( createOption(lang.changeSpell_check, lang.changeSpell_desc));
-	$append.append("</select>");
-	
-	//append content to the "Roll dice"-div
-	$rolldiv.append( $append);
-
-	$rolldiv.append( $('<br /><strong>' +lang.ctn_desc +'</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));
 });
 
 //overwrite code.char
@@ -448,6 +398,63 @@ console.log("selectProbe_onChange()")
 	$( "#text_RollProperties").val( sText);
 	
 return (true);
+}
+
+//extend roll-div
+postingTool.extension.ds.extendRoll = function ( ) {
+	var lang = postingTool.multiLanguage.strings.ds;
+
+	//add a new div in the TAB Roll
+	var $rolldiv = $("#tabcontent_roll");	
+	$("#text_roll_desc").before('<br /><strong>' +lang.action +'</strong><br />');	
+	
+	$rolldiv.append('<br /><br /><strong>' +lang.check +'</strong><br />');
+	
+	//create selection-list
+	var createOption = postingTool.extension.ds.tools.createOption;
+	var $append = $("<select id=selectProbe onchange='postingTool.extension.ds.selectProbe_onChange();'>");
+	$append.append( createOption("", ""));
+	$append.append( createOption(lang.melee +":", lang.cv + ": " + lang.melee));
+	$append.append( createOption(lang.ranged +":", lang.cv + ": " + lang.ranged));
+	$append.append( createOption(lang.defense +":", lang.cv + ": " + lang.defense));
+	$append.append( createOption(lang.spellcast +":", lang.cv + ": " + lang.spellcast));
+	$append.append( createOption(lang.targetspell +":", lang.cv + ": " + lang.targetspell));
+	
+	$append.append( createOption(lang.regainConsciousness_check, lang.regainConsciousness_desc));
+	$append.append( createOption(lang.perception_check, lang.perception_desc));
+	$append.append( createOption(lang.wakeup_check, lang.wakeup_desc));
+	$append.append( createOption(lang.disableTraps_check, lang.disableTraps_desc));
+	$append.append( createOption(lang.haggle_check, lang.haggle_desc));
+	$append.append( createOption(lang.startFire_check, lang.startFire_desc));
+	$append.append( createOption(lang.flirt_check, lang.flirt_desc));
+	$append.append( createOption(lang.defyPoison_check, lang.defyPoison_desc));
+	$append.append( createOption(lang.decipherScript_check, lang.decipherScript_desc));
+	$append.append( createOption(lang.climb_check, lang.climb_desc));
+	$append.append( createOption(lang.strength_check, lang.strength_desc));
+	$append.append( createOption(lang.resistDisease_check, lang.resistDisease_desc));
+	$append.append( createOption(lang.senseMagic_check, lang.senseMagic_desc));
+	$append.append( createOption(lang.identifyMagic_check, lang.identifyMagic_desc));	
+	$append.append( createOption(lang.mechanism_check, lang.mechanism_desc));
+	$append.append( createOption(lang.navigate_check, lang.navigate_desc));
+	$append.append( createOption(lang.ride_check, lang.ride_desc));
+	$append.append( createOption(lang.appraise_check, lang.appraise_desc));
+	$append.append( createOption(lang.sneak_check, lang.sneak_desc));
+	$append.append( createOption(lang.openLock_check, lang.openLock_desc));
+	$append.append( createOption(lang.swim_check, lang.swim_desc));
+	$append.append( createOption(lang.jump_check, lang.jump_desc));
+	$append.append( createOption(lang.readTracks_check, lang.readTracks_desc));
+	$append.append( createOption(lang.search_check, lang.search_desc));
+	$append.append( createOption(lang.pickPocket_check, lang.pickPocket_desc));
+	$append.append( createOption(lang.hide_check, lang.hide_desc));
+	$append.append( createOption(lang.communicate_check, lang.communicate_desc));
+	$append.append( createOption(lang.knowledge_check, lang.knowledge_desc));
+	$append.append( createOption(lang.changeSpell_check, lang.changeSpell_desc));
+	$append.append("</select>");
+	
+	//append content to the "Roll dice"-div
+	$rolldiv.append( $append);
+
+	$rolldiv.append( $('<br /><strong>' +lang.ctn_desc +'</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));	
 }
 
 /*md# NAMESPACE postingTool.extension.ds.multiLanguage #####################*/
