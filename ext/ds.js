@@ -198,22 +198,21 @@ return sCode;
 postingTool.code["speak"] = function ( ) {
 	var sInsert = $('#text_speak').val();
 	var sLang = $('#text_dsLanguage').val();
-	var sLangText = $('text_dsLanguageTalk').val();
+	var sLangText = $('#text_dsLanguageTalk').val();
 	var sCode;
 
 	if( sLang !== "" ) {
-		alert( sLang +", " +sInsert );
 		//todo: put this into postingTool.extension.ds.settings 
-		sCode = postingTool.settings.codeSpeak	= "[color=blue]>>(" +sLang +") " +postingTool.settings.userTextTag+ "<<[/color]\n";
+		sCode = postingTool.extension.ds.settings.codeSpeak;
+		sCode = sCode.replace( "DS_LANG", sLang);
 	}
 	else {
 		sCode = postingTool.settings.codeSpeak;
 	}
+	
 	if( sLangText !== "") {
-		sCode += "\n";
-		sCode += "[spoiler]";
-		sCode += "[color=blue]>>" +sLangText +"<<[/color]\n";
-		sCode += "[/spoiler]";
+		sCode += postingTool.extension.ds.settings.codeSpeakHidden;
+		sCode = sCode.replace( "DS_LANGTEXT", sLangText);
 	}
 	
 	sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
@@ -225,7 +224,6 @@ postingTool.code["speak"] = function ( ) {
 postingTool.extension.ds = { };
 
 postingTool.extension.ds.version = "1.1";
-
 postingTool.extension.ds.dichbChar = 0;
 
 postingTool.extension.ds.settings = (function ( ) {
@@ -503,7 +501,7 @@ postingTool.extension.ds.extendTalk = function ( ) {
 	var $div = $("#tabcontent_talk");
 	
 	var $append;
-	$div.append( $('<br /><br /><strong>' +lang.language +'</strong>'));
+	$div.append( $('<hr /><br /><br /><strong>' +lang.language +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea><br />'));
 	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
 	//$div.append($append);
