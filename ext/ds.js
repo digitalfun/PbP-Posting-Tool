@@ -228,6 +228,18 @@ postingTool.extension.ds.version = "1.1";
 
 postingTool.extension.ds.dichbChar = 0;
 
+postingTool.extension.ds.settings = (function ( ) {
+	var that = { };
+	
+	//DS_LANG will be replaced by the language ("elventongue", "dwarven" etc)
+	that.codeSpeak	= "[color=blue]>>(DS_LANG) " +postingTool.settings.userTextTag+ "<<[/color]\n";
+	
+	//DS_LANGTEXT will be replaced by the text in the foreign language (to be hidden)
+	that.codeSpeakHidden = "[spoiler][color=blue]>>DS_LANGTEXT<<[/color][/spoiler]\n";
+	
+	return that;
+}());
+
 postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//create new namespace for extentsion-multilanguage
 	postingTool.multiLanguage.strings.ds = { };
