@@ -61,6 +61,11 @@ postingTool.setup = function () {
 		alert( "FAILURE! URL Paramter [lang=" + postingTool.settings.lang + "] is not supported!");
 	}
 	
+	//if custom title is given by URL Parameters then overwrite title
+	if( postingTool.settings.showTitle !== "") {
+		$(".mlTITLE").hide();
+	}
+	
 	postingTool.tables.hideAll();
 	
 	//query all tablecells (=tabs)

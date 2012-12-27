@@ -65,13 +65,18 @@ postingTool.settings = (function ( ) {
 	//values (XdY): 1d6 | 1d20 | ...
 	that.dice = "1d20";
 	
+	//showTitle : String
+	//if this is not "" (empty string) the title will not be shown
+	that.showTitle = "";
+	
 	//Method getURLParams( )
 	//
 	//get params from URL Paramters
 	//
 	//example for a URL with params:
 	//- language: german (lang=de)
-	//- dice: 1d6
+	//- dice: 1d6 (dice=1d6)
+	//- custom title: Create your post here (title="Create your post here")
 	//resulting url: "...\postingtool.html?lang=de&dice=1d6"
 	that.getURLParams = function ( ) {
 	
@@ -82,6 +87,9 @@ postingTool.settings = (function ( ) {
 		//get dice-setting from URL-parameter
 		that.diceStandard = postingTool.tools.gup("dice"); 
 		if( that.diceStandard === "") { that.diceStandard = "1d20"; };
+		
+		//get dice-setting from URL-parameter
+		that.showTitle = postingTool.tools.gup("title"); 
 		
 	}
 
