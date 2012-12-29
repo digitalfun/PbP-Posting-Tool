@@ -83,7 +83,8 @@ postingTool.extension.create( function() {
 	}
 	
 
-	//add title: DS symbol and extension title
+	// add title: DS symbol and extension title
+	//
 	var appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
 	//if chardata imported from dichb -> add info
 	if( postingTool.extension.ds.dichbChar !== 0) {
@@ -92,7 +93,7 @@ postingTool.extension.create( function() {
 	else {
 		appendTitle += " - DungeonSlayer<br>";
 	}
-	
+	appendTitle += "<br />";
 	$("#title").append( appendTitle);
 	
 	postingTool.extension.ds.extendRoll();
@@ -501,7 +502,7 @@ postingTool.extension.ds.extendTalk = function ( ) {
 	var $div = $("#tabcontent_talk");
 	
 	var $append;
-	$div.append( $('<hr /><br /><br /><strong>' +lang.language +'</strong>'));
+	$div.append( $('<br /><br /><strong>' +lang.language +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea><br />'));
 	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
 	//$div.append($append);
