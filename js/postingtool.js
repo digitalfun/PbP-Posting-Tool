@@ -102,27 +102,27 @@ postingTool.tables = {
 	onClick : function ( $tab) { 
 		var $content, sID;
 		
-		//remove selection from previously selected tab
-		$("td.tabs_tablecell.is_selected").removeClass("is_selected");
-
-		//hide the previous tab-content
+		//remove selection from previously selected tab & content
+		$(".is_selected").removeClass("is_selected");
+		$(".is_selected_content").removeClass("is_selected_content");
+		
+		//hide the previous tab
 		$content = $(".tab.is_visible");
 		$content.removeClass("is_visible");
 		$content.hide();
 		
 		
-		//highlight the new tab
+		//show the newly selected tab & content
 		$tab.addClass("is_selected");
-		
-		//show and focus new tab-content
 		sID = $tab.attr("id");
 		sID = "tabcontent" +sID.slice( sID.lastIndexOf( "_"));
 console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID);
 		$content = $("#" +sID);
-		$content.addClass("is_visible");
+		$content.addClass("is_visible is_selected_content");
 		$content.show()
 		
-		$content = $("#" +sID +" > textarea.textarea_entry");
+		//set focus on the first textarea within the content
+		$content = $("#" +sID +" > .textarea_entry:first");
 		$content.focus();
 	},
 	
@@ -132,13 +132,14 @@ console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)
 		$tabs.hide();
 	},
 	
-	
+	/*
 	show : function( ) {
 		
 	},
+	*/
 	
 	clearActiveContent : function() {
-		var $content = $(".tab.is_visible, textarea.textarea_entry");
+		var $content = $(".tab.is_visible, .textarea_entry");
 		$content.val("");
 		//$content.focus();
 	},

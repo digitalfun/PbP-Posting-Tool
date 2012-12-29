@@ -93,6 +93,11 @@ h2  {
 	color			 : white;
 }
 
+.is_selected_content legend{ 
+	background-color: lightgrey;
+  
+}
+
 .is_visible {
 }
 
@@ -107,24 +112,29 @@ h2  {
 	vertical-align	: bottom;
 }
 
+.footer {
+	font-size 		: 10px;
+	text-align		: center;
+}
+
 .standardtext {
 	font-family	: Arial;
 	font-size	: 12px;
 }
 
-.forumcode fieldset {
+#forumcode > fieldset {
 }
 
-.forumcode legend {
+#forumcode > legend {
 	font-family	: 'Averia Libre', cursive;
     /* background-color: grey; */
-    border: 1px solid black;
+    border: 2px solid black;
     padding-left: 0.25em;
     padding-right: 0.25em;
     font-size: 1.5em;
 }
 
-.generate legend {
+#generate > legend {
 	font-family	: 'Averia Libre', cursive;
     /* background-color: grey; */
     border: 1px solid black;
@@ -133,11 +143,15 @@ h2  {
     font-size: 1.2em;
 }
 
+.tab fieldset {
+	background-color: grey;
+}
+
 .tab legend {
 	font-family	: 'Averia Libre', cursive;
-    /* background-color: grey; */
-    border: 0px;
+    border: 1px dotted black;
     padding-left: 0.25em;
     padding-right: 0.25em;
     font-size: 1.2em;
 }
+

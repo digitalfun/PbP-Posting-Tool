@@ -111,7 +111,7 @@ LICENSE END
 <body>
 
 	<div id="header" class="header">
-	| Copyright (c) 2011/2012 Florian Markus Schmid (aka LordSmith aka DM Spry), Switzerland <img src="res/contact.gif" alt="contact_email"/> | licensed under <a href=http://www.opensource.org/licenses/mit-license.php>MIT License</a> |
+	| Copyright (c) 2011/2012 Florian Markus Schmid (aka LordSmith aka DM Spry), Switzerland | licensed under <a href=http://www.opensource.org/licenses/mit-license.php>MIT License</a> |
 	</div>
 
 	<div id="title">
@@ -189,16 +189,18 @@ LICENSE END
 		<fieldset id="tabcontent_roll" class="tab standardtext">
 			<legend class="mlROLL">mlROLL</legend>
 			<button class="mlINSERT" onclick="postingTool.code['roll'](); return true;">mlINSERT</button>
-			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(diceStandard); return true;">mlRESET</button>
+			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(postingTool.settings.dice); return true;">mlRESET</button>
 			<br>
 			<textarea id="text_roll_desc" class="textarea_entry" rows=1 cols=30></textarea>	
 			<br>
 			<textarea id="text_roll_times" class="textarea_roll" rows=1 cols=2>1</textarea> x 
 			<textarea id="text_roll_dice" class="textarea_roll" rows=1 cols=5>diceStandard</textarea>
 		</fieldset>
-	
 	</fieldset>
+	
 	<hr>
+	
+	<footer class="footer"> contact: <img src="res/contact.gif" alt="contact_email"/> </footer>
 	
 </body>
 

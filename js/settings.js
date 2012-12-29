@@ -81,12 +81,12 @@ postingTool.settings = (function ( ) {
 	that.getURLParams = function ( ) {
 	
 		//get language from URL-parameter (/default "en" (english))
-		that.lang = postingTool.tools.gup("lang");
-		if( that.lang === "") { that.lang = "en"; };
+		postingTool.settings.lang = postingTool.tools.gup("lang");
+		if( postingTool.settings.lang === "") { postingTool.settings.lang = "en"; };
 		
 		//get dice-setting from URL-parameter
-		that.diceStandard = postingTool.tools.gup("dice"); 
-		if( that.diceStandard === "") { that.diceStandard = "1d20"; };
+		postingTool.settings.dice = postingTool.tools.gup("dice"); 
+		if( postingTool.settings.dice === "") { postingTool.settings.dice = "1d20"; };
 		
 		//get dice-setting from URL-parameter
 		that.showTitle = postingTool.tools.gup("title"); 
