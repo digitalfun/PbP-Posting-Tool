@@ -9,8 +9,6 @@ Settings
 
 Note:
 -----------------------------
- VERSION HISTORY:
- 1.0: first release
  */
 
 /*
@@ -50,6 +48,8 @@ var postingTool = postingTool || { };
 //object postingTools.settings
 postingTool.settings = (function ( ) {
 	var that = { };
+	
+	that.version = "1.1";
 	
 	//lang : string
 	//The language setting.

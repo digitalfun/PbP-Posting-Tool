@@ -11,8 +11,6 @@ Multilanguage support.
 
 Note:
 -----------------------------
- VERSION HISTORY:
- 1.0: first release
  */
 
 /*

@@ -10,8 +10,6 @@ Creates Forum-Code for Play-By-Post Forum Roleplaying sessions.
 Note:
 uses jQuery
 -----------------------------
- VERSION HISTORY:
- 1.0: first release
  */
 
 /*
@@ -49,7 +47,10 @@ LICENSE END
 var postingTool = postingTool || { };
 
 postingTool.setup = function () {
-
+	
+	//add version to title
+	document.title += " v" + postingTool.settings.version;
+	
 	//get URL parameters
 	postingTool.settings.getURLParams( );		
 	
