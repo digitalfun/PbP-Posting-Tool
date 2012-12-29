@@ -66,6 +66,7 @@ postingTool.multiLanguage = (function ( ) {
 	//language-strings
 	that.strings = { 
 		title: 'strings.title',
+		forumtext: 'strings.forumtext',
 		reset: 'strings.reset',
 		select: 'strings.select',
 		talk: 'strings.talk',
@@ -86,38 +87,42 @@ postingTool.multiLanguage = (function ( ) {
 		
 		// MULTILANGUAGE: Deutsch	
 		that.de = function () {
+			var strings = postingTool.multiLanguage.strings;
 			postingTool.multiLanguage.strings.title='Posting Tool fürs Forenspiel (Play by Post)';
-			postingTool.multiLanguage.strings.reset='Zurücksetzen';
-			postingTool.multiLanguage.strings.select='Auswählen';
-			postingTool.multiLanguage.strings.talk='Sprechen';
-			postingTool.multiLanguage.strings.talk_title='Sprechen';
-			postingTool.multiLanguage.strings.think='Denken';
-			postingTool.multiLanguage.strings.think_title='Denken';
-			postingTool.multiLanguage.strings.ooc='OOC';
-			postingTool.multiLanguage.strings.ooc_title='Out Of Character';
-			postingTool.multiLanguage.strings.roll='Würfeln';
-			postingTool.multiLanguage.strings.roll_title='Würfeln';
-			postingTool.multiLanguage.strings.insert='Einfügen';
-			postingTool.multiLanguage.strings.character='Charakter';
-			postingTool.multiLanguage.strings.character_title='Name des Charakters';
+			strings.forumtext = 'Forum',
+			strings.reset='Zurücksetzen';
+			strings.select='Auswählen';
+			strings.talk='Sprechen';
+			strings.talk_title='Sprechen';
+			strings.think='Denken';
+			strings.think_title='Denken';
+			strings.ooc='OOC';
+			strings.ooc_title='Out Of Character';
+			strings.roll='Würfeln';
+			strings.roll_title='Würfeln';
+			strings.insert='Einfügen';
+			strings.character='Charakter';
+			strings.character_title='Name des Charakters';
 		};
 
 		// MULTILANGUAGE: English	
 		that.en = function () {
-			postingTool.multiLanguage.strings.title='Posting Tool for Forum-PbP (Play by Post)';
-			postingTool.multiLanguage.strings.reset='Reset';
-			postingTool.multiLanguage.strings.select='Select';
-			postingTool.multiLanguage.strings.talk='Talk';
-			postingTool.multiLanguage.strings.talk_title='Talk';
-			postingTool.multiLanguage.strings.think='Think';
-			postingTool.multiLanguage.strings.think_title='Think';
-			postingTool.multiLanguage.strings.ooc='OOC';
-			postingTool.multiLanguage.strings.ooc_title='Out Of Character';
-			postingTool.multiLanguage.strings.roll='Roll';
-			postingTool.multiLanguage.strings.roll_title='Roll';
-			postingTool.multiLanguage.strings.insert='Insert';
-			postingTool.multiLanguage.strings.character='Character';
-			postingTool.multiLanguage.strings.character_title='Name of character';
+			var strings = postingTool.multiLanguage.strings;
+			strings.title='Posting Tool for Forum-PbP (Play by Post)';
+			strings.forumtext = 'Forum',
+			strings.reset='Reset';
+			strings.select='Select';
+			strings.talk='Talk';
+			strings.talk_title='Talk';
+			strings.think='Think';
+			strings.think_title='Think';
+			strings.ooc='OOC';
+			strings.ooc_title='Out Of Character';
+			strings.roll='Roll';
+			strings.roll_title='Roll';
+			strings.insert='Insert';
+			strings.character='Character';
+			strings.character_title='Name of character';
 		};	
 		
 		return that;
@@ -125,6 +130,7 @@ postingTool.multiLanguage = (function ( ) {
 	
 	that.translate = function () {
 		$(".mlTITLE").text(that.strings.title);
+		$(".mlFORUMTEXT").text(that.strings.forumtext);
 		$(".mlINSERT").text(that.strings.insert);
 		$(".mlRESET").text(that.strings.reset);
 		$(".mlSELECT").text(that.strings.select);

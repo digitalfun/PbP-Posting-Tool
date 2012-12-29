@@ -116,15 +116,15 @@ LICENSE END
 		<h1 class="mlTITLE">mlTITLE</h1>
 	</div>
 	
-	<div id="forumcode" class="forumcode">
+	<fieldset id="forumcode" class="forumcode">
+		<legend id=forumtext_legend class="mlFORUMTEXT">mlForumText</legend>
+
 		<button class="mlSELECT" onclick="var $main = $('textarea#text_forumcode'); $main.select(); $main.focus(); return true;">mlSELECT</button>
 		<button class="mlRESET" onclick="var $main = $('textarea#text_forumcode'); $main.focus(); $main.val(''); return true;">mlRESET</button>
 		
 		<br>
 		<textarea id=text_forumcode class=textarea_code rows=5 cols=80></textarea>
-	</div>
-
-	<hr>	
+	</fieldset>
 	
 	<div id="tabs" class="tabs">
 		<table id="tabs_table" class="tabs_table" style="cursor:pointer">
