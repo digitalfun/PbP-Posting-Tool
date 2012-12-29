@@ -106,7 +106,7 @@ postingTool.tables = {
 		$("td.tabs_tablecell.is_selected").removeClass("is_selected");
 
 		//hide the previous tab-content
-		$content = $("div.tabdiv.is_visible");
+		$content = $(".tab.is_visible");
 		$content.removeClass("is_visible");
 		$content.hide();
 		
@@ -118,17 +118,17 @@ postingTool.tables = {
 		sID = $tab.attr("id");
 		sID = "tabcontent" +sID.slice( sID.lastIndexOf( "_"));
 console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID);
-		$content = $("div#" +sID);
+		$content = $("#" +sID);
 		$content.addClass("is_visible");
 		$content.show()
 		
-		$content = $("div#" +sID +" > textarea.textarea_entry");
+		$content = $("#" +sID +" > textarea.textarea_entry");
 		$content.focus();
 	},
 	
 	
 	hideAll : function( ) {
-		var $tabs = $("div.tabdiv");
+		var $tabs = $(".tab");
 		$tabs.hide();
 	},
 	
@@ -138,7 +138,7 @@ console.log( 'postingTool.tables.onClick( $tab): show tab-content of id: ' +sID)
 	},
 	
 	clearActiveContent : function() {
-		var $content = $("div.tabdiv.is_visible, textarea.textarea_entry");
+		var $content = $(".tab.is_visible, textarea.textarea_entry");
 		$content.val("");
 		//$content.focus();
 	},

@@ -117,7 +117,7 @@ LICENSE END
 	</div>
 	
 	<fieldset id="forumcode" class="forumcode">
-		<legend id=forumtext_legend class="mlFORUMTEXT">mlForumText</legend>
+		<legend id=forumtext_legend class="mlFORUMTEXT">mlFORUMTEXT</legend>
 
 		<button class="mlSELECT" onclick="var $main = $('textarea#text_forumcode'); $main.select(); $main.focus(); return true;">mlSELECT</button>
 		<button class="mlRESET" onclick="var $main = $('textarea#text_forumcode'); $main.focus(); $main.val(''); return true;">mlRESET</button>
@@ -126,64 +126,76 @@ LICENSE END
 		<textarea id=text_forumcode class=textarea_code rows=5 cols=80></textarea>
 	</fieldset>
 	
-	<div id="tabs" class="tabs">
-		<table id="tabs_table" class="tabs_table" style="cursor:pointer">
-			<tr>
-				<td class="tabs_tablecell mlCHAR mlCHAR_title" id="tabs_tablecell_char">mlCHAR</td>
-				<td class="tabs_tablecell mlTALK_title" id="tabs_tablecell_talk"><img src="res/talk.gif" alt="talk" width="35" height="20"/></td>
-				<td class="tabs_tablecell mlTHINK_title" id="tabs_tablecell_think"><img src="res/think.gif" alt="think" width="35" height="20"/></td>
-				<td class="tabs_tablecell mlROLL_title" id="tabs_tablecell_roll"><img src="res/roll.gif" alt="roll" width="35" height="20"/></td>
-				<td class="tabs_tablecell mlOOC mlOOC_title" id="tabs_tablecell_ooc">mlOOC</td>
-			</tr>
-		</table>
-	</div>
-
-	<!-- 
-	BENNENUNG DER ID:
-	BEISPIEL:
-		EINTRAG IN table "tabs_table"
-			<td ... id="tabs_tablecell_EXAMPLE">bla blal</td>
-	DANN MUSS DIE DIV FOLGENDERMASSEN HEISSEN:
-		<div id="tabcontent_EXAMPLE" class="tabdiv">
-	-->
-	<div id="tabcontent_char" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="postingTool.code['char'](); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
-		<br>
-		<textarea id="text_charactername" class="textarea_entry" rows=1 cols=80></textarea>	
-	</div>
-
-	<div id="tabcontent_talk" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="postingTool.code['speak']();; return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
-		<br>
-		<textarea id="text_speak" class="textarea_entry" rows=1 cols=80></textarea>	
-	</div>	
+	<br />
 	
-	<div id="tabcontent_think" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="postingTool.code['think'](); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
-		<br>
-		<textarea id="text_think" class="textarea_entry" rows=1 cols=80></textarea>	
-	</div>
-	
-	<div id="tabcontent_ooc" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="postingTool.code['ooc'](); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
-		<br>
-		<textarea id="text_ooc" class="textarea_entry" rows=1 cols=80></textarea>	
-	</div>
+	<fieldset id="generate" class="generate">
+		<legend id="generate_legend" class="mlGENERATE">mlGENERATE</legend>
+		<div id="tabs" class="tabs">
+			<table id="tabs_table" class="tabs_table" style="cursor:pointer">
+				<tr>
+					<td class="tabs_tablecell mlCHAR mlCHAR_title" id="tabs_tablecell_char">mlCHAR</td>
+					<td class="tabs_tablecell mlTALK_title" id="tabs_tablecell_talk"><img src="res/talk.gif" alt="talk" width="35" height="20"/></td>
+					<td class="tabs_tablecell mlTHINK_title" id="tabs_tablecell_think"><img src="res/think.gif" alt="think" width="35" height="20"/></td>
+					<td class="tabs_tablecell mlROLL_title" id="tabs_tablecell_roll"><img src="res/roll.gif" alt="roll" width="35" height="20"/></td>
+					<td class="tabs_tablecell mlOOC mlOOC_title" id="tabs_tablecell_ooc">mlOOC</td>
+				</tr>
+			</table>
+		</div>
 
-	<div id="tabcontent_roll" class="tabdiv standardtext">
-		<button class="mlINSERT" onclick="postingTool.code['roll'](); return true;">mlINSERT</button>
-		<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(diceStandard); return true;">mlRESET</button>
-		<br>
-		<textarea id="text_roll_desc" class="textarea_entry" rows=1 cols=30></textarea>	
-		<br>
-		<textarea id="text_roll_times" class="textarea_roll" rows=1 cols=2>1</textarea> x 
-		<textarea id="text_roll_dice" class="textarea_roll" rows=1 cols=5>diceStandard</textarea>
-	</div>
+		<br />
+		
+		<!-- 
+		BENNENUNG DER ID:
+		BEISPIEL:
+			EINTRAG IN table "tabs_table"
+				<td ... id="tabs_tablecell_EXAMPLE">bla blal</td>
+		DANN MUSS FIELDSET FOLGENDERMASSEN HEISSEN:
+			<div id="tabcontent_EXAMPLE" class="tab">
+		-->
+		<fieldset id="tabcontent_char" class="tab standardtext">
+			<legend class="mlCHAR">mlCHAR</legend>
+			<button class="mlINSERT" onclick="postingTool.code['char'](); return true;">mlINSERT</button>
+			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
+			<br>
+			<textarea id="text_charactername" class="textarea_entry" rows=1 cols=80></textarea>	
+		</fieldset>
+
+		<fieldset id="tabcontent_talk" class="tab standardtext">
+			<legend class="mlTALK">mlTALK</legend>
+			<button class="mlINSERT" onclick="postingTool.code['speak']();; return true;">mlINSERT</button>
+			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
+			<br>
+			<textarea id="text_speak" class="textarea_entry" rows=1 cols=80></textarea>	
+		</fieldset>	
+		
+		<fieldset id="tabcontent_think" class="tab standardtext">
+			<legend class="mlTHINK">mlTHINK</legend>
+			<button class="mlINSERT" onclick="postingTool.code['think'](); return true;">mlINSERT</button>
+			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
+			<br>
+			<textarea id="text_think" class="textarea_entry" rows=1 cols=80></textarea>	
+		</fieldset>
+		
+		<fieldset id="tabcontent_ooc" class="tab standardtext">
+			<legend class="mlOOC">mlOOC</legend>
+			<button class="mlINSERT" onclick="postingTool.code['ooc'](); return true;">mlINSERT</button>
+			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); return true;">mlRESET</button>
+			<br>
+			<textarea id="text_ooc" class="textarea_entry" rows=1 cols=80></textarea>	
+		</fieldset>
+
+		<fieldset id="tabcontent_roll" class="tab standardtext">
+			<legend class="mlROLL">mlROLL</legend>
+			<button class="mlINSERT" onclick="postingTool.code['roll'](); return true;">mlINSERT</button>
+			<button class="mlRESET" onclick="postingTool.tables.clearActiveContent(); $('textarea#text_roll_times').val('1'); $('textarea#text_roll_dice').val(diceStandard); return true;">mlRESET</button>
+			<br>
+			<textarea id="text_roll_desc" class="textarea_entry" rows=1 cols=30></textarea>	
+			<br>
+			<textarea id="text_roll_times" class="textarea_roll" rows=1 cols=2>1</textarea> x 
+			<textarea id="text_roll_dice" class="textarea_roll" rows=1 cols=5>diceStandard</textarea>
+		</fieldset>
 	
+	</fieldset>
 	<hr>
 	
 </body>

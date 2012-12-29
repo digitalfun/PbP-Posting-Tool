@@ -47,79 +47,97 @@ LICENSE END
 */
 
 
-h1 
-{
+h1  {
 	font-size	: 25px;
 	font-family	: 'Averia Libre', cursive;
 
 }
 
-h2 
-{	
+h2  {	
 	font-size	: 18px;
 	font-family	: 'Averia Libre', cursive;
 }
 
-.textarea_code
-{
+.textarea_code {
 	/* font-family	: 'Averia Libre', cursive;
 	*/
 	font-family	: Arial;
 	font-size	: 12px;
 }
 
-.textarea_entry
-{
+.textarea_entry {
 	font-family	: Arial;
 	font-size	: 14px;
 }
 
-.tabs_table
-{
+.tabs_table {
 
 	font-family	: 'Averia Libre', cursive;
 	font-size	: 14px;
 }
 
-.tabs_tablecell
-{ 
+.tabs_tablecell { 
 	border			: 1px solid black;
 	text-align		: center;
 	vertical-align	: bottom;
 	padding			: 5px;
 }
 
-.tabs_table tr
-{ 
+.tabs_table tr { 
 	border			: 1px solid black;
 	padding			: 20px;
 }
 
-.is_selected
-{
+.is_selected {
 	background-color : blue;
 	color			 : white;
 }
 
-.is_visible
-{
+.is_visible {
 }
 
-.css_button
-{
+.css_button {
 	font-family	: 'Averia Libre', cursive;
 }
 
-.header
-{
+.header {
 	font-family		: "Arial";
 	font-size 		: 10px;
 	text-align		: center;
 	vertical-align	: bottom;
 }
 
-.standardtext
-{
+.standardtext {
 	font-family	: Arial;
 	font-size	: 12px;
+}
+
+.forumcode fieldset {
+}
+
+.forumcode legend {
+	font-family	: 'Averia Libre', cursive;
+    /* background-color: grey; */
+    border: 1px solid black;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    font-size: 1.5em;
+}
+
+.generate legend {
+	font-family	: 'Averia Libre', cursive;
+    /* background-color: grey; */
+    border: 1px solid black;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    font-size: 1.2em;
+}
+
+.tab legend {
+	font-family	: 'Averia Libre', cursive;
+    /* background-color: grey; */
+    border: 0px;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    font-size: 1.2em;
 }

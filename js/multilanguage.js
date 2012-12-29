@@ -67,6 +67,7 @@ postingTool.multiLanguage = (function ( ) {
 	that.strings = { 
 		title: 'strings.title',
 		forumtext: 'strings.forumtext',
+		generate: 'strings.generate',
 		reset: 'strings.reset',
 		select: 'strings.select',
 		talk: 'strings.talk',
@@ -89,7 +90,8 @@ postingTool.multiLanguage = (function ( ) {
 		that.de = function () {
 			var strings = postingTool.multiLanguage.strings;
 			postingTool.multiLanguage.strings.title='Posting Tool fürs Forenspiel (Play by Post)';
-			strings.forumtext = 'Forumstext',
+			strings.forumtext = 'Forumstext';
+			strings.generate = 'Text erstellen';
 			strings.reset='Zurücksetzen';
 			strings.select='Auswählen';
 			strings.talk='Sprechen';
@@ -109,7 +111,8 @@ postingTool.multiLanguage = (function ( ) {
 		that.en = function () {
 			var strings = postingTool.multiLanguage.strings;
 			strings.title='Posting Tool for Forum-PbP (Play by Post)';
-			strings.forumtext = 'Forum',
+			strings.forumtext = 'Forum';
+			strings.generate = 'Generate Text';
 			strings.reset='Reset';
 			strings.select='Select';
 			strings.talk='Talk';
@@ -131,10 +134,14 @@ postingTool.multiLanguage = (function ( ) {
 	that.translate = function () {
 		$(".mlTITLE").text(that.strings.title);
 		$(".mlFORUMTEXT").text(that.strings.forumtext);
+		$(".mlGENERATE").text(that.strings.generate);
 		$(".mlINSERT").text(that.strings.insert);
 		$(".mlRESET").text(that.strings.reset);
 		$(".mlSELECT").text(that.strings.select);
 		$(".mlCHAR").text(that.strings.character);
+		$(".mlTALK").text(that.strings.talk);
+		$(".mlTHINK").text(that.strings.think);
+		$(".mlROLL").text(that.strings.roll);
 		$(".mlOOC").text(that.strings.ooc);
 		
 		$(".mlCHAR_title").attr("title", that.strings.character_title);
