@@ -100,7 +100,7 @@ postingTool.multiLanguage = (function ( ) {
 			strings.ooc_title='Out Of Character';
 			strings.roll='Würfeln';
 			strings.roll_title='Würfeln';
-			strings.insert='Einfügen';
+			strings.insert='zum Forumstext hinzufügen';
 			strings.character='Charakter';
 			strings.character_title='Name des Charakters';
 		};
@@ -121,7 +121,7 @@ postingTool.multiLanguage = (function ( ) {
 			strings.ooc_title='Out Of Character';
 			strings.roll='Roll';
 			strings.roll_title='Roll';
-			strings.insert='Insert';
+			strings.insert='Add to forumtext';
 			strings.character='Character';
 			strings.character_title='Name of character';
 		};	
