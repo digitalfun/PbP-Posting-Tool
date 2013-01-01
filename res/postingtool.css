@@ -122,10 +122,11 @@ h2  {
 	font-size	: 12px;
 }
 
-#forumcode > fieldset {
+.forumcode {
+	border: 2px solid black;
 }
 
-#forumcode > legend {
+.forumcode > legend {
 	font-family	: 'Averia Libre', cursive;
     /* background-color: grey; */
     border: 2px solid black;
@@ -134,7 +135,11 @@ h2  {
     font-size: 1.5em;
 }
 
-#generate > legend {
+.generate {
+	border: 1px solid black;
+}
+
+.generate > legend {
 	font-family	: 'Averia Libre', cursive;
     /* background-color: grey; */
     border: 1px solid black;
