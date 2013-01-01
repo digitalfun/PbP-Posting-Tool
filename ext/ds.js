@@ -251,6 +251,7 @@ postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	lang.ctn = "strings.ds.ctn"; //short: Check Target Number / Probenwert (PW)
 	lang.ctn_desc = "strings.ds.ctn_desc"; //Check Target Number / Probenwert (PW)
 	lang.language = "string.ds.language"; 
+	lang.spoiler = "string.ds.spoiler";
 	
 		//Attributes
 	lang.BOD = "strings.ds.BOD"; //Body
@@ -503,7 +504,8 @@ postingTool.extension.ds.extendTalk = function ( ) {
 	
 	var $append;
 	$div.append( $('<br /><br /><strong>' +lang.language +'</strong>'));
-	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea><br />'));
+	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea>'));
+	$div.append( $('<br /><strong>' +lang.spoiler +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
 	//$div.append($append);
 
@@ -527,6 +529,7 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	lang.ctn = "PW";
 	lang.ctn_desc = "Probenwert";
 	lang.language = "Sprache"; 
+	lang.spoiler = "Spoiler";
 	
 		//Attributes
 	lang.BOD = "KÖR"; //Body
@@ -625,7 +628,8 @@ postingTool.extension.ds.multiLanguage.en = function ( ) {
 	lang.ctn = "CTN";
 	lang.ctn_desc = "Check Target Number";
 	lang.language = "Language"; 
-
+	lang.spoiler = "Spoiler";
+	
 		//Attributes
 	lang.BOD = "BOD"; //Body
 	lang.MOB = "MOB"; //Mobility
