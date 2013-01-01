@@ -489,7 +489,8 @@ postingTool.extension.ds.extendRoll = function ( ) {
 	$append.append( createOption(lang.knowledge_check, lang.knowledge_desc));
 	$append.append( createOption(lang.changeSpell_check, lang.changeSpell_desc));
 	$append.append("</select>");
-	
+	$append.width("8em");
+	$append.css("font-size", "1em");
 	//append content to the "Roll dice"-div
 	$rolldiv.append( $append);
 
