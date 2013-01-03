@@ -46,6 +46,70 @@ LICENSE END
 //namespace postingTool
 var postingTool = postingTool || { };
 
+//object postingTools.settings
+postingTool.settings = (function ( ) {
+	var that = { };
+	
+	that.version = "1.1";
+	
+	//lang : string
+	//The language setting.
+	//
+	//list of available languages
+	//- de : German
+	//- en : English
+	that.lang = "en";
+	
+	//dice : string
+	//the standard dice for rolls
+	//
+	//values (XdY): 1d6 | 1d20 | ...
+	that.dice = "1d20";
+	
+	//showTitle : String
+	//if this is not "" (empty string) the title will not be shown
+	that.showTitle = "";
+	
+	//Method getURLParams( )
+	//
+	//get params from URL Paramters
+	//
+	//example for a URL with params:
+	//- language: german (lang=de)
+	//- dice: 1d6 (dice=1d6)
+	//- custom title: Create your post here (title="Create your post here")
+	//resulting url: "...\postingtool.html?lang=de&dice=1d6"
+	that.getURLParams = function ( ) {
+	
+		//get language from URL-parameter (/default "en" (english))
+		postingTool.settings.lang = postingTool.tools.gup("lang");
+		if( postingTool.settings.lang === "") { postingTool.settings.lang = "en"; };
+		
+		//get dice-setting from URL-parameter
+		postingTool.settings.dice = postingTool.tools.gup("dice"); 
+		if( postingTool.settings.dice === "") { postingTool.settings.dice = "1d20"; };
+		
+		//get dice-setting from URL-parameter
+		that.showTitle = postingTool.tools.gup("title"); 
+		
+	}
+
+	/*
+		settings for BBCode generation
+	*/
+	
+	//userTextTag : this tag will be replaced by the text of the user
+	that.userTextTag	= "CODECOMESHERE";
+	
+	that.codeChar	= "[color=blue][size=12pt][b]" +that.userTextTag+ ":[/b][/size][/color]\n";
+	that.codeSpeak	= "[color=blue]>>" +that.userTextTag+ "<<[/color]\n";
+	that.codeThink	= "[i]>>" +that.userTextTag+ "<<[/i]\n";
+	that.codeOOC	= "[color=red][size=8pt][i]" +that.userTextTag+ "[/i][/size][/color]\n";
+	
+	return that;
+	
+}());
+
 postingTool.setup = function () {
 	
 	//add version to title
