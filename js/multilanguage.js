@@ -87,7 +87,7 @@ postingTool.multiLanguage = (function ( ) {
 		// MULTILANGUAGE: Deutsch	
 		that.de = function () {
 			var strings = postingTool.multiLanguage.strings;
-			postingTool.multiLanguage.strings.title='Posting Tool fürs Forenspiel (Play by Post)';
+			strings.title='Posting Tool fürs Forenspiel (Play by Post)';
 			strings.forumtext = 'Forumstext';
 			strings.generate = 'Text erstellen';
 			strings.reset='Zurücksetzen';
