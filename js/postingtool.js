@@ -50,7 +50,7 @@ var postingTool = postingTool || { };
 postingTool.settings = (function ( ) {
 	var that = { };
 	
-	that.version = "1.1";
+	that.version = "1.1 (beta)";
 	
 	//lang : string
 	//The language setting.
