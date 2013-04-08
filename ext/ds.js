@@ -1,6 +1,9 @@
 /*md# DS Extension
-**Version 1.1**
+**Version 1.2**
 	
+##v1.2
+- when using imported data from dichb, replace the DS-Icon (":ds:") in the character-code with [img]-tag that will show the portrait of the char.
+
 ##v1.1
 - support multilanguage
 - english translation
@@ -58,8 +61,7 @@ postingTool.extension.create( function() {
 	 *  This will be overwritten by either the DS-icon (forumcode ":ds:")
 	 *  or by the portrait-image.
 	*/
-
-	postingTool.settings.codeChar = postingTool.ds.extension.settings.DSIconTag + " [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
+	postingTool.settings.codeChar = postingTool.extension.ds.settings.DS_ICONTAG + " [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
 	//change the document-title
 	document.title += " - DS v" +postingTool.extension.ds.version; 
@@ -110,14 +112,22 @@ postingTool.extension.create( function() {
 postingTool.code["char"] = function () {
 console.log("ds extension: code.char()");	
 
+	var sCode = postingTool.settings.codeChar;
+	var data = postingTool.extension.ds.dichbChar;
+	
 	var sChar = $("#text_charactername").val();
-	if ( sChar === "") {
-		if ( postingTool.extension.ds.dichbChar != 0) {
-			sChar = postingTool.extension.ds.dichbChar.name;
+	if ( sChar === "") { //user input empty? -> use imported charname
+		if ( data != 0) { //if imported data exists
+			sChar = data.name;
+			//TODO: get URL for portrait
+			//insert portrait (or DS-icon)
+			sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, "[img width=30]" +data.portraitURL +"[/img]");
 		}
 	}
-	var sCode = postingTool.settings.codeChar;
+	
 	sCode = sCode.replace( postingTool.settings.userTextTag, sChar);
+	sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, ":ds: ");
+	
 	postingTool.code['append']( sCode);
 return sCode;
 }
@@ -241,7 +251,8 @@ postingTool.extension.ds.settings = (function ( ) {
 	//DS_LANGTEXT will be replaced by the text in the foreign language (to be hidden)
 	that.codeSpeakHidden = "[spoiler][color=blue]>>DS_LANGTEXT<<[/color][/spoiler]\n";
 	
-	that.DSIconTag = "[PST-DS-ICON]";
+	//DS_ICONTAG will be replaced by the DS-Icon or if dichb-export data is available, the characterportrait
+	that.DS_ICONTAG = "PST-DS-ICON";
 	
 	return that;
 }());
