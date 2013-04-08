@@ -52,14 +52,19 @@ postingTool.extension.create( function() {
 	postingTool.extension.ds.setupMultiLanguage( );
 	var lang = postingTool.multiLanguage.strings.ds;
 	
-	//add a DS-icon before the charname
-	postingTool.settings.codeChar = ":ds: [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
+	/* change the forum code for Charactername ("codeChar")
+	 *
+	 * -adds a placeholder before the charname
+	 *  This will be overwritten by either the DS-icon (forumcode ":ds:")
+	 *  or by the portrait-image.
+	*/
+
+	postingTool.settings.codeChar = postingTool.ds.extension.settings.DSIconTag + " [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
 	
+	//change the document-title
 	document.title += " - DS v" +postingTool.extension.ds.version; 
 	
-	/*
-	get cookie information (from diChB export)
-	*/
+	/* get data from diChB-export (cookie) */
 	var dichbImport = postingTool.extension.ds.tools.getCookie("dichb_export");
 	
 	if( dichbImport !== "") {
@@ -235,6 +240,8 @@ postingTool.extension.ds.settings = (function ( ) {
 	
 	//DS_LANGTEXT will be replaced by the text in the foreign language (to be hidden)
 	that.codeSpeakHidden = "[spoiler][color=blue]>>DS_LANGTEXT<<[/color][/spoiler]\n";
+	
+	that.DSIconTag = "[PST-DS-ICON]";
 	
 	return that;
 }());
