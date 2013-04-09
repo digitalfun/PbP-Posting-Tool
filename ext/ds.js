@@ -239,7 +239,7 @@ postingTool.code["speak"] = function ( ) {
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
 
-postingTool.extension.ds.version = "1.1";
+postingTool.extension.ds.version = "1.2";
 postingTool.extension.ds.dichbChar = 0;
 
 postingTool.extension.ds.settings = (function ( ) {
