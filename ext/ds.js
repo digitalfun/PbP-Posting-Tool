@@ -1,15 +1,18 @@
 /*md# DS Extension
-**Version 1.2**
+## Version 1.3
+
+### v1.3
+- when using imported data, always replace the DS-Icon with the  [img]-tag of the portrait, not only when char-input field is left empty.
 	
-##v1.2
+### v1.2
 - when using imported data from dichb, replace the DS-Icon (":ds:") in the character-code with [img]-tag that will show the portrait of the char.
 
-##v1.1
+### v1.1
 - support multilanguage
 - english translation
 - german translation
 
-##v1.0: initial release
+### v1.0: initial release
 	
 */
 
@@ -115,18 +118,22 @@ console.log("ds extension: code.char()");
 	var sCode = postingTool.settings.codeChar;
 	var data = postingTool.extension.ds.dichbChar;
 	
-	var sChar = $("#text_charactername").val();
-	if ( sChar === "") { //user input empty? -> use imported charname
-		if ( data != 0) { //if imported data exists
+	var sChar = $("#text_charactername").val(); //fetch user input for character name
+	
+	if( data !== 0) { //if imported data exists
+		if ( sChar === "") { //user input empty? -> use imported charname
 			sChar = data.name;
-			//TODO: get URL for portrait
-			//insert portrait (or DS-icon)
-			sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, "[img width=30]" +data.portraitURL +"[/img]");
 		}
+		//use imported char-portrait-url as icon
+		sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, "[img width=30]" +data.portraitURL +"[/img]");
+	}
+	else { //no imported data exists
+		//use DS-icon
+		sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, ":ds: ");
 	}
 	
+	//insert char name
 	sCode = sCode.replace( postingTool.settings.userTextTag, sChar);
-	sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, ":ds: ");
 	
 	postingTool.code['append']( sCode);
 return sCode;
@@ -239,7 +246,7 @@ postingTool.code["speak"] = function ( ) {
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
 
-postingTool.extension.ds.version = "1.2";
+postingTool.extension.ds.version = "1.3";
 postingTool.extension.ds.dichbChar = 0;
 
 postingTool.extension.ds.settings = (function ( ) {
