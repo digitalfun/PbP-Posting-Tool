@@ -1,0 +1,31 @@
+CHANGELOG DS Extension for PbP-Postingtool
+------------------------
+CHANGELOG FORMAT:
+vX.Y (YYYY-MM-DD) Short Description
+ - single line description
+ + change 1 description
+   - detailed description
+     multiline
+ + change 2 description
+   - detailed description
+------------------------
+
+v1.3 (2013-04-09) 
+- when using imported data, 
+  always replace the DS-Icon with the  [img]-tag of the portrait, 
+  not only when char-input field is left empty.
+ 
+v1.2 (2013-04-08) 
+ - when using imported data from dichb, 
+   replace the DS-Icon (":ds:") in the character-code with [img]-tag (displays the portrait of the char).
+
+v1.1 (YYYY-MM-DD unknown) 
+ - support multilanguage
+ - english translation
+ - german translation
+
+v1.0 (YYYY-MM-DD unknown) Initial Release
+
+
+
+	
