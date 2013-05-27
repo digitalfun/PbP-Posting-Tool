@@ -762,11 +762,11 @@ from http://www.w3schools.com/js/js_cookies.asp
 
 Get a cookie-value and returns its value.
 Returns an empty string if no cookie with that name was found.
-
-**example**
-"postingtool_ds.html?lang=en"
 */
 postingTool.extension.ds.tools.getCookie = function( c_name) {
+	var c_start;
+	var c_end;
+
 	if ( document.cookie.length >0) {
 		c_start=document.cookie.indexOf(c_name + "=");
 		if (c_start!=-1) {
@@ -781,4 +781,12 @@ postingTool.extension.ds.tools.getCookie = function( c_name) {
 	}
   
 return "";
+};
+
+/*md## removeCookie( inName ) : undefined
+
+"Remove" a cookie.
+*/
+postingTool.extension.ds.tools.removeCookie = function( c_name) {
+	document.cookie = c_name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 };
