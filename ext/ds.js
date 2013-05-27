@@ -525,15 +525,12 @@ postingTool.extension.ds.extendRoll = function ( ) {
 //extend talk-div
 postingTool.extension.ds.extendTalk = function ( ) {
 	var lang = postingTool.multiLanguage.strings.ds;
-//$("#text_speak")	
 	var $div = $("#tabcontent_talk");
 	
-	var $append;
 	$div.append( $('<br /><br /><strong>' +lang.language +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea>'));
 	$div.append( $('<br /><strong>' +lang.spoiler +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
-	//$div.append($append);
 
 }
 
