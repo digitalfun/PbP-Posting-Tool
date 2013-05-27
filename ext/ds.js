@@ -1,5 +1,8 @@
 /*md# DS Extension
-## Version 1.3
+## Version 1.4
+
+### v1.4
+- added button "remove cookie" in "speak"-tab.
 
 ### v1.3
 - when using imported data, always replace the DS-Icon with the  [img]-tag of the portrait, not only when char-input field is left empty.
@@ -50,13 +53,16 @@ LICENSE END
 /*md# Namespace postingTool #################*/
 var postingTool = postingTool || { };
 
-
 //extend 
 postingTool.extension.create( function( ) {
 	console.log("ds extension: extension created");
 
 	postingTool.extension.ds.setupMultiLanguage( );
+	
 	var lang = postingTool.multiLanguage.strings.ds;
+	var $button;
+	var dichbImport;
+	var appendTitle;
 	
 	/* change the forum code for Charactername ("codeChar")
 	 *
@@ -70,7 +76,7 @@ postingTool.extension.create( function( ) {
 	document.title += " - DS v" +postingTool.extension.ds.version; 
 	
 	/* get data from diChB-export (cookie) */
-	var dichbImport = postingTool.extension.ds.tools.getCookie("dichb_export");
+	dichbImport = postingTool.extension.ds.tools.getCookie("dichb_export");
 	
 	if( dichbImport !== "") {
 		try {
@@ -95,19 +101,37 @@ postingTool.extension.create( function( ) {
 
 	// add title: DS symbol and extension title
 	//
-	var appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
-	//if chardata imported from dichb -> add info
+	appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
+	
+	//if chardata imported from dichb -> add info and button for removal
 	if( postingTool.extension.ds.dichbChar !== 0) {
 		appendTitle += " - <b>" +  postingTool.extension.ds.dichbChar.name +"</b><br>"; 
+	
+		//create button
+		$button = $('<input>')
+			.attr('id', 'btnRemoveDichbCookie')
+			.attr('type', 'button')
+			.attr('value', postingTool.multiLanguage.strings.ds.removeCookie)
+			.css('font-size', '50%');
+	
+		//attach on-click event
+		$button.click(function () {
+			postingTool.extension.ds.tools.removeCookie( "dichb_export");
+			alert( postingTool.multiLanguage.strings.ds.msgCookieRemoved );
+		});
+	
+		//insert button after title
+		$button.after('<hr />');
+		$("#title").after($button);
 	}
 	else {
 		appendTitle += " - DungeonSlayer<br>";
 	}
 	appendTitle += "<br />";
 	$("#title").append( appendTitle);
-	
-	postingTool.extension.ds.extendRoll();
-	postingTool.extension.ds.extendTalk();
+
+	postingTool.extension.ds.extendRoll( );
+	postingTool.extension.ds.extendTalk( );
 
 });
 
@@ -218,7 +242,7 @@ console.log("ds extension: code.roll()");
 return sCode;
 };
 
-
+//overwrite code.speak
 postingTool.code["speak"] = function ( ) {
 	var sInsert = $('#text_speak').val();
 	var sLang = $('#text_dsLanguage').val();
@@ -247,7 +271,7 @@ postingTool.code["speak"] = function ( ) {
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
 
-postingTool.extension.ds.version = "1.3";
+postingTool.extension.ds.version = "1.4";
 postingTool.extension.ds.dichbChar = 0;
 
 postingTool.extension.ds.settings = (function ( ) {
@@ -465,7 +489,7 @@ console.log("selectProbe_onChange()")
 return (true);
 };
 
-//extend roll-div
+//extend content: roll
 postingTool.extension.ds.extendRoll = function ( ) {
 	var lang = postingTool.multiLanguage.strings.ds;
 
@@ -523,7 +547,7 @@ postingTool.extension.ds.extendRoll = function ( ) {
 	$rolldiv.append( $('<br /><strong>' +lang.ctn_desc +'</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));	
 };
 
-//extend talk-div
+//extend content: talk
 postingTool.extension.ds.extendTalk = function ( ) {
 	var lang = postingTool.multiLanguage.strings.ds;
 	var $div = $("#tabcontent_talk");
@@ -532,7 +556,6 @@ postingTool.extension.ds.extendTalk = function ( ) {
 	$div.append( $('<br /><textarea id="text_dsLanguage" class="textarea_entry" rows=1 cols=20></textarea>'));
 	$div.append( $('<br /><strong>' +lang.spoiler +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
-
 };
 
 /*md# NAMESPACE postingTool.extension.ds.multiLanguage #####################*/
@@ -545,6 +568,9 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	
 	//use namespace 
 	var lang = postingTool.multiLanguage.strings.ds;
+	
+	lang.msgCookieRemoved = "dichb-Cookie gelöscht!";
+	lang.removeCookie = "dichb-Cookie löschen";
 	
 	//
 	//translate multilanguage-strings
@@ -645,6 +671,9 @@ postingTool.extension.ds.multiLanguage.en = function ( ) {
 	//use namespace 
 	var lang = postingTool.multiLanguage.strings.ds;
 	
+	lang.msgCookieRemoved = "dichb-cookie removed!";
+	lang.removeCookie = "remove dichb-cookie";
+	
 	//
 	//translate multilanguage-strings
 	//	
@@ -741,7 +770,7 @@ postingTool.extension.ds.multiLanguage.en = function ( ) {
 postingTool.extension.ds.tools = { };
 
 /*md## createOption(inValue, inText) : jQuery-obj
-Create an option for a HTML selection-list (SELECT-tag) with the value of **inValue** and displaying the text **inText**.
+Create an OPTION-tag for a HTML selection-list (SELECT-tag) with the value of **inValue** and displaying the text **inText**.
 
 __inValue__ : string
 The Value of the option.
@@ -760,7 +789,7 @@ postingTool.extension.ds.tools.createOption = function( inValue, inText) {
 /*md## getCookie( inName ) : jQuery-obj
 from http://www.w3schools.com/js/js_cookies.asp
 
-Get a cookie-value and returns its value.
+Get a cookie and returns its value.
 Returns an empty string if no cookie with that name was found.
 */
 postingTool.extension.ds.tools.getCookie = function( c_name) {
@@ -788,5 +817,6 @@ return "";
 "Remove" a cookie.
 */
 postingTool.extension.ds.tools.removeCookie = function( c_name) {
-	document.cookie = c_name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	//document.cookie = c_name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+	document.cookie = c_name + '=;';
 };
