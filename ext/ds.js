@@ -52,7 +52,7 @@ var postingTool = postingTool || { };
 
 
 //extend 
-postingTool.extension.create( function() {
+postingTool.extension.create( function( ) {
 	console.log("ds extension: extension created");
 
 	postingTool.extension.ds.setupMultiLanguage( );
@@ -136,8 +136,9 @@ console.log("ds extension: code.char()");
 	sCode = sCode.replace( postingTool.settings.userTextTag, sChar);
 	
 	postingTool.code['append']( sCode);
-return sCode;
-}
+	
+	return sCode;
+};
 
 //overwrite code.roll
 postingTool.code["roll"] = function ( ) {
@@ -215,7 +216,7 @@ console.log("ds extension: code.roll()");
 	
 	postingTool.code['append']( sCode);
 return sCode;
-}
+};
 
 
 postingTool.code["speak"] = function ( ) {
@@ -241,7 +242,7 @@ postingTool.code["speak"] = function ( ) {
 	sCode = sCode.replace( postingTool.settings.userTextTag, sInsert);
 	postingTool.code['append']( sCode);
 	return sCode;
-}
+};
 
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
@@ -262,7 +263,7 @@ postingTool.extension.ds.settings = (function ( ) {
 	that.DS_ICONTAG = "PST-DS-ICON";
 	
 	return that;
-}());
+}( ));
 
 postingTool.extension.ds.setupMultiLanguage = function ( ) {
 	//create new namespace for extentsion-multilanguage
@@ -462,7 +463,7 @@ console.log("selectProbe_onChange()")
 	$( "#text_RollProperties").val( sText);
 	
 return (true);
-}
+};
 
 //extend roll-div
 postingTool.extension.ds.extendRoll = function ( ) {
@@ -520,7 +521,7 @@ postingTool.extension.ds.extendRoll = function ( ) {
 	$rolldiv.append( $append);
 
 	$rolldiv.append( $('<br /><strong>' +lang.ctn_desc +'</strong><br />	<TEXTAREA id="text_RollProperties" class=textarea_entry rows=2 cols=20></TEXTAREA>'));	
-}
+};
 
 //extend talk-div
 postingTool.extension.ds.extendTalk = function ( ) {
@@ -532,7 +533,7 @@ postingTool.extension.ds.extendTalk = function ( ) {
 	$div.append( $('<br /><strong>' +lang.spoiler +'</strong>'));
 	$div.append( $('<br /><textarea id="text_dsLanguageTalk" class="textarea_entry" rows=1 cols=80></textarea><br />'));	
 
-}
+};
 
 /*md# NAMESPACE postingTool.extension.ds.multiLanguage #####################*/
 postingTool.extension.ds.multiLanguage = { };
@@ -754,8 +755,7 @@ Representing a HTML **OPTION**-tag.
 postingTool.extension.ds.tools.createOption = function( inValue, inText) {
 	var $option = $("<option value='" +inValue +"'>" +inText +"</option>");
 	return $option;
-}
-
+};
 
 /*md## getCookie( inName ) : jQuery-obj
 from http://www.w3schools.com/js/js_cookies.asp
@@ -781,4 +781,4 @@ postingTool.extension.ds.tools.getCookie = function( c_name) {
 	}
   
 return "";
-}
+};
