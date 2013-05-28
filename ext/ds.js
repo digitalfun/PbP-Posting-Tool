@@ -1,5 +1,8 @@
 /*md# DS Extension
-## Version 1.4
+## Version 1.5
+
+### v1.5
+- changed button "remove cookie" (shows a "X" now) and reflect the change (the imported cookie-data will be deleted and the button removed).
 
 ### v1.4
 - added button "remove cookie" in "speak"-tab.
@@ -60,14 +63,17 @@ postingTool.extension.create( function( ) {
 	postingTool.extension.ds.setupMultiLanguage( );
 	
 	var lang = postingTool.multiLanguage.strings.ds;
+	var $title;
 	var $button;
+	var $charName;
 	var dichbImport;
-	var appendTitle;
+	
+	var appendTitle; //replace with jquery
 	
 	/* change the forum code for Charactername ("codeChar")
 	 *
 	 * -adds a placeholder before the charname
-	 *  This will be overwritten by either the DS-icon (forumcode ":ds:")
+	 *  This will be overwritten by either the DS-icon (forum-tag ":ds:")
 	 *  or by the portrait-image.
 	*/
 	postingTool.settings.codeChar = postingTool.extension.ds.settings.DS_ICONTAG + " [color=blue][size=12pt][b]" +postingTool.settings.userTextTag+ ":[/b][/size][/color]\n";
@@ -101,38 +107,43 @@ postingTool.extension.create( function( ) {
 
 	// add title: DS symbol and extension title
 	//
-	appendTitle = "<b><img src='http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif' alt='DS'/>";
+	$title = $('#title');
+	$title.append('<img src="http://s176520660.online.de/dungeonslayers/forum/Smileys/default/ds.gif" alt="DS"/>');
+	
+	$charName = $('<span>')
+		.attr('id', 'dsCharName');
 	
 	//if chardata imported from dichb -> add info and button for removal
 	if( postingTool.extension.ds.dichbChar !== 0) {
-		appendTitle += " - <b>" +  postingTool.extension.ds.dichbChar.name +"</b><br>"; 
-	
+		
+		$charName.append(' - ');
+		$charName.append($("<b>" +postingTool.extension.ds.dichbChar.name +"  </b>"));
+		
 		//create button
 		$button = $('<input>')
 			.attr('id', 'btnRemoveDichbCookie')
 			.attr('type', 'button')
-			.attr('value', postingTool.multiLanguage.strings.ds.removeCookie)
-			.css('font-size', '50%');
+			.attr('value', "X");
 	
 		//attach on-click event
 		$button.click(function () {
 			postingTool.extension.ds.tools.removeCookie( "dichb_export");
-			alert( postingTool.multiLanguage.strings.ds.msgCookieRemoved );
+			postingTool.extension.ds.dichbChar = 0;
+			$('#dsCharName').empty();
+			$(this).remove();
 		});
-	
-		//insert button after title
-		$button.after('<hr />');
-		$("#title").after($button);
+
+		$charName.after($button);	
 	}
 	else {
-		appendTitle += " - DungeonSlayer<br>";
-	}
-	appendTitle += "<br />";
-	$("#title").append( appendTitle);
 
+	}
+	
+	$title.append($charName);	
+	$('<br />').insertAfter($title);
+	
 	postingTool.extension.ds.extendRoll( );
 	postingTool.extension.ds.extendTalk( );
-
 });
 
 //overwrite code.char
@@ -153,7 +164,7 @@ console.log("ds extension: code.char()");
 	}
 	else { //no imported data exists
 		//use DS-icon
-		sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, ":ds: ");
+		sCode = sCode.replace( postingTool.extension.ds.settings.DS_ICONTAG, ":ds:");
 	}
 	
 	//insert char name
@@ -271,7 +282,7 @@ postingTool.code["speak"] = function ( ) {
 /*md# NAMESPACE postingTool.extension.ds #####################*/
 postingTool.extension.ds = { };
 
-postingTool.extension.ds.version = "1.4";
+postingTool.extension.ds.version = "1.5";
 postingTool.extension.ds.dichbChar = 0;
 
 postingTool.extension.ds.settings = (function ( ) {
@@ -569,9 +580,6 @@ postingTool.extension.ds.multiLanguage.de = function ( ) {
 	//use namespace 
 	var lang = postingTool.multiLanguage.strings.ds;
 	
-	lang.msgCookieRemoved = "dichb-Cookie gelöscht!";
-	lang.removeCookie = "dichb-Cookie löschen";
-	
 	//
 	//translate multilanguage-strings
 	//	
@@ -670,9 +678,6 @@ Set strings for English translation.
 postingTool.extension.ds.multiLanguage.en = function ( ) {
 	//use namespace 
 	var lang = postingTool.multiLanguage.strings.ds;
-	
-	lang.msgCookieRemoved = "dichb-cookie removed!";
-	lang.removeCookie = "remove dichb-cookie";
 	
 	//
 	//translate multilanguage-strings
@@ -817,6 +822,7 @@ return "";
 "Remove" a cookie.
 */
 postingTool.extension.ds.tools.removeCookie = function( c_name) {
-	//document.cookie = c_name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-	document.cookie = c_name + '=;';
+	var exdate=new Date();
+	exdate.setDate(exdate.getDate()+300);
+	document.cookie=c_name+ "=;" +"expires=" +exdate.toUTCString() +";path=/";
 };
